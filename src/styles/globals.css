@@ -1,0 +1,261 @@
+/*src/styles/globals.css*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #4c9f70; /* Vert olive plus foncé et plus vert */
+    --secondary: #8000ff;
+    --accent: #ff00c8;
+  }
+  
+
+body {
+  background: #000; /* Arrière-plan noir */
+  color: #fff; /* Texte blanc */
+  overflow-x: hidden; /* Désactive le défilement horizontal */
+}
+
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* src/styles/globals.css */
+@keyframes glow {
+  to {
+    box-shadow: 0 0 50px #0066FF, 0 0 50px #0066FF, 0 0 50px #0066FF;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s infinite alternate;
+}
+
+
+/*src/styles/globals.css*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #4ADE80; /* Vert olive plus foncé et plus vert */
+  --secondary: #8000ff;
+  --accent: #ff00c8;
+}
+  
+body {
+  background: #000; /* Arrière-plan noir */
+  color: #fff; /* Texte blanc */
+  overflow-x: hidden; /* Désactive le défilement horizontal */
+  scroll-behavior: smooth; /* Pour un défilement fluide */
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+.animate-reverse-spin {
+  animation: reverse-spin 12s linear infinite;
+}
+
+@keyframes reverse-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-10px) translateX(5px); }
+}
+
+.bg-radial-gradient-vignette {
+  background: radial-gradient(circle at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+   
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* src/styles/globals.css */
+@keyframes glow {
+  to {
+    box-shadow: 0 0 50px var(--primary), 0 0 50px var(--primary), 0 0 50px var(--primary);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s infinite alternate;
+}
+
+/* Animation de pulse lente */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+/* Animation d'apparition progressive */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Animation pour les listes et éléments séquentiels */
+.staggered-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.staggered-item.animate {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Animation d'effet de grain */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.animate-grain {
+  animation: grain 8s steps(10) infinite;
+}
+
+/* Ajout d'un curseur clignotant pour les effets de typing */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Animation de mise en surbrillance progressive */
+@keyframes highlight {
+  from { background-position: -100% 0; }
+  to { background-position: 200% 0; }
+}
+
+.animate-highlight {
+  background: linear-gradient(90deg, transparent 0%, rgba(74, 222, 128, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: highlight 2s linear infinite;
+}
+
+/* Transitions de section */
+.section-transition {
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.section-transition.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.section-transition.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.video-container {
+  aspect-ratio: 16/9;
+  height: auto;
+  width: 100%;
+}
+
+
+.screenshots-container {
+  aspect-ratio: 16/9;
+  max-height: none;
+}
+
+progress {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #f3f3f3;
+  border-radius: 5px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #4CAF50;
+  border-radius: 5px;
+}
+
+progress::-moz-progress-bar {
+  background-color: #4CAF50;
+  border-radius: 5px;
+}
