@@ -119,6 +119,8 @@
 
 // src/components/sections/Projects/types/index.ts
 import banner from '../../../../assets/projects/portfolio/banner.png';
+import degloule from '../../../../assets/projects/degloul/degloul.png';
+
 
 export interface ProjectTag {
   name: string;
@@ -162,7 +164,7 @@ export const projectsData: Project[] = [
     title: 'Plateforme Degloul',
     description: 'Application mobile qui promouvoit la littérature sous format audio, avec une synchronisation texte',
     date: 'Janvier 2025',
-    imageUrl: '/assets/projects/ecommerce.jpg',
+    imageUrl: degloule,
     tags: [
       { name: 'Dart', color: '#61DAFB' },
       { name: 'Flutter', color: '#339933' },
@@ -175,8 +177,8 @@ export const projectsData: Project[] = [
   },
   {
     id: 'mobapp',
-    title: 'Application Mobile Fitness',
-    description: 'Application mobile de suivi de fitness avec programmes d\'entraînement personnalisés et suivi des progrès.',
+    title: 'Application de Gestion d\'inventaire',
+    description: 'Application mobile d\'inventaire pour le recesencement des matériaux d\'entreprise',
     date: 'Novembre 2023',
     imageUrl: '/assets/projects/mobile-app.jpg',
     tags: [
