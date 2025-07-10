@@ -1,207 +1,8 @@
-// // src/components/sections/About/components/AboutImage.tsx
-// import { memo, useRef, useEffect } from 'react';
-// import { motion, useInView } from 'framer-motion';
-// import { gsap } from 'gsap';
-// import workspaceImage from '../../../../assets/about.png'; // Assurez-vous d'ajouter cette image à vos assets
-
-// const AboutImage = memo(() => {
-//   const imageContainerRef = useRef<HTMLDivElement>(null);
-//   const isInView = useInView(imageContainerRef, { once: true, amount: 0.3 });
-//   const bubblesRef = useRef<(HTMLDivElement | null)[]>([]);
-//   const highlightsRef = useRef<(HTMLDivElement | null)[]>([]);
-//   const animationsRef = useRef<gsap.core.Timeline[]>([]);
-
-//   // Nombre d'éléments décoratifs
-//   const BUBBLE_COUNT = 8;
-//   const HIGHLIGHT_COUNT = 5;
-
-//   // Effet d'animation avec GSAP quand l'image devient visible
-//   useEffect(() => {
-//     if (!isInView) return;
-
-//     // Nettoyer les animations précédentes
-//     animationsRef.current.forEach(timeline => {
-//       if (timeline) timeline.kill();
-//     });
-//     animationsRef.current = [];
-
-//     // Animation des bulles - corrigée pour TypeScript
-//     const bubbleTimeline = gsap.timeline();
-//     bubblesRef.current.forEach((bubble, index) => {
-//       if (bubble) {
-//         const delay = index * 0.2;
-//         const duration = 2 + Math.random() * 3;
-        
-//         // Animation 1: Déplacement
-//         bubbleTimeline.to(bubble, {
-//           y: -20 - Math.random() * 30, // Valeur numérique au lieu de string template
-//           x: Math.sin(index) * 15, // Valeur numérique au lieu de string template
-//           duration: duration,
-//           repeat: -1,
-//           yoyo: true,
-//           ease: "sine.inOut",
-//           delay: delay
-//         }, 0);
-        
-//         // Animation 2: Opacité (séparée)
-//         bubbleTimeline.to(bubble, {
-//           opacity: 0.8,
-//           duration: duration / 2,
-//           repeat: -1,
-//           yoyo: true,
-//           ease: "sine.inOut",
-//           delay: delay
-//         }, 0);
-        
-//         // Animation 3: Scale (séparée)
-//         bubbleTimeline.to(bubble, {
-//           scale: 1.2,
-//           duration: duration / 2,
-//           repeat: -1,
-//           yoyo: true,
-//           ease: "sine.inOut",
-//           delay: delay + 0.1
-//         }, 0);
-//       }
-//     });
-//     animationsRef.current.push(bubbleTimeline);
-
-//     // Animation des reflets - corrigée pour TypeScript
-//     const highlightTimeline = gsap.timeline();
-//     highlightsRef.current.forEach((highlight, index) => {
-//       if (highlight) {
-//         const delay = index * 0.3;
-//         const duration = 3 + Math.random() * 2;
-        
-//         // Animation 1: Opacité 
-//         highlightTimeline.to(highlight, {
-//           opacity: 0.4, 
-//           duration: duration / 2,
-//           repeat: -1,
-//           yoyo: true,
-//           ease: "sine.inOut",
-//           delay: delay
-//         }, 0);
-        
-//         // Animation 2: Scale
-//         highlightTimeline.to(highlight, {
-//           scale: 1.1,
-//           duration: duration / 2,
-//           repeat: -1,
-//           yoyo: true,
-//           ease: "sine.inOut",
-//           delay: delay + 0.2
-//         }, 0);
-//       }
-//     });
-//     animationsRef.current.push(highlightTimeline);
-
-//     // Animation de l'image elle-même
-//     const imageTimeline = gsap.timeline();
-//     if (imageContainerRef.current) {
-//       imageTimeline.to(imageContainerRef.current, {
-//         boxShadow: "0 0 30px rgba(74, 222, 128, 0.3)",
-//         duration: 3,
-//         repeat: -1,
-//         yoyo: true,
-//         ease: "sine.inOut"
-//       });
-//     }
-//     animationsRef.current.push(imageTimeline);
-
-//     // Cleanup
-//     return () => {
-//       animationsRef.current.forEach(timeline => {
-//         if (timeline) timeline.kill();
-//       });
-//     };
-//   }, [isInView]);
-
-//   return (
-//     <div className="relative max-w-md mx-auto">
-//       {/* Container de l'image avec effet */}
-//       <motion.div
-//         ref={imageContainerRef}
-//         initial={{ opacity: 0, scale: 0.9 }}
-//         animate={isInView ? { opacity: 1, scale: 1 } : {}}
-//         transition={{ duration: 0.8, ease: "easeOut" }}
-//         className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-3 rounded-xl overflow-hidden
-//           shadow-lg shadow-black/50 z-10"
-//       >
-//         {/* Image principale */}
-//         <img
-//           src={workspaceImage}
-//           alt="Developer Workspace"
-//           className="rounded-lg w-full h-auto relative z-10"
-//         />
-
-//         {/* Calque de grain */}
-//         <div
-//           className="absolute inset-0 mix-blend-overlay opacity-30 z-20"
-//           style={{
-//             backgroundImage: 'url("/noise.png")',
-//           }}
-//         />
-
-//         {/* Effet de bordure brillante */}
-//         <div className="absolute inset-0 rounded-xl border border-[#4ADE80]/20 z-30" />
-//       </motion.div>
-
-//       {/* Éléments décoratifs autour de l'image */}
-//       {/* Bulles */}
-//       {Array.from({ length: BUBBLE_COUNT }).map((_, i) => (
-//         <div
-//           key={`bubble-${i}`}
-//           ref={el => bubblesRef.current[i] = el}
-//           className="absolute rounded-full bg-[#4ADE80] blur-sm opacity-20 z-0"
-//           style={{
-//             width: `${10 + Math.random() * 15}px`,
-//             height: `${10 + Math.random() * 15}px`,
-//             left: `${10 + Math.random() * 80}%`,
-//             top: `${10 + Math.random() * 80}%`,
-//           }}
-//         />
-//       ))}
-
-//       {/* Points de reflet */}
-//       {Array.from({ length: HIGHLIGHT_COUNT }).map((_, i) => (
-//         <div
-//           key={`highlight-${i}`}
-//           ref={el => highlightsRef.current[i] = el}
-//           className="absolute rounded-full bg-white blur-md opacity-10 z-0"
-//           style={{
-//             width: `${4 + Math.random() * 8}px`,
-//             height: `${4 + Math.random() * 8}px`,
-//             left: `${Math.random() * 100}%`,
-//             top: `${Math.random() * 100}%`,
-//           }}
-//         />
-//       ))}
-
-//       {/* Effet de lueur ambient */}
-//       <div className="absolute -inset-4 bg-gradient-radial from-[#4ADE80]/10 to-transparent blur-2xl opacity-20 z-0" />
-//     </div>
-//   );
-// });
-
-// export default AboutImage;
-
-
-
-
-
-
-
-
-
-
-
-
-// src/components/sections/About/components/AboutImage.tsx
-import { memo, useRef, useEffect } from 'react';
+// src/components/sections/About/components/AboutImage.tsx - VERSION PRO PERFORMANCE
+import { memo, useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
-import aboutImage from '../../../../assets/about.png'; // Mis à jour pour utiliser about.png
+import aboutImage from '../../../../assets/about.png';
 
 const AboutImage = memo(() => {
   const imageContainerRef = useRef<HTMLDivElement>(null);
@@ -209,14 +10,35 @@ const AboutImage = memo(() => {
   const bubblesRef = useRef<(HTMLDivElement | null)[]>([]);
   const highlightsRef = useRef<(HTMLDivElement | null)[]>([]);
   const animationsRef = useRef<gsap.core.Timeline[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
 
-  // Nombre d'éléments décoratifs
-  const BUBBLE_COUNT = 8;
-  const HIGHLIGHT_COUNT = 5;
+  // ⚡ OPTIMISATION : Nombre d'éléments drastiquement réduit mais toujours visible
+  const BUBBLE_COUNT = 4; // Au lieu de 8
+  const HIGHLIGHT_COUNT = 3; // Au lieu de 5
 
-  // Effet d'animation avec GSAP quand l'image devient visible
+  // Détection optimisée des paramètres
   useEffect(() => {
-    if (!isInView) return;
+    const checkSettings = () => {
+      setIsMobile(window.innerWidth < 768);
+      setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    };
+    
+    checkSettings();
+    window.addEventListener('resize', checkSettings);
+    
+    const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
+    motionMedia.addEventListener('change', checkSettings);
+    
+    return () => {
+      window.removeEventListener('resize', checkSettings);
+      motionMedia.removeEventListener('change', checkSettings);
+    };
+  }, []);
+
+  // 🎨 ANIMATIONS GSAP PROFESSIONNELLES mais optimisées
+  useEffect(() => {
+    if (!isInView || isReducedMotion) return;
 
     // Nettoyer les animations précédentes
     animationsRef.current.forEach(timeline => {
@@ -224,83 +46,66 @@ const AboutImage = memo(() => {
     });
     animationsRef.current = [];
 
-    // Animation des bulles - corrigée pour TypeScript
-    const bubbleTimeline = gsap.timeline();
-    bubblesRef.current.forEach((bubble, index) => {
-      if (bubble) {
-        const delay = index * 0.2;
-        const duration = 2 + Math.random() * 3;
-        
-        // Animation 1: Déplacement
-        bubbleTimeline.to(bubble, {
-          y: -20 - Math.random() * 30, // Valeur numérique au lieu de string template
-          x: Math.sin(index) * 15, // Valeur numérique au lieu de string template
-          duration: duration,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: delay
-        }, 0);
-        
-        // Animation 2: Opacité (séparée)
-        bubbleTimeline.to(bubble, {
-          opacity: 0.8,
-          duration: duration / 2,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: delay
-        }, 0);
-        
-        // Animation 3: Scale (séparée)
-        bubbleTimeline.to(bubble, {
-          scale: 1.2,
-          duration: duration / 2,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: delay + 0.1
-        }, 0);
-      }
-    });
-    animationsRef.current.push(bubbleTimeline);
+    // 🎨 Animation des bulles OPTIMISÉE
+    if (!isMobile) { // Seulement sur desktop pour les performances
+      const bubbleTimeline = gsap.timeline();
+      
+      bubblesRef.current.forEach((bubble, index) => {
+        if (bubble) {
+          const delay = index * 0.3; // ⚡ Délai plus espacé
+          const duration = 3 + Math.random() * 2; // ⚡ Plus lent mais fluide
+          
+          // Animation Y optimisée
+          bubbleTimeline.to(bubble, {
+            y: -15 - Math.random() * 20, // ⚡ Amplitude réduite
+            duration: duration,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: delay
+          }, 0);
+          
+          // Animation d'opacité séparée et plus subtile
+          bubbleTimeline.to(bubble, {
+            opacity: 0.6, // ⚡ Moins intense
+            duration: duration / 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: delay
+          }, 0);
+        }
+      });
+      
+      animationsRef.current.push(bubbleTimeline);
+    }
 
-    // Animation des reflets - corrigée pour TypeScript
+    // 🎨 Animation des reflets OPTIMISÉE
     const highlightTimeline = gsap.timeline();
     highlightsRef.current.forEach((highlight, index) => {
       if (highlight) {
-        const delay = index * 0.3;
-        const duration = 3 + Math.random() * 2;
+        const delay = index * 0.4; // ⚡ Délai plus espacé
+        const duration = 4 + Math.random() * 2; // ⚡ Plus lent
         
-        // Animation 1: Opacité 
+        // Animation d'opacité optimisée
         highlightTimeline.to(highlight, {
-          opacity: 0.4, 
+          opacity: 0.3, // ⚡ Moins intense
           duration: duration / 2,
           repeat: -1,
           yoyo: true,
           ease: "sine.inOut",
           delay: delay
-        }, 0);
-        
-        // Animation 2: Scale
-        highlightTimeline.to(highlight, {
-          scale: 1.1,
-          duration: duration / 2,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: delay + 0.2
         }, 0);
       }
     });
     animationsRef.current.push(highlightTimeline);
 
-    // Animation de l'image elle-même
+    // 🎨 Animation de l'image PROFESSIONNELLE
     const imageTimeline = gsap.timeline();
     if (imageContainerRef.current) {
       imageTimeline.to(imageContainerRef.current, {
-        boxShadow: "0 0 30px rgba(74, 222, 128, 0.3)",
-        duration: 3,
+        boxShadow: "0 0 25px rgba(74, 222, 128, 0.2)", // ⚡ Effet plus subtil
+        duration: 4,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut"
@@ -314,20 +119,35 @@ const AboutImage = memo(() => {
         if (timeline) timeline.kill();
       });
     };
-  }, [isInView]);
+  }, [isInView, isMobile, isReducedMotion]);
 
   return (
     <div className="relative mx-auto w-full max-w-2xl">
-      {/* Container de l'image avec effet - plus grand pour s'adapter à l'image */}
+      {/* 🎨 Container de l'image avec effet professionnel */}
       <motion.div
         ref={imageContainerRef}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
+        animate={isInView ? { 
+          opacity: 1, 
+          scale: 1,
+          rotateY: 0 
+        } : {}}
+        transition={{ 
+          duration: 1, 
+          ease: "easeOut",
+          type: "spring",
+          damping: 20,
+          stiffness: 100
+        }}
         className="relative bg-gradient-to-br from-gray-800/60 to-gray-900/60 p-4 sm:p-6 rounded-xl overflow-hidden
           shadow-lg shadow-black/50 z-10 transform-gpu"
+        whileHover={!isMobile ? {
+          scale: 1.02,
+          rotateY: 2,
+          transition: { duration: 0.3, ease: "easeOut" }
+        } : undefined}
       >
-        {/* Image principale - dimensions augmentées */}
+        {/* Image principale optimisée */}
         <img
           src={aboutImage}
           alt="Developer Workspace"
@@ -336,53 +156,83 @@ const AboutImage = memo(() => {
             minHeight: "320px",
             maxHeight: "550px"
           }}
+          loading="lazy" // ⚡ Lazy loading
         />
 
-        {/* Calque de grain */}
+        {/* Calque de grain léger */}
         <div
-          className="absolute inset-0 mix-blend-overlay opacity-30 z-20"
+          className="absolute inset-0 mix-blend-overlay opacity-20 z-20"
           style={{
             backgroundImage: 'url("/noise.png")',
           }}
         />
 
-        {/* Effet de bordure brillante */}
-        <div className="absolute inset-0 rounded-xl border border-[#4ADE80]/20 z-30" />
+        {/* Effet de bordure brillante professionnel */}
+        <motion.div 
+          className="absolute inset-0 rounded-xl border border-[#4ADE80]/20 z-30"
+          animate={!isReducedMotion ? {
+            borderColor: [
+              'rgba(74, 222, 128, 0.2)',
+              'rgba(74, 222, 128, 0.4)',
+              'rgba(74, 222, 128, 0.2)'
+            ]
+          } : {}}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </motion.div>
 
-      {/* Éléments décoratifs autour de l'image */}
-      {/* Bulles */}
-      {Array.from({ length: BUBBLE_COUNT }).map((_, i) => (
-        <div
-          key={`bubble-${i}`}
-          ref={el => bubblesRef.current[i] = el}
-          className="absolute rounded-full bg-[#4ADE80] blur-sm opacity-20 z-0"
-          style={{
-            width: `${10 + Math.random() * 15}px`,
-            height: `${10 + Math.random() * 15}px`,
-            left: `${10 + Math.random() * 80}%`,
-            top: `${10 + Math.random() * 80}%`,
-          }}
-        />
-      ))}
+      {/* 🎨 Éléments décoratifs OPTIMISÉS */}
+      {!isReducedMotion && (
+        <>
+          {/* Bulles optimisées - seulement sur desktop */}
+          {!isMobile && Array.from({ length: BUBBLE_COUNT }).map((_, i) => (
+            <div
+              key={`bubble-${i}`}
+              ref={el => bubblesRef.current[i] = el}
+              className="absolute rounded-full bg-[#4ADE80]/30 blur-sm opacity-25 z-0" // 🎨 Plus visible
+              style={{
+                width: `${8 + Math.random() * 12}px`, // ⚡ Taille réduite
+                height: `${8 + Math.random() * 12}px`,
+                left: `${10 + Math.random() * 80}%`,
+                top: `${10 + Math.random() * 80}%`,
+              }}
+            />
+          ))}
 
-      {/* Points de reflet */}
-      {Array.from({ length: HIGHLIGHT_COUNT }).map((_, i) => (
-        <div
-          key={`highlight-${i}`}
-          ref={el => highlightsRef.current[i] = el}
-          className="absolute rounded-full bg-white blur-md opacity-10 z-0"
-          style={{
-            width: `${4 + Math.random() * 8}px`,
-            height: `${4 + Math.random() * 8}px`,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-        />
-      ))}
+          {/* Points de reflet optimisés */}
+          {Array.from({ length: HIGHLIGHT_COUNT }).map((_, i) => (
+            <div
+              key={`highlight-${i}`}
+              ref={el => highlightsRef.current[i] = el}
+              className="absolute rounded-full bg-white/40 blur-md opacity-15 z-0" // 🎨 Plus visible
+              style={{
+                width: `${3 + Math.random() * 6}px`, // ⚡ Taille réduite
+                height: `${3 + Math.random() * 6}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+            />
+          ))}
+        </>
+      )}
 
-      {/* Effet de lueur ambient */}
-      <div className="absolute -inset-4 bg-gradient-radial from-[#4ADE80]/10 to-transparent blur-2xl opacity-20 z-0" />
+      {/* 🎨 Effet de lueur ambient professionnel */}
+      <motion.div 
+        className="absolute -inset-6 bg-gradient-radial from-[#4ADE80]/12 to-transparent blur-2xl opacity-30 z-0"
+        animate={!isReducedMotion ? {
+          scale: [1, 1.1, 1],
+          opacity: [0.3, 0.5, 0.3]
+        } : {}}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
     </div>
   );
 });

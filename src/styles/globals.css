@@ -211,8 +211,14 @@ body {
 }
 
 /* Transitions de section */
+
+/* .section-transition {
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+} */
+
 .section-transition {
   transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  scroll-margin-top: 80px; /* ajustez selon votre header */
 }
 
 .section-transition.hidden {

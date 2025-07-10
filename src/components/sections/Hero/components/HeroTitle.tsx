@@ -1,4 +1,4 @@
-// src/components/sections/Hero/components/HeroTitle.tsx
+// src/components/sections/Hero/components/HeroTitle.tsx - VERSION OPTIMISÉE
 import { useRef, useEffect, useState, memo } from 'react';
 import { gsap } from 'gsap';
 import Typed from 'typed.js';
@@ -13,7 +13,7 @@ export const HeroTitle = memo(() => {
   const [isMobile, setIsMobile] = useState(false);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
 
-  // Détecter les préférences d'accessibilité et le type d'appareil
+  // Détection optimisée
   useEffect(() => {
     const checkSettings = () => {
       setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -33,18 +33,18 @@ export const HeroTitle = memo(() => {
     };
   }, []);
 
-  // Observer l'intersection pour n'animer que lorsque visible
+  // Observer l'intersection optimisé
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            observer.disconnect();
+            observer.disconnect(); // ⚡ Déconnecter après première apparition
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2, rootMargin: '50px' } // ⚡ Marge plus grande
     );
     
     if (nameRef.current) {
@@ -54,78 +54,71 @@ export const HeroTitle = memo(() => {
     return () => observer.disconnect();
   }, []);
 
-  // Gérer les animations en fonction de la visibilité et des préférences
+  // ⚡ ANIMATIONS ULTRA-SIMPLIFIÉES
   useEffect(() => {
     if (!isVisible) return;
     
-    // Nettoyer l'ancienne timeline si elle existe
+    // Nettoyer l'ancienne timeline
     if (tlRef.current) {
       tlRef.current.kill();
     }
     
-    // Créer une nouvelle timeline avec GSAP
-    const tl = gsap.timeline({ 
-      defaults: { 
-        ease: isReducedMotion ? "none" : "power4.out",
-        duration: isReducedMotion ? 0.1 : (isMobile ? 1 : 1.5)
-      }
-    });
-    
-    tlRef.current = tl;
-    
     if (isReducedMotion) {
-      // Version sans animation pour les préférences réduites
+      // 🔥 Mode sans animation : apparition instantanée
       if (nameRef.current) {
-        gsap.set(nameRef.current, { 
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-          opacity: 1
-        });
+        gsap.set(nameRef.current, { opacity: 1, y: 0 });
       }
-      
       if (descRef.current) {
-        gsap.set(descRef.current, {
-          y: 0,
-          opacity: 1
-        });
+        gsap.set(descRef.current, { opacity: 1, y: 0 });
       }
     } else {
-      // Version avec animations
+      // ⚡ Animation simplifiée : seulement fade + slide
+      const tl = gsap.timeline({ 
+        defaults: { 
+          ease: "power2.out",
+          duration: isMobile ? 0.8 : 1
+        }
+      });
+      
+      tlRef.current = tl;
+      
       tl.fromTo(nameRef.current,
-        { clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)", opacity: 0 },
-        { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", opacity: 1 }
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0 }
       )
       .fromTo(descRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: isMobile ? 0.8 : 1 },
-        "-=1"
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0 },
+        "-=0.5"
       );
     }
     
-    // Initialiser Typed.js pour les rôles
+    // ⚡ TYPED.JS OPTIMISÉ
     if (typedElementRef.current) {
-      // Cleanup l'ancienne instance si elle existe
+      // Cleanup l'ancienne instance
       if (typedInstanceRef.current) {
         typedInstanceRef.current.destroy();
       }
       
-      // Typed.js pour les rôles avec vitesse adaptée
+      // 🔥 Configuration simplifiée et plus rapide
       typedInstanceRef.current = new Typed(typedElementRef.current, {
         strings: [
           "Frontend Developer",
           "Backend Developer",
-          "Fullstack and Mobile Developer"
+          "Mobile Developer", 
+          "In short, Fullstack Developer. 😎💻🧠"
         ],
-        typeSpeed: isReducedMotion ? 0 : 50,
-        backSpeed: isReducedMotion ? 0 : 30,
-        backDelay: isReducedMotion ? 500 : 1500,
+        typeSpeed: isReducedMotion ? 0 : (isMobile ? 70 : 50), // ⚡ Plus rapide
+        backSpeed: isReducedMotion ? 0 : (isMobile ? 40 : 30),
+        backDelay: isReducedMotion ? 500 : 1000, // ⚡ Délai réduit
         loop: true,
-        showCursor: true,
+        showCursor: !isReducedMotion, // 🔥 Pas de curseur si animations réduites
         cursorChar: '|',
-        smartBackspace: true
+        smartBackspace: true,
+        startDelay: isReducedMotion ? 0 : 800 // ⚡ Démarrage plus rapide
       });
     }
     
-    // Cleanup
     return () => {
       if (tlRef.current) {
         tlRef.current.kill();
@@ -139,12 +132,7 @@ export const HeroTitle = memo(() => {
 
   return (
     <div className="space-y-4 sm:space-y-6 md:space-y-8 relative mb-10">
-      {/* <div className="absolute -top-6 sm:-top-8 -left-4 sm:-left-10 px-3 py-1.5 sm:px-4 sm:py-2 bg-[#4ADE80]/10
-         border border-[#4ADE80]/20 rounded-lg backdrop-blur-sm animate-float mb-10">
-        <span className="text-[#4ADE80] text-xs sm:text-sm font-medium mb-10">
-          Available for freelance
-        </span>
-      </div> */}
+      {/* ❌ SUPPRIMÉ : Badge "Available for freelance" (distraction) */}
       
       <div ref={nameRef} className="space-y-2">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white">
@@ -167,6 +155,7 @@ export const HeroTitle = memo(() => {
           Créatrice de solutions digitales innovantes, je donne vie à vos projets.
           Ensemble créons une expérience utilisateur exceptionnelle grâce à un code élégant et efficace.
         </p>
+        {/* ⚡ Ligne décorative simplifiée */}
         <div className="absolute -left-3 sm:-left-5 top-0 w-0.5 sm:w-1 h-full bg-gradient-to-b
            from-[#4ADE80] via-[#4ADE80]/50 to-transparent" />
       </div>

@@ -20,7 +20,7 @@ const Contact = memo(() => {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-black flex items-center py-20"
+      className="relative min-h-screen overflow-hidden bg-black flex items-center py-20 mt-40"
     >
       {/* Arrière-plan */}
       <Suspense fallback={<BackgroundFallback />}>

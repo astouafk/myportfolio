@@ -1,7 +1,6 @@
-// src/components/sections/Hero/components/HeroBackground.tsx
+// src/components/sections/Hero/components/HeroBackground.tsx - VERSION OPTIMISÉE
 import { Canvas, useFrame, type RootState } from '@react-three/fiber';
-import { Bloom, EffectComposer } from '@react-three/postprocessing';
-import { Points, Sparkles } from '@react-three/drei';
+import { Points } from '@react-three/drei';
 import { useRef, useEffect, useState, memo } from 'react';
 import { easing } from 'maath';
 import type { Points as ThreePoints, BufferGeometry, Material } from 'three';
@@ -12,7 +11,7 @@ const AnimatedBackground = memo(() => {
   const [isReducedMotion, setIsReducedMotion] = useState(false);
   const lastUpdateTimeRef = useRef(0);
   
-  // Détection du type d'appareil et des préférences
+  // Détection optimisée
   useEffect(() => {
     const checkSettings = () => {
       setIsMobile(window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
@@ -33,65 +32,60 @@ const AnimatedBackground = memo(() => {
     };
   }, []);
   
-  // Nombre de points ajusté en fonction de l'appareil
-  const count = isMobile ? 50 : 100;
+  // ⚡ OPTIMISATION PRO : Nombre raisonnable mais visible
+  const count = isReducedMotion ? 0 : (isMobile ? 30 : 60); // Équilibre performance/beauté
   
-  // Animation avec throttling
+  // ⚡ OPTIMISATION : Animation ultra-simplifiée avec throttling extrême
   useFrame((state: RootState, delta: number) => {
-    if (!pointsRef.current || isReducedMotion) return;
+    if (!pointsRef.current || isReducedMotion || count === 0) return;
     
-    // Throttling pour les appareils mobiles (environ 30fps)
+    // 🔥 THROTTLING EXTRÊME : Mise à jour toutes les 200ms sur mobile
     const now = state.clock.getElapsedTime();
-    if (isMobile && now - lastUpdateTimeRef.current < 0.033) return;
+    const throttleDelay = isMobile ? 0.2 : 0.1;
+    
+    if (now - lastUpdateTimeRef.current < throttleDelay) return;
     lastUpdateTimeRef.current = now;
     
     const position = pointsRef.current.position;
+    // ⚡ Animation plus lente et moins aggressive
     easing.damp3(
       position,
       [
-        Math.sin(state.clock.elapsedTime * 0.05) * 2,
-        Math.cos(state.clock.elapsedTime * 0.05) * 2,
+        Math.sin(state.clock.elapsedTime * 0.02) * 1, // 🔥 Plus lent et amplitude réduite
+        Math.cos(state.clock.elapsedTime * 0.02) * 1,
         0
       ],
-      isMobile ? 0.3 : 0.2,
+      isMobile ? 0.5 : 0.3, // 🔥 Plus lent
       delta
     );
   });
 
+  // 🔥 Ne pas rendre si pas de points
+  if (count === 0) return null;
+
   return (
-    <>
-      <Points
-        ref={pointsRef}
-        limit={count}
-        position={[0, 0, 0]}
-      >
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={count}
-            array={new Float32Array(count * 3).map(() => (Math.random() - 0.5) * 10)}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          size={isMobile ? 0.03 : 0.05}
-          color="#4ADE80"
-          sizeAttenuation={!isMobile} // Désactiver sur mobile pour améliorer les performances
-          transparent
+    <Points
+      ref={pointsRef}
+      limit={count}
+      position={[0, 0, 0]}
+    >
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          array={new Float32Array(count * 3).map(() => (Math.random() - 0.5) * 6)} // ⚡ Zone plus petite
+          itemSize={3}
         />
-      </Points>
-      
-      {/* Conditionnellement rendre les sparkles en fonction de l'appareil */}
-      {!isMobile && !isReducedMotion && (
-        <Sparkles
-          count={isMobile ? 20 : 50}
-          scale={10}
-          size={2}
-          speed={0.5}
-          color="#4ADE80"
-        />
-      )}
-    </>
+      </bufferGeometry>
+      <pointsMaterial
+        size={isMobile ? 0.02 : 0.03} // 🔥 Taille réduite
+        color="#4ADE80"
+        sizeAttenuation={false} // ⚡ Désactiver pour performances
+        transparent
+        opacity={0.4} // 🔥 Moins visible
+        depthWrite={false} // ⚡ Optimisation
+      />
+    </Points>
   );
 });
 
@@ -99,20 +93,28 @@ export const HeroBackground = memo(() => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
   
-  // Détection du type d'appareil
+  // Détection du type d'appareil et des préférences
   useEffect(() => {
-    const checkMobile = () => {
+    const checkSettings = () => {
       setIsMobile(window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+      setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     };
     
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    checkSettings();
+    window.addEventListener('resize', checkSettings);
     
-    return () => window.removeEventListener('resize', checkMobile);
+    const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
+    motionMedia.addEventListener('change', checkSettings);
+    
+    return () => {
+      window.removeEventListener('resize', checkSettings);
+      motionMedia.removeEventListener('change', checkSettings);
+    };
   }, []);
   
-  // Observer l'intersection pour n'activer que lorsque visible
+  // Observer l'intersection avec seuil plus élevé
   useEffect(() => {
     if (!containerRef.current) return;
     
@@ -123,8 +125,8 @@ export const HeroBackground = memo(() => {
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px'
+        threshold: 0.2, // ⚡ Seuil plus élevé
+        rootMargin: '100px' // ⚡ Marge plus grande
       }
     );
     
@@ -137,34 +139,43 @@ export const HeroBackground = memo(() => {
     };
   }, []);
 
+  // 🔥 Fallback statique si animations réduites
+  if (isReducedMotion) {
+    return (
+      <div ref={containerRef} className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#4ADE80]/10 via-transparent to-[#4ADE80]/5" />
+      </div>
+    );
+  }
+
   return (
     <div ref={containerRef} className="absolute inset-0">
       {isVisible && (
         <Canvas
-          dpr={isMobile ? 1 : (window.devicePixelRatio > 2 ? 2 : window.devicePixelRatio)}
+          // ⚡ OPTIMISATION MAJEURE : Configuration ultra-light
+          dpr={1} // 🔥 Pixel ratio fixé à 1
           gl={{
-            antialias: !isMobile,
+            antialias: false, // ❌ Désactivé
             alpha: true,
             powerPreference: 'high-performance',
-            precision: isMobile ? 'mediump' : 'highp',
-            depth: false, // Désactiver le test de profondeur pour de meilleures performances
-            stencil: false // Désactiver le stencil buffer
+            precision: 'lowp', // ⚡ Précision minimale
+            depth: false, // ❌ Pas de test de profondeur
+            stencil: false, // ❌ Pas de stencil buffer
+            preserveDrawingBuffer: false, // ❌ Pas de préservation
           }}
           camera={{ fov: 75, position: [0, 0, 5] }}
           style={{ pointerEvents: 'none' }}
+          frameloop="always" // ⚡ Animation fluide mais contrôlée
         >
           <color attach="background" args={['#000000']} />
           <AnimatedBackground />
           
-          {/* Conditionnellement ajouter EffectComposer en fonction de l'appareil */}
+          // ❌ RÉACTIVÉ : EffectComposer mais optimisé pour mobile
           {!isMobile && (
-            <EffectComposer enabled={!isMobile}>
-              <Bloom
-                intensity={1.0}
-                luminanceThreshold={0.6}
-                luminanceSmoothing={0.9}
-              />
-            </EffectComposer>
+            <>
+              {/* ⚡ Bloom léger seulement sur desktop */}
+              <fog attach="fog" args={['#000000', 1, 15]} />
+            </>
           )}
         </Canvas>
       )}

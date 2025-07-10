@@ -1,4 +1,4 @@
-// src/components/sections/Hero/components/HeroStats.tsx
+// src/components/sections/Hero/components/HeroStats.tsx - VERSION OPTIMISÉE
 import { useRef, useEffect, useState, useCallback, memo } from 'react';
 import { Download } from 'lucide-react';
 import { gsap } from 'gsap';
@@ -18,7 +18,7 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const animationRef = useRef<gsap.core.Timeline | null>(null);
   
-  // Détection des préférences et du type d'appareil
+  // Détection optimisée
   useEffect(() => {
     const checkSettings = () => {
       setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -36,25 +36,24 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
       mediaQuery.removeEventListener('change', checkSettings);
       window.removeEventListener('resize', checkSettings);
       
-      // Nettoyer les animations GSAP
       if (animationRef.current) {
         animationRef.current.kill();
       }
     };
   }, []);
   
-  // Détection de visibilité pour n'animer que lorsque visible
+  // Détection de visibilité optimisée
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            observer.disconnect();
+            observer.disconnect(); // ⚡ Déconnecter après première apparition
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2, rootMargin: '50px' } // ⚡ Marge plus grande
     );
     
     if (statsRef.current) {
@@ -64,53 +63,43 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
     return () => observer.disconnect();
   }, []);
   
-  // Animer les stats quand visibles
+  // ⚡ ANIMATIONS ULTRA-SIMPLIFIÉES
   useEffect(() => {
     if (!isVisible || !statsRef.current) return;
     
-    // Nettoyer les animations précédentes
     if (animationRef.current) {
       animationRef.current.kill();
     }
     
-    // Créer une nouvelle timeline
-    const tl = gsap.timeline();
-    animationRef.current = tl;
-    
     if (isReducedMotion) {
-      // Version sans animation pour les préférences réduites
+      // 🔥 Mode sans animation : apparition instantanée
       gsap.set(".stat-item", { opacity: 1, y: 0 });
       gsap.set(".social-item", { opacity: 1, scale: 1 });
     } else {
-      // Animer les stats avec un décalage
+      // ⚡ Animation simplifiée et plus rapide
+      const tl = gsap.timeline();
+      animationRef.current = tl;
+      
       tl.fromTo(".stat-item", 
-        { 
-          opacity: 0, 
-          y: 20 
-        },
+        { opacity: 0, y: 20 },
         { 
           opacity: 1, 
           y: 0, 
           stagger: 0.1, 
-          duration: isMobile ? 0.6 : 0.8,
+          duration: isMobile ? 0.4 : 0.6, // ⚡ Plus rapide
           ease: "power2.out" 
         }
-      );
-      
-      // Animer les boutons sociaux
-      tl.fromTo(".social-item", 
-        { 
-          opacity: 0, 
-          scale: 0.8 
-        },
+      )
+      .fromTo(".social-item", 
+        { opacity: 0, scale: 0.8 },
         { 
           opacity: 1, 
           scale: 1, 
-          stagger: 0.1, 
-          duration: 0.6,
-          ease: "back.out(1.5)" 
+          stagger: 0.05, // ⚡ Stagger réduit
+          duration: 0.4, // ⚡ Plus rapide
+          ease: "back.out(1.2)" // ⚡ Ease moins aggressive
         },
-        "-=0.4"
+        "-=0.2"
       );
     }
     
@@ -121,9 +110,8 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
     };
   }, [isVisible, isReducedMotion, isMobile]);
 
-  // Gestion optimisée du téléchargement du CV
+  // Gestion du téléchargement optimisée
   const handleDownloadCV = useCallback(() => {
-    // Éviter les téléchargements multiples
     if (isDownloading) return;
     
     try {
@@ -135,15 +123,16 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
       document.body.appendChild(link);
       link.click();
       
-      // Feedback visuel
-      gsap.to("#download-btn", {
-        scale: 0.95,
-        duration: 0.2,
-        yoyo: true,
-        repeat: 1
-      });
+      // ⚡ Feedback visuel simplifié
+      if (!isReducedMotion) {
+        gsap.to("#download-btn", {
+          scale: 0.95,
+          duration: 0.1,
+          yoyo: true,
+          repeat: 1
+        });
+      }
       
-      // Nettoyage
       setTimeout(() => {
         document.body.removeChild(link);
         setIsDownloading(false);
@@ -152,18 +141,19 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
       console.error('Erreur lors du téléchargement:', error);
       setIsDownloading(false);
     }
-  }, [isDownloading]);
+  }, [isDownloading, isReducedMotion]);
 
   return (
     <div ref={statsRef} className="space-y-4 sm:space-y-6 md:space-y-8">
-      {/* Stats */}
+      {/* Stats simplifiées */}
       <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
         {stats.map((stat, index) => (
           <div 
             key={index} 
             className="stat-item text-center p-2 sm:p-3 md:p-4 bg-white/5 rounded-lg md:rounded-xl
               backdrop-blur-sm border border-white/10 hover:border-[#4ADE80]/30 
-              transition-all duration-300 hover:transform hover:scale-105"
+              transition-all duration-300"
+            // ❌ SUPPRIMÉ : hover:transform hover:scale-105 (trop d'animations)
           >
             <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#4ADE80]">{stat.value}</div>
             <div className="text-xs sm:text-sm text-gray-400">{stat.label}</div>
@@ -171,17 +161,18 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
         ))}
       </div>
       
-      {/* Boutons sociaux */}
+      {/* Boutons sociaux simplifiés */}
       <div ref={socialRef} className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
         <button
           id="download-btn"
           onClick={handleDownloadCV}
           className="social-item px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-[#4ADE80] text-black rounded-full font-semibold
-            hover:bg-[#4ADE80]/90 transition-all duration-300 hover:scale-105
+            hover:bg-[#4ADE80]/90 transition-all duration-300
             shadow-lg shadow-[#4ADE80]/20 flex items-center justify-center sm:justify-start gap-2
             w-full sm:w-auto"
           disabled={isDownloading}
           aria-label="Télécharger mon CV"
+          // ❌ SUPPRIMÉ : hover:scale-105 (animation excessive)
         >
           <Download className="w-4 h-4 sm:w-5 sm:h-5" />
           <span>Download CV</span>
@@ -197,8 +188,9 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
               className="social-item w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/5 backdrop-blur-sm
                 border border-white/10 flex items-center justify-center
                 text-[#4ADE80] hover:bg-[#4ADE80]/10 hover:border-[#4ADE80]/30
-                transition-all duration-300 hover:scale-110 group"
+                transition-all duration-300 group"
               aria-label={`Visitez mon profil ${name}`}
+              // ❌ SUPPRIMÉ : hover:scale-110 (animation excessive)
             >
               <Icon className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:scale-110 transition-transform" />
             </a>

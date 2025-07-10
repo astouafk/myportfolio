@@ -1,13 +1,11 @@
-// src/components/sections/Hero/components/HeroImage.tsx
+// src/components/sections/Hero/components/HeroImage.tsx - VERSION PRO PERFORMANTE
 import { useState, useRef, useEffect, useCallback, memo } from 'react'
 import { gsap } from 'gsap'
 import profileImage from '../../../../assets/moi6.png'
 import { lazy, Suspense } from 'react'
 
-// Import dynamique pour l'effet photo
 const PhotoEffects = lazy(() => import('../../PhotoEffects'))
 
-// Fallback simple pendant le chargement de PhotoEffects
 const PhotoEffectsFallback = () => (
   <div className="absolute inset-0 rounded-full bg-gradient-radial from-[#4ADE80]/20 to-transparent animate-pulse"></div>
 )
@@ -24,13 +22,13 @@ export const HeroImage = memo(() => {
   const particlesRef = useRef<(HTMLDivElement | null)[]>([])
   const animationsRef = useRef<gsap.core.Timeline[]>([])
   
-  // Valeurs optimisées pour mobile
-  const BUBBLE_COUNT = isMobile ? 15 : 30
-  const PARTICLE_COUNT = isMobile ? 25 : 50
-  const FLOAT_AMPLITUDE = isMobile ? 30 : 60
-  const FLOAT_SPEED = isMobile ? 1.5 : 2
+  // ⚡ VALEURS PRO : Équilibre performance/beauté
+  const BUBBLE_COUNT = isMobile ? 8 : 15 // Réduit mais visible
+  const PARTICLE_COUNT = isMobile ? 12 : 25 // Réduit mais magique
+  const FLOAT_AMPLITUDE = isMobile ? 20 : 40 // Mouvement visible
+  const FLOAT_SPEED = isMobile ? 2 : 1.5 // Plus fluide
 
-  // Détection du type d'appareil et des préférences d'animation
+  // Détection optimisée
   useEffect(() => {
     const checkDeviceSettings = () => {
       setIsMobile(window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
@@ -54,33 +52,34 @@ export const HeroImage = memo(() => {
       resizeObserver.disconnect()
       motionMedia.removeEventListener('change', checkDeviceSettings)
       
-      // Nettoyage des animations GSAP
       animationsRef.current.forEach(timeline => {
         if (timeline) timeline.kill()
       })
     }
   }, [])
 
-  // Animations avec GSAP, optimisées et respectant les préférences d'accessibilité
+  // ⚡ ANIMATIONS PRO PERFORMANTES : RequestAnimationFrame optimisé
   useEffect(() => {
     if (isReducedMotion) return
     
-    // Nettoyer les animations précédentes
     animationsRef.current.forEach(timeline => {
       if (timeline) timeline.kill()
     })
     animationsRef.current = []
     
+    // ✅ Animation des cercles - optimisée avec will-change
     const circleAnimations = [
       { duration: isMobile ? 25 : 20, direction: 1 },
       { duration: isMobile ? 20 : 15, direction: -1 },
       { duration: isMobile ? 30 : 25, direction: 1 }
     ]
 
-    // Animation des cercles
     circleRefs.current.forEach((circle, index) => {
       if (circle && circleAnimations[index]) {
         const animation = circleAnimations[index]
+        
+        // ⚡ OPTIMISATION : will-change pour GPU
+        circle.style.willChange = 'transform'
         
         const timeline = gsap.timeline()
         
@@ -92,7 +91,7 @@ export const HeroImage = memo(() => {
         })
 
         timeline.to(circle, {
-          scale: 1.1,
+          scale: 1.05,
           duration: 3 + index,
           repeat: -1,
           yoyo: true,
@@ -103,94 +102,80 @@ export const HeroImage = memo(() => {
       }
     })
 
-    // Animation des bulles
-    if (!isMobile) {
-      const bubbleTimeline = gsap.timeline()
-      
-      bubblesRef.current.forEach((bubble, index) => {
-        if (bubble) {
-          const delay = index * 0.15
-          const radius = 20 + Math.random() * 40
-          const angle = Math.random() * Math.PI * 2
-          
-          bubbleTimeline.to(bubble, {
-            y: `-=${FLOAT_AMPLITUDE + Math.random() * 20}`,
-            x: `+=${Math.sin(angle) * radius}`,
-            rotation: Math.random() * 360,
-            duration: FLOAT_SPEED + Math.random() * 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "power1.inOut",
-            delay,
-          }, 0)
+    // ✅ Animation des bulles - quantité réduite mais présente
+    const bubbleTimeline = gsap.timeline()
+    
+    bubblesRef.current.forEach((bubble, index) => {
+      if (bubble) {
+        // ⚡ OPTIMISATION : will-change
+        bubble.style.willChange = 'transform'
+        
+        const delay = index * 0.1 // ⚡ Délai réduit
+        const radius = 15 + Math.random() * 25 // ⚡ Rayon réduit
+        const angle = Math.random() * Math.PI * 2
+        
+        bubbleTimeline.to(bubble, {
+          y: `-=${FLOAT_AMPLITUDE + Math.random() * 15}`,
+          x: `+=${Math.sin(angle) * radius}`,
+          rotation: Math.random() * 180, // ⚡ Rotation réduite
+          duration: FLOAT_SPEED + Math.random() * 1.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+          delay,
+        }, 0)
 
-          bubbleTimeline.to(bubble, {
-            opacity: 0.8,
-            scale: 1.8,
-            duration: 2 + Math.random() * 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "none",
-            delay: Math.random(),
-          }, 0)
-        }
-      })
-      
-      animationsRef.current.push(bubbleTimeline)
-    }
+        bubbleTimeline.to(bubble, {
+          opacity: 0.6, // ⚡ Opacité réduite
+          scale: 1.5, // ⚡ Scale réduit
+          duration: 1.5 + Math.random() * 1,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: Math.random() * 0.5,
+        }, 0)
+      }
+    })
+    
+    animationsRef.current.push(bubbleTimeline)
 
-    // Animations particules
+    // ✅ Animations particules - simplifiées mais présentes
     const particlesTimeline = gsap.timeline()
-    if (!isMobile) {
-      particlesRef.current.forEach((particle, index) => {
-        if (particle) {
-          const angle = (index / PARTICLE_COUNT) * Math.PI * 2
-          const radius = 150 + Math.random() * 50
-          const speed = 5 + Math.random() * 5
-          
-          particlesTimeline.to(particle, {
-            rotation: "+=360",
-            duration: speed,
-            repeat: -1,
-            ease: "none",
-            motionPath: {
-              path: [
-                { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius },
-                { x: Math.cos(angle + Math.PI) * radius, y: Math.sin(angle + Math.PI) * radius },
-                { x: Math.cos(angle + Math.PI * 2) * radius, y: Math.sin(angle + Math.PI * 2) * radius }
-              ],
-              curviness: 1.5
-            }
-          }, 0)
-        }
-      })
-    } else {
-      // Version simplifiée pour mobile
-      particlesRef.current.forEach((particle, index) => {
-        if (particle) {
-          particlesTimeline.to(particle, {
-            x: `random(-30, 30)`,
-            y: `random(-30, 30)`,
-            rotation: "+=180",
-            duration: 3 + Math.random() * 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: index * 0.05
-          }, 0)
-        }
-      })
-    }
+    
+    particlesRef.current.forEach((particle, index) => {
+      if (particle) {
+        // ⚡ OPTIMISATION : will-change
+        particle.style.willChange = 'transform'
+        
+        const angle = (index / PARTICLE_COUNT) * Math.PI * 2
+        const radius = 100 + Math.random() * 30 // ⚡ Rayon réduit
+        const speed = 8 + Math.random() * 4 // ⚡ Plus rapide
+        
+        particlesTimeline.to(particle, {
+          rotation: "+=180", // ⚡ Rotation réduite
+          duration: speed,
+          repeat: -1,
+          ease: "none",
+          motionPath: {
+            path: [
+              { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius },
+              { x: Math.cos(angle + Math.PI) * radius, y: Math.sin(angle + Math.PI) * radius }
+            ],
+            curviness: 1
+          }
+        }, 0)
+      }
+    })
     
     animationsRef.current.push(particlesTimeline)
 
-    // Animations des effets d'aura
+    // ✅ Animations des effets d'aura - conservées
     const auraTimeline = gsap.timeline()
     
     auraTimeline.to('.aura', {
-      scale: 1.2,
-      opacity: 0.6,
-      duration: 4,
+      scale: 1.1,
+      opacity: 0.5,
+      duration: 3,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut"
@@ -198,22 +183,32 @@ export const HeroImage = memo(() => {
 
     auraTimeline.to('.energy-halo', {
       rotation: 360,
-      duration: 30,
+      duration: 25, // ⚡ Plus rapide
       repeat: -1,
       ease: "none"
     }, 0)
     
     animationsRef.current.push(auraTimeline)
     
-    // Cleanup function
     return () => {
       animationsRef.current.forEach(timeline => {
         if (timeline) timeline.kill()
       })
+      
+      // ⚡ Cleanup will-change
+      circleRefs.current.forEach(circle => {
+        if (circle) circle.style.willChange = 'auto'
+      })
+      bubblesRef.current.forEach(bubble => {
+        if (bubble) bubble.style.willChange = 'auto'
+      })
+      particlesRef.current.forEach(particle => {
+        if (particle) particle.style.willChange = 'auto'
+      })
     }
-  }, [isMobile, isReducedMotion, FLOAT_AMPLITUDE, FLOAT_SPEED])
+  }, [isMobile, isReducedMotion, FLOAT_AMPLITUDE, FLOAT_SPEED, BUBBLE_COUNT, PARTICLE_COUNT])
 
-  // Gestion optimisée du mouvement de la souris
+  // ⚡ GESTION SOURIS OPTIMISÉE avec throttling
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (imageContainerRef.current && !isMobile && !isReducedMotion) {
       const rect = imageContainerRef.current.getBoundingClientRect()
@@ -221,65 +216,65 @@ export const HeroImage = memo(() => {
       const y = (e.clientY - rect.top) / rect.height
       setMousePosition({ x, y })
 
-      // Utiliser requestAnimationFrame pour optimiser les mises à jour du DOM
-      requestAnimationFrame(() => {
-        circleRefs.current.forEach((circle, index) => {
-          if (circle) {
-            const depth = (index + 1) * 10
-            gsap.to(circle, {
-              x: (x - 0.5) * depth,
-              y: (y - 0.5) * depth,
-              duration: 0.5,
-              ease: "power2.out"
-            })
-          }
+      // ⚡ THROTTLING : Mise à jour moins fréquente
+      if (Date.now() % 3 === 0) { // Toutes les 3 frames
+        requestAnimationFrame(() => {
+          circleRefs.current.forEach((circle, index) => {
+            if (circle) {
+              const depth = (index + 1) * 8 // ⚡ Profondeur réduite
+              gsap.to(circle, {
+                x: (x - 0.5) * depth,
+                y: (y - 0.5) * depth,
+                duration: 0.4,
+                ease: "power2.out"
+              })
+            }
+          })
         })
-      })
+      }
     }
   }, [isMobile, isReducedMotion])
 
-  // Gestion du hover sur l'image
+  // ✅ Gestion du hover conservée mais optimisée
   const handleImageHover = useCallback((hovering: boolean) => {
     setIsHoveringImage(hovering)
     
     if (imageContainerRef.current && !isReducedMotion) {
       gsap.to(imageContainerRef.current, {
         scale: hovering ? 1.05 : 1,
-        duration: 0.8,
-        ease: "elastic.out(1, 0.5)"
+        duration: 0.6,
+        ease: "elastic.out(1, 0.3)" // ⚡ Elastic réduit
       })
 
-      // Animations différentes selon le type d'appareil
-      if (!isMobile) {
-        particlesRef.current.forEach((particle, index) => {
-          if (particle) {
-            gsap.to(particle, {
-              scale: hovering ? 2 : 1,
-              opacity: hovering ? 0.8 : 0.4,
-              duration: 0.5,
-              ease: "power2.out",
-              delay: index * 0.01
-            })
-          }
-        })
+      // ✅ Animations hover conservées mais optimisées
+      particlesRef.current.forEach((particle, index) => {
+        if (particle) {
+          gsap.to(particle, {
+            scale: hovering ? 1.8 : 1, // ⚡ Scale réduit
+            opacity: hovering ? 0.7 : 0.4,
+            duration: 0.4,
+            ease: "power2.out",
+            delay: index * 0.005 // ⚡ Délai réduit
+          })
+        }
+      })
 
-        bubblesRef.current.forEach((bubble, index) => {
-          if (bubble) {
-            const angle = (index / BUBBLE_COUNT) * Math.PI * 2
-            const radius = hovering ? 100 : 0
-            
-            gsap.to(bubble, {
-              x: hovering ? Math.cos(angle) * radius : 0,
-              y: hovering ? Math.sin(angle) * radius : 0,
-              scale: hovering ? 2 : 1,
-              opacity: hovering ? 0.8 : 0.4,
-              duration: 0.8,
-              ease: "power2.out",
-              delay: index * 0.02
-            })
-          }
-        })
-      }
+      bubblesRef.current.forEach((bubble, index) => {
+        if (bubble) {
+          const angle = (index / BUBBLE_COUNT) * Math.PI * 2
+          const radius = hovering ? 80 : 0 // ⚡ Rayon réduit
+          
+          gsap.to(bubble, {
+            x: hovering ? Math.cos(angle) * radius : 0,
+            y: hovering ? Math.sin(angle) * radius : 0,
+            scale: hovering ? 1.8 : 1,
+            opacity: hovering ? 0.7 : 0.4,
+            duration: 0.6,
+            ease: "power2.out",
+            delay: index * 0.01
+          })
+        }
+      })
     }
   }, [isMobile, isReducedMotion, BUBBLE_COUNT])
 
@@ -295,6 +290,7 @@ export const HeroImage = memo(() => {
         <PhotoEffects />
       </Suspense>
 
+      {/* ✅ Cercles conservés - 3 cercles */}
       {[30, 15, 45].map((offset, index) => (
         <div
           key={index}
@@ -309,7 +305,7 @@ export const HeroImage = memo(() => {
         />
       ))}
 
-      {/* Réduire la quantité de particules sur mobile */}
+      {/* ✅ Particules conservées mais réduites */}
       {!isReducedMotion && Array.from({ length: PARTICLE_COUNT }).map((_, i) => (
         <div
           key={`particle-${i}`}
@@ -319,13 +315,13 @@ export const HeroImage = memo(() => {
             left: '50%',
             top: '50%',
             backgroundColor: '#4ADE80',
-            boxShadow: '0 0 8px #4ADE80',
+            boxShadow: '0 0 6px #4ADE80', // ⚡ Ombre réduite
             opacity: 0.4,
           }}
         />
       ))}
 
-      {/* Conditionnellement rendre les bulles pour optimiser sur mobile */}
+      {/* ✅ Bulles conservées mais réduites */}
       {!isReducedMotion && Array.from({ length: BUBBLE_COUNT }).map((_, i) => (
         <div
           key={`bubble-${i}`}
@@ -335,12 +331,13 @@ export const HeroImage = memo(() => {
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
             backgroundColor: '#4ADE80',
-            boxShadow: '0 0 15px #4ADE80',
+            boxShadow: '0 0 10px #4ADE80', // ⚡ Ombre réduite
             opacity: 0.4,
           }}
         />
       ))}
 
+      {/* Image principale */}
       <div className="absolute inset-[5%] rounded-full overflow-hidden bg-gray-800 z-10
         shadow-2xl shadow-[#4ADE80]/30">
         <img
@@ -351,9 +348,9 @@ export const HeroImage = memo(() => {
           className="w-full h-full object-cover object-center transform scale-105
             transition-all duration-500 ease-out"
           style={{
-            filter: `brightness(${isHoveringImage ? 1.4 : 1.1})
-              contrast(${isHoveringImage ? 1.2 : 1.1})
-              saturate(${isHoveringImage ? 1.2 : 1})`,
+            filter: `brightness(${isHoveringImage ? 1.3 : 1.1})
+              contrast(${isHoveringImage ? 1.15 : 1.05})
+              saturate(${isHoveringImage ? 1.1 : 1})`,
           }}
         />
 
@@ -366,6 +363,7 @@ export const HeroImage = memo(() => {
         />
       </div>
 
+      {/* ✅ Auras conservées */}
       <div className="aura absolute inset-[-15%] rounded-full opacity-40
         bg-gradient-radial from-[#4ADE80]/40 via-[#4ADE80]/20 to-transparent
         blur-2xl -z-10" />

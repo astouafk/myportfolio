@@ -1,3 +1,4 @@
+//src/components/sections/ModalCarousel.tsx
 import React, { useState, useCallback, useEffect, memo } from 'react';
 import { ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
 
