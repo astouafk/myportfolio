@@ -265,3 +265,92 @@ progress::-moz-progress-bar {
   background-color: #4CAF50;
   border-radius: 5px;
 }
+
+/* Animation pour highlight de section */
+.section-highlight {
+  position: relative;
+}
+
+.section-highlight::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(74, 222, 128, 0.1), 
+    transparent
+  );
+  border-radius: 20px;
+  animation: highlight-pulse 1s ease-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes highlight-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* Amélioration du scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Ajuste selon la hauteur de ta nav */
+}
+
+/* Optimisation pour les sections */
+section {
+  scroll-margin-top: 100px; /* Alternative à scroll-padding-top */
+}
+
+/* Transition fluide pour les changements de navigation */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4ADE80, transparent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Amélioration de l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .section-highlight::before {
+    animation: none;
+    opacity: 0.3;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

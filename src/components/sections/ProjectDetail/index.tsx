@@ -857,10 +857,13 @@ import ScreenshotCarousel from './components/ScreenshotCarousel';
 import TechShowcase from './components/TechShowcase';
 import VideoPlayer from './components/VideoPlayer';
 import { useNavigation } from '../../../hooks/useNavigation'; // 🎯 Hook centralisé
+import { useActiveSection } from '../../../hooks/useActiveSection';
+
 
 const ProjectDetailPage = memo(() => {
   const { id } = useParams<{ id: string }>();
   const { navigateToSection, navigateToHome } = useNavigation(); // 🎯 Hook centralisé
+  const { setActiveSectionManually } = useActiveSection();
   const [project, setProject] = useState<ProjectDetail | null>(null);
   const [loading, setLoading] = useState(true);
   
@@ -870,8 +873,9 @@ const ProjectDetailPage = memo(() => {
   }, [navigateToSection]);
   
   const handleBackToTimeline = useCallback(() => {
-    navigateToHome('projects');
-  }, [navigateToHome]);
+    setActiveSectionManually('projects'); // 🎯 Pointer sur projects immédiatement
+    navigateToHome('projects');           // 🎯 Puis naviguer vers home + scroll
+  }, [navigateToHome, setActiveSectionManually]); 
   
   // Récupérer les détails du projet
   useEffect(() => {
