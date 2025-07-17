@@ -16,7 +16,7 @@ const educationData = [
     degree: 'Licence Professionnelle en Génie Logiciel',
     institution: 'ESTM Dakar',
     location: 'Dakar, Senegal',
-    period: '2017',
+    period: '',
     description: 'Développement de logiciels et applications web.',
     highlights: ['Programmation', 'Base de données', 'Gestion de projet']
   }

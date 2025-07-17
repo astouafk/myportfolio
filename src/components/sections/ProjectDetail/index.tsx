@@ -873,7 +873,7 @@ const ProjectDetailPage = memo(() => {
   }, [navigateToSection]);
   
   const handleBackToTimeline = useCallback(() => {
-    setActiveSectionManually('projects'); // 🎯 Pointer sur projects immédiatement
+    setActiveSectionManually('projects'); 
     navigateToHome('projects');           // 🎯 Puis naviguer vers home + scroll
   }, [navigateToHome, setActiveSectionManually]); 
   

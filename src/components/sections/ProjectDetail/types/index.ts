@@ -2,13 +2,22 @@
 import { Project, ProjectTag, projectsData } from '../../Projects/types';
 import banner from '../../../../assets/projects/portfolio/banner.png';
 import degloule from '../../../../assets/projects/degloul/degloul.png';
-import reactLogo from '../../../../assets/tech/react.svg';
+import reactLogo from '../../../../assets/tech/react.png';
 import typescriptLogo from '../../../../assets/tech/typescript.svg';
 import threejsLogo from '../../../../assets/tech/threejs.svg';
 import tailwindLogo from '../../../../assets/tech/tailwind.svg';
 import framerLogo from '../../../../assets/tech/framer.svg';
 import viteLogo from '../../../../assets/tech/vite.svg';
 import portDemo from '../../../../assets/projects/portfolio/LaDemoDegloul.mp4';
+
+//portfolio
+import hero from '../../../../assets/screenshots/portfolio/hero.png';
+import aprop from '../../../../assets/screenshots/portfolio/aprop.png';
+import competence from '../../../../assets/screenshots/portfolio/competence.png';
+import mesprojets from '../../../../assets/screenshots/portfolio/mesprojets.png';
+import contact from '../../../../assets/screenshots/portfolio/contact.png';
+
+
 //Degloul
 import dartLogo from '../../../../assets/tech/dartLogo.png';
 
@@ -72,11 +81,11 @@ export const portfolioDetail: ProjectDetail = {
     { name: 'Vite', logo: viteLogo, color: '#646CFF' }
   ],
   screenshots: [
-    { id: 'scr1', imageUrl: '/assets/screenshots/portfolio-1.jpg', caption: 'Page d\'accueil avec effets 3D' },
-    { id: 'scr2', imageUrl: '/assets/screenshots/portfolio-2.jpg', caption: 'Section compétences avec visualisation interactive' },
-    { id: 'scr3', imageUrl: '/assets/screenshots/portfolio-3.jpg', caption: 'Timeline des projets' },
-    { id: 'scr4', imageUrl: '/assets/screenshots/portfolio-4.jpg', caption: 'Section contact avec formulaire' },
-    { id: 'scr5', imageUrl: '/assets/screenshots/portfolio-5.jpg', caption: 'Vue responsive sur mobile' }
+    { id: 'scr1', imageUrl: hero, caption: 'Page d\'accueil avec effets 3D' },
+    { id: 'scr2', imageUrl: aprop, caption: 'Section compétences avec visualisation interactive' },
+    { id: 'scr3', imageUrl: competence, caption: 'Timeline des projets' },
+    { id: 'scr4', imageUrl: mesprojets, caption: 'Section contact avec formulaire' },
+    { id: 'scr5', imageUrl: contact, caption: 'Vue responsive sur mobile' }
   ],
   challenges: [
     'Optimisation des performances avec des modèles 3D',
