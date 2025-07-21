@@ -119,7 +119,7 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
       
       const link = document.createElement('a');
       link.href = cvFile;
-      link.download = 'AstouFallKane_CV.pdf';
+      link.download = 'devAstouAFK.pdf';
       document.body.appendChild(link);
       link.click();
       
