@@ -19,7 +19,11 @@ import contact from '../../../../assets/screenshots/portfolio/contact.png';
 
 
 //Degloul
-import dartLogo from '../../../../assets/tech/dartLogo.png';
+import dartLogo from '../../../../assets/tech/dartLogo.png';  
+import degloul1 from '../../../../assets/screenshots/degloul/degloul1.png';
+import degloul2 from '../../../../assets/screenshots/degloul/degloul2.png';
+import degloul3 from '../../../../assets/screenshots/degloul/degloul3.png';
+import degloul4 from '../../../../assets/screenshots/degloul/degloul4.png';
 
 
 // Types pour les captures d'écran
@@ -82,10 +86,10 @@ export const portfolioDetail: ProjectDetail = {
   ],
   screenshots: [
     { id: 'scr1', imageUrl: hero, caption: 'Page d\'accueil avec effets 3D' },
-    { id: 'scr2', imageUrl: aprop, caption: 'Section compétences avec visualisation interactive' },
-    { id: 'scr3', imageUrl: competence, caption: 'Timeline des projets' },
-    { id: 'scr4', imageUrl: mesprojets, caption: 'Section contact avec formulaire' },
-    { id: 'scr5', imageUrl: contact, caption: 'Vue responsive sur mobile' }
+    { id: 'scr2', imageUrl: aprop, caption: 'A propos de moi' },
+    { id: 'scr3', imageUrl: competence, caption: 'Section compétences avec visualisation interactive' },
+    { id: 'scr4', imageUrl: mesprojets, caption: 'Timeline des projets' },
+    { id: 'scr5', imageUrl: contact, caption: 'Section contact avec formulaire' }
   ],
   challenges: [
     'Optimisation des performances avec des modèles 3D',
@@ -196,11 +200,10 @@ export const degloul: ProjectDetail = {
     { name: 'Node.js', logo: reactLogo, color: '#339933' },
   ],
   screenshots: [
-    { id: 'scr1', imageUrl: '/assets/screenshots/degloul-1.jpg', caption: 'Écran d\'accueil avec contenus recommandés' },
-    { id: 'scr2', imageUrl: '/assets/screenshots/degloul-2.jpg', caption: 'Catalogue de livres audios par catégories' },
-    { id: 'scr3', imageUrl: '/assets/screenshots/degloul-3.jpg', caption: 'Lecteur audio avec contrôles avancés' },
-    { id: 'scr4', imageUrl: '/assets/screenshots/degloul-4.jpg', caption: 'Profil utilisateur et bibliothèque personnelle' },
-    { id: 'scr5', imageUrl: '/assets/screenshots/degloul-5.jpg', caption: 'Section podcasts et contenus thématiques' }
+    { id: 'scr1', imageUrl: degloul1, caption: 'DEGLOUL' },
+    { id: 'scr2', imageUrl: degloul2, caption: 'OBKECTIF' },
+    { id: 'scr3', imageUrl: degloul3, caption: 'VISUEL' },
+    { id: 'scr4', imageUrl: degloul4, caption: 'VISUEL BIS' },
   ],
   challenges: [
     'Gestion du streaming audio haute qualité avec connexions variables',

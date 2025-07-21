@@ -4,7 +4,7 @@ import { Download } from 'lucide-react';
 import { gsap } from 'gsap';
 import { stats } from '../data/statsData';
 import { socialLinks } from '../data/socialData';
-import cvFile from '../../../../assets/MonCV3.pdf';
+import cvFile from '../../../../assets/devAstouAFK.pdf';
 
 interface HeroStatsProps {
   socialRef: React.RefObject<HTMLDivElement>; 

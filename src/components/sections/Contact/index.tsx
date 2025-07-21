@@ -82,7 +82,7 @@ const Contact = memo(() => {
               text-[#4ADE80] rounded-full hover:bg-[#4ADE80]/20 transition-colors 
               inline-block font-medium"
           >
-            Planifier un appel
+            Planifier un appel visio?
           </a>
         </motion.div>
       </div>
