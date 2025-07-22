@@ -90,9 +90,6 @@ const Projects = memo(() => {
                 Voir tous les projets
               </button>
             </div>
-            <p className="text-gray-400 mt-4">
-              Vous souhaitez collaborer sur un projet ? <button className="text-[#4ADE80] hover:underline">Contactez-moi !</button>
-            </p>
           </motion.div>
         )}
       </div>

@@ -611,15 +611,6 @@ const ProjectsPage = memo(() => {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="text-center mt-16 md:mt-24"
         >
-          <h3 className="text-xl sm:text-2xl font-bold mb-4">Vous avez un projet en tête ?</h3>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            N'hésitez pas à me contacter pour discuter de vos idées ou pour collaborer sur des projets similaires.
-          </p>
-          <button className="px-6 py-3 bg-[#4ADE80]/10 border border-[#4ADE80]/50 
-            text-[#4ADE80] rounded-full hover:bg-[#4ADE80]/20 transition-colors 
-            inline-block font-medium">
-            Contactez-moi
-          </button>
         </motion.div>
       </div>
     </section>

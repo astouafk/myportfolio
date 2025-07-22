@@ -247,6 +247,9 @@ import degloul2 from '../../../../assets/screenshots/degloul/degloul2.png';
 import degloul3 from '../../../../assets/screenshots/degloul/degloul3.png';
 import degloul4 from '../../../../assets/screenshots/degloul/degloul4.png';
 
+//facounting
+import facounting1 from '../../../../assets/screenshots/facounting/facounting1.jpeg';
+
 // Types pour les captures d'écran
 export interface Screenshot {
   id: string;
@@ -425,7 +428,7 @@ export const faCountingDetail: ProjectDetail = {
     { name: 'Firebase', logo: firebase, color: '#FFCA28' }
   ],
   screenshots: [
-    { id: 'fa1', imageUrl: '/assets/screenshots/facounting/dashboard.png', caption: 'Dashboard principal avec statistiques' },
+    { id: 'fa1', imageUrl: facounting1, caption: 'Dashboard principal avec statistiques' },
     { id: 'fa2', imageUrl: '/assets/screenshots/facounting/scan.png', caption: 'Interface de scan de codes-barres' },
     { id: 'fa3', imageUrl: '/assets/screenshots/facounting/inventory.png', caption: 'Liste d\'inventaire avec filtres' },
     { id: 'fa4', imageUrl: '/assets/screenshots/facounting/reports.png', caption: 'Génération de rapports détaillés' }

@@ -71,10 +71,8 @@ const Contact = memo(() => {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="text-center mt-16 md:mt-24"
         >
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Vous préférez commencer par un appel rapide pour discuter de votre projet ?
-          </p>
-          <a 
+       
+          {/* <a 
             href="https://calendly.com/votrecompte" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -83,7 +81,7 @@ const Contact = memo(() => {
               inline-block font-medium"
           >
             Planifier un appel visio?
-          </a>
+          </a> */}
         </motion.div>
       </div>
       
