@@ -12,6 +12,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  type: 'Professionnel' | 'Personnel' | 'Académique'; // Type de projet,
   date: string;
   imageUrl: string;
   tags: ProjectTag[];
@@ -27,8 +28,9 @@ export const projectsData: Project[] = [
   {
     id: 'portfolio',
     title: 'Portfolio Personnel',
+    type: 'Personnel',
     description: 'Mon portfolio dynamique réalisé avec React, Three.js et Framer Motion pour présenter mes compétences et projets avec des animations 3D.',
-    date: 'Avril 2024',
+    date: 'Avril 2025',
     imageUrl: banner,
     tags: [
       { name: 'React', color: '#61DAFB' },
@@ -43,8 +45,9 @@ export const projectsData: Project[] = [
   {
     id: 'ecommerce',
     title: 'Plateforme Degloul',
+    type: 'Professionnel',
     description: 'Application mobile qui promouvoit la littérature sous format audio, avec une synchronisation texte',
-    date: 'Janvier 2025',
+    date: 'Mars 2025',
     imageUrl: degloule,
     tags: [
       { name: 'Dart', color: '#61DAFB' },
@@ -58,9 +61,10 @@ export const projectsData: Project[] = [
   },
   {
     id: 'mobapp',
-    title: 'Application de Gestion d\'inventaire',
-    description: 'Application mobile d\'inventaire pour le recesencement des matériaux d\'entreprise',
-    date: 'Novembre 2023',
+    type: 'Personnel',
+    title: 'Application Fa-Counting',
+    description: 'Application mobile d\'inventaire pour le recesencement des matériaux d\'entreprise en Cote d\'ivoire',
+    date: 'Juin 2025',
     imageUrl: '/assets/projects/mobile-app.jpg',
     tags: [
       { name: 'Flutter', color: '#02569B' },
@@ -71,10 +75,11 @@ export const projectsData: Project[] = [
     category: 'mobile'
   },
   {
-    id: 'dashboard',
-    title: 'Dashboard Analytique',
-    description: 'Dashboard interactif pour la visualisation de données avec graphiques dynamiques et tableaux de bord personnalisables.',
-    date: 'Août 2023',
+    id: 'paygo',
+    type: 'Professionnel',
+    title: 'Application Paygo',
+    description: 'Paygo est une solution tout-en-un qui permet aux entreprises, d\'accepter des paiements marchands via Wave, Orange Money, etc.',
+    date: 'Avril 2025',
     imageUrl: '/assets/projects/dashboard.jpg',
     tags: [
       { name: 'React', color: '#61DAFB' },
@@ -85,10 +90,11 @@ export const projectsData: Project[] = [
     category: 'web'
   },
   {
-    id: 'chatapp',
-    title: 'Application de Chat en Temps Réel',
+    id: 'faggu Assurance',
+    type: 'Professionnel',
+    title: 'Plateforme Faggu Assurance',
     description: 'Plateforme de messagerie instantanée avec fonctionnalités de chat en groupe, messages privés et partage de médias.',
-    date: 'Mai 2023',
+    date: 'Juillet 2025',
     imageUrl: '/assets/projects/chatapp.jpg',
     tags: [
       { name: 'Socket.io', color: '#010101' },
@@ -100,9 +106,10 @@ export const projectsData: Project[] = [
     category: 'web'
   },
   {
-    id: 'newproject',
-    title: 'Plateforme AI d\'Apprentissage',
-    description: 'Plateforme d\'apprentissage adaptative utilisant l\'IA pour personnaliser les parcours de formation. Développement en cours.',
+    id: 'Afkash',
+    type: 'Personnel',
+    title: 'Plateforme simulative de transfert d\'argent inter-opérateur',
+    description: 'Plateforme qui simule le transfert d\'argent entre différents opérateurs de téléphonie mobile en Afrique.',
     date: 'En cours',
     imageUrl: '/assets/projects/ai-learning.jpg',
     tags: [
