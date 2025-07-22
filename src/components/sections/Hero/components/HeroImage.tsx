@@ -393,8 +393,8 @@ import { gsap } from 'gsap'
 import { lazy, Suspense } from 'react'
 
 // 🎯 IMAGES OPTIMISÉES - Remplace par tes nouveaux fichiers
-import profileImageWebP from '../../../../assets/moi6-optimized.webp' // ~250KB
-import profileImageJPG from '../../../../assets/moi6-optimized.jpg'   // ~400KB (fallback)
+import profileImageWebP from '../../../../assets/moi6.jpg' 
+import profileImageJPG from '../../../../assets/moi6.jpg'   
 // Garde l'ancien en backup si besoin
 // import profileImageOriginal from '../../../../assets/moi6.png'
 
