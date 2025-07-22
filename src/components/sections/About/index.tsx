@@ -1,412 +1,557 @@
-// src/components/sections/About/index.tsx - VERSION PRO PERFORMANCE
-import { useRef, useState, useEffect, lazy, Suspense, memo } from 'react';
+// // src/components/sections/About/index.tsx - VERSION SIMPLIFIÉE
+// import { useState, useRef, memo, lazy, Suspense } from 'react';
+// import { motion, useInView } from 'framer-motion';
+// import { Calendar, MapPin, Award, GraduationCap, User, Code, Heart } from 'lucide-react';
+// import profileImage from '../../../assets/about.png'; // Image optimisée
+
+// // Lazy loading du background
+// const AboutBackground = lazy(() => import('./components/AboutBackground'));
+
+// const BackgroundFallback = () => (
+//   <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black" />
+// );
+
+// // 🎯 DONNÉES SIMPLIFIÉES (tu enlèves 'level' toi-même)
+// const educationData = [
+//   {
+//     id: 1,
+//     title: "Master en Informatique",
+//     institution: "Université Cheikh Anta Diop",
+//     location: "Dakar, Sénégal",
+//     period: "2022-2024",
+//     description: "Spécialisation en développement logiciel et systèmes d'information"
+//   },
+//   {
+//     id: 2,
+//     title: "Licence en Informatique",
+//     institution: "Université Cheikh Anta Diop", 
+//     location: "Dakar, Sénégal",
+//     period: "2019-2022",
+//     description: "Formation fondamentale en informatique et programmation"
+//   }
+// ];
+
+// const certificationsData = [
+//   {
+//     id: 1,
+//     title: "React Developer Certification",
+//     issuer: "Meta",
+//     date: "2024",
+//     description: "Certification avancée en développement React et écosystème moderne"
+//   },
+//   {
+//     id: 2,
+//     title: "AWS Cloud Practitioner",
+//     issuer: "Amazon Web Services",
+//     date: "2023",
+//     description: "Fondamentaux du cloud computing et services AWS"
+//   },
+//   {
+//     id: 3,
+//     title: "Flutter Development",
+//     issuer: "Google",
+//     date: "2023",
+//     description: "Développement d'applications mobiles multiplateformes"
+//   }
+// ];
+
+// // 🎯 COMPOSANT CARTE SIMPLIFIÉ
+// const Card = memo(({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
+//   <motion.div
+//     initial={{ opacity: 0, y: 20 }}
+//     whileInView={{ opacity: 1, y: 0 }}
+//     viewport={{ once: true }}
+//     transition={{ duration: 0.5 }}
+//     className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 
+//       hover:bg-white/10 hover:border-[#4ADE80]/30 transition-all duration-300 ${className}`}
+//   >
+//     {children}
+//   </motion.div>
+// ));
+
+// const About = memo(() => {
+//   const [activeTab, setActiveTab] = useState<'education' | 'certifications'>('education');
+//   const sectionRef = useRef<HTMLElement>(null);
+//   const headingRef = useRef<HTMLDivElement>(null);
+  
+//   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+//   const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
+  
+//   // 🎯 ANIMATIONS SIMPLIFIÉES
+//   const containerVariants = {
+//     hidden: { opacity: 0 },
+//     visible: { 
+//       opacity: 1,
+//       transition: { 
+//         duration: 0.6,
+//         when: "beforeChildren",
+//         staggerChildren: 0.1
+//       }
+//     }
+//   };
+  
+//   const itemVariants = {
+//     hidden: { opacity: 0, y: 20 },
+//     visible: { 
+//       opacity: 1, 
+//       y: 0,
+//       transition: { duration: 0.5 }
+//     }
+//   };
+
+//   return (
+//     <section
+//       id="about"
+//       ref={sectionRef}
+//       className="relative min-h-screen overflow-hidden bg-black py-20"
+//     >
+//       <Suspense fallback={<BackgroundFallback />}>
+//         <AboutBackground />
+//       </Suspense>
+      
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+//         {/* 🎯 EN-TÊTE SIMPLIFIÉ */}
+//         <motion.div
+//           ref={headingRef}
+//           variants={containerVariants}
+//           initial="hidden"
+//           animate={isHeadingInView ? "visible" : "hidden"}
+//           className="text-center mb-16"
+//         >
+//           <motion.h2 
+//             variants={itemVariants}
+//             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+//           >
+//             <span className="text-[#4ADE80]">À</span> propos
+//           </motion.h2>
+          
+//           <motion.p 
+//             variants={itemVariants}
+//             className="text-gray-300 max-w-2xl mx-auto text-lg"
+//           >
+//             Découvrez mon parcours, mes formations et mes certifications professionnelles.
+//           </motion.p>
+          
+//           <motion.div 
+//             variants={itemVariants}
+//             className="h-1 w-24 bg-gradient-to-r from-[#4ADE80] to-[#22D3EE] mx-auto rounded-full mt-6"
+//           />
+//         </motion.div>
+
+//         {/* 🎯 CONTENU PRINCIPAL */}
+//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          
+//           {/* 🎯 IMAGE ET PRÉSENTATION */}
+//           <motion.div
+//             variants={itemVariants}
+//             initial="hidden"
+//             whileInView="visible"
+//             viewport={{ once: true }}
+//             className="relative"
+//           >
+//             {/* Image de profil */}
+//             <div className="relative w-80 h-80 mx-auto lg:w-96 lg:h-96 rounded-2xl overflow-hidden">
+//               <img
+//                 src={profileImage}
+//                 alt="Astou Fall KANE"
+//                 className="w-full h-full object-cover"
+//               />
+              
+//               {/* Overlay décoratif */}
+//               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              
+//               {/* Badge */}
+//               <div className="absolute bottom-4 left-4 right-4">
+//                 <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+//                   <div className="flex items-center gap-3">
+//                     <div className="w-3 h-3 bg-[#4ADE80] rounded-full animate-pulse" />
+//                     <span className="text-white font-medium">Disponible pour nouveaux projets</span>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* 🎯 PRÉSENTATION PERSONNELLE SIMPLIFIÉE */}
+//             <Card className="mt-8">
+//               <div className="flex items-start gap-4">
+//                 <div className="p-3 bg-[#4ADE80]/10 rounded-lg">
+//                   <User className="w-6 h-6 text-[#4ADE80]" />
+//                 </div>
+//                 <div>
+//                   <h3 className="text-xl font-bold text-white mb-2">Développeuse Fullstack</h3>
+//                   <p className="text-gray-300 leading-relaxed">
+//                     Passionnée par la création d'expériences numériques innovantes, 
+//                     je combine créativité et expertise technique pour donner vie à vos projets 
+//                     avec des technologies modernes.
+//                   </p>
+//                 </div>
+//               </div>
+//             </Card>
+
+//             {/* Stats rapides */}
+//             {/* <div className="grid grid-cols-3 gap-4 mt-6">
+//               <Card className="text-center">
+//                 <div className="text-2xl font-bold text-[#4ADE80] mb-1">15+</div>
+//                 <div className="text-sm text-gray-400">Projets</div>
+//               </Card>
+//               <Card className="text-center">
+//                 <div className="text-2xl font-bold text-[#4ADE80] mb-1">3+</div>
+//                 <div className="text-sm text-gray-400">Années</div>
+//               </Card>
+//               <Card className="text-center">
+//                 <div className="text-2xl font-bold text-[#4ADE80] mb-1">5+</div>
+//                 <div className="text-sm text-gray-400">Clients</div>
+//               </Card>
+//             </div> */}
+//           </motion.div>
+
+//           {/* 🎯 FORMATIONS ET CERTIFICATIONS */}
+//           <motion.div
+//             variants={itemVariants}
+//             initial="hidden"
+//             whileInView="visible"
+//             viewport={{ once: true }}
+//             className="space-y-8"
+//           >
+//             {/* 🎯 TABS CÔTE À CÔTE */}
+//             <div className="flex space-x-1 bg-white/5 backdrop-blur-sm rounded-lg p-1 border border-white/10">
+//               <button
+//                 onClick={() => setActiveTab('education')}
+//                 className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md text-sm font-medium transition-all duration-200 ${
+//                   activeTab === 'education'
+//                     ? 'bg-[#4ADE80]/20 text-[#4ADE80] border border-[#4ADE80]/30'
+//                     : 'text-gray-400 hover:text-white hover:bg-white/5'
+//                 }`}
+//               >
+//                 <GraduationCap className="w-4 h-4" />
+//                 Formations
+//               </button>
+//               <button
+//                 onClick={() => setActiveTab('certifications')}
+//                 className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md text-sm font-medium transition-all duration-200 ${
+//                   activeTab === 'certifications'
+//                     ? 'bg-[#4ADE80]/20 text-[#4ADE80] border border-[#4ADE80]/30'
+//                     : 'text-gray-400 hover:text-white hover:bg-white/5'
+//                 }`}
+//               >
+//                 <Award className="w-4 h-4" />
+//                 Certifications
+//               </button>
+//             </div>
+
+//             {/* 🎯 CONTENU DES TABS */}
+//             <div className="space-y-4">
+//               {activeTab === 'education' ? (
+//                 <>
+//                   <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+//                     <GraduationCap className="w-6 h-6 text-[#4ADE80]" />
+//                     Formations
+//                   </h3>
+//                   {educationData.map((item) => (
+//                     <Card key={item.id}>
+//                       <div className="space-y-3">
+//                         <div>
+//                           <h4 className="text-lg font-semibold text-white">{item.title}</h4>
+//                           <p className="text-[#4ADE80] font-medium">{item.institution}</p>
+//                         </div>
+                        
+//                         <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+//                           <div className="flex items-center gap-2">
+//                             <Calendar className="w-4 h-4" />
+//                             {item.period}
+//                           </div>
+//                           <div className="flex items-center gap-2">
+//                             <MapPin className="w-4 h-4" />
+//                             {item.location}
+//                           </div>
+//                         </div>
+                        
+//                         <p className="text-gray-300">{item.description}</p>
+//                       </div>
+//                     </Card>
+//                   ))}
+//                 </>
+//               ) : (
+//                 <>
+//                   <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+//                     <Award className="w-6 h-6 text-[#4ADE80]" />
+//                     Certifications
+//                   </h3>
+//                   {certificationsData.map((item) => (
+//                     <Card key={item.id}>
+//                       <div className="space-y-3">
+//                         <div>
+//                           <h4 className="text-lg font-semibold text-white">{item.title}</h4>
+//                           <p className="text-[#4ADE80] font-medium">{item.issuer}</p>
+//                         </div>
+                        
+//                         <div className="flex items-center gap-2 text-sm text-gray-400">
+//                           <Calendar className="w-4 h-4" />
+//                           {item.date}
+//                         </div>
+                        
+//                         <p className="text-gray-300">{item.description}</p>
+//                       </div>
+//                     </Card>
+//                   ))}
+//                 </>
+//               )}
+//             </div>
+
+//             {/* 🎯 SECTION VALEURS/PASSION */}
+//             {/* <Card className="mt-8">
+//               <div className="flex items-start gap-4">
+//                 <div className="p-3 bg-red-500/10 rounded-lg">
+//                   <Heart className="w-6 h-6 text-red-400" />
+//                 </div>
+//                 <div>
+//                   <h4 className="text-lg font-semibold text-white mb-2">Ma Passion</h4>
+//                   <p className="text-gray-300">
+//                     Transformer des idées en solutions digitales performantes et accessibles. 
+//                     J'aime relever des défis techniques et créer des expériences utilisateur 
+//                     qui font la différence.
+//                   </p>
+//                 </div>
+//               </div>
+//             </Card> */}
+//           </motion.div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// });
+
+// export default About;
+
+
+
+
+
+
+// src/components/sections/About/index.tsx - VERSION INTÉGRÉE FINALE
+import { useState, useRef, memo, lazy, Suspense } from 'react';
 import { motion, useInView } from 'framer-motion';
-import AboutImage from './components/AboutImage';
-import AboutTabs from './components/AboutTabs';
+import { GraduationCap, Award, User, Heart } from 'lucide-react';
+import profileImage from '../../../assets/about.png';
+
+// 🎯 IMPORT DES VRAIS COMPOSANTS
 import { AboutEducation } from './components/AboutEducation';
 import { AboutCertifications } from './components/AboutCertifications';
-import { Sparkles, Code, Heart } from 'lucide-react';
 
+// Lazy loading du background
 const AboutBackground = lazy(() => import('./components/AboutBackground'));
 
-// ⚡ Fallback professionnel et léger
 const BackgroundFallback = () => (
-  <div className="absolute inset-0 bg-gradient-to-br from-black via-[#4ADE80]/5 to-black opacity-60" />
+  <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black" />
 );
 
-type TabType = 'education' | 'certifications';
+// 🎯 COMPOSANT CARTE SIMPLIFIÉ
+const Card = memo(({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5 }}
+    className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 
+      hover:bg-white/10 hover:border-[#4ADE80]/30 transition-all duration-300 ${className}`}
+  >
+    {children}
+  </motion.div>
+));
 
 const About = memo(() => {
-  const [activeTab, setActiveTab] = useState<TabType>('education');
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [typedText, setTypedText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
-  
+  const [activeTab, setActiveTab] = useState<'education' | 'certifications'>('education');
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
   
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
   const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
-  const isContentInView = useInView(contentRef, { once: true, amount: 0.3 });
-
-  // Détection des préférences d'animation
-  useEffect(() => {
-    const checkSettings = () => {
-      setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-    };
-    
-    checkSettings();
-    const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
-    motionMedia.addEventListener('change', checkSettings);
-    
-    return () => motionMedia.removeEventListener('change', checkSettings);
-  }, []);
-
-  // ⚡ Track mouse optimisé avec throttling
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setMousePosition({ x: e.clientX, y: e.clientY });
-      }, 16); // 60fps max
-    };
-    
-    if (!isReducedMotion) {
-      window.addEventListener('mousemove', handleMouseMove);
-    }
-    
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [isReducedMotion]);
-
+  
+  // 🎯 ANIMATIONS SIMPLIFIÉES
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
       transition: { 
-        staggerChildren: 0.12, 
-        delayChildren: 0.2,
-        duration: 0.5 
+        duration: 0.6,
+        when: "beforeChildren",
+        staggerChildren: 0.1
       }
     }
   };
-
+  
   const itemVariants = {
-    hidden: { y: 30, opacity: 0, scale: 0.95 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      scale: 1,
-      transition: { 
-        type: "spring",
-        damping: 18,
-        stiffness: 120,
-        duration: 0.6 // ⚡ Plus rapide
-      }
-    }
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: -30, scale: 0.9 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
-      scale: 1,
-      transition: { 
-        type: "spring",
-        damping: 15,
-        stiffness: 120,
-        duration: 0.8 // ⚡ Plus rapide
-      }
+      transition: { duration: 0.5 }
     }
   };
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-black flex items-center mt-32"
-      style={!isReducedMotion ? {
-        background: `
-          radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, 
-            rgba(74, 222, 128, 0.06) 0%, 
-            transparent 50%),
-          linear-gradient(135deg, #000000 0%, #0a0f0a 50%, #000000 100%)
-        `
-      } : undefined}
+      className="relative min-h-screen overflow-hidden bg-black py-20"
     >
-      {/* 🎨 Curseur lumineux interactif OPTIMISÉ */}
-      {!isReducedMotion && (
-        <motion.div
-          className="fixed pointer-events-none z-30 w-80 h-80 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(74, 222, 128, 0.04) 0%, transparent 70%)',
-            filter: 'blur(30px)',
-            x: mousePosition.x - 160,
-            y: mousePosition.y - 160,
-          }}
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{
-            duration: 3, // ⚡ Plus rapide
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      )}
-
       <Suspense fallback={<BackgroundFallback />}>
         <AboutBackground />
       </Suspense>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
-        {/* 🎨 Heading PROFESSIONNEL */}
-        <motion.div 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* 🎯 EN-TÊTE SIMPLIFIÉ */}
+        <motion.div
           ref={headingRef}
-          variants={titleVariants}
+          variants={containerVariants}
           initial="hidden"
           animate={isHeadingInView ? "visible" : "hidden"}
-          className="text-center mb-16 relative"
+          className="text-center mb-16"
         >
-          {/* Effet de halo derrière le titre */}
-          <motion.div
-            className="absolute inset-0 blur-3xl opacity-20"
-            animate={!isReducedMotion ? {
-              scale: [1, 1.03, 1],
-              opacity: [0.2, 0.3, 0.2]
-            } : {}}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+          <motion.h2 
+            variants={itemVariants}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
           >
-            <h2 className="text-5xl md:text-7xl font-black text-[#4ADE80]">
-              À propos de Moi
-            </h2>
-          </motion.div>
+            <span className="text-[#4ADE80]">À</span> propos
+          </motion.h2>
           
-          {/* 🎨 Icônes flottantes OPTIMISÉES */}
-          <motion.div
-            className="absolute -top-6 left-1/2 transform -translate-x-1/2"
-            animate={!isReducedMotion ? {
-              y: [-8, -15, -8],
-              rotate: [0, 8, 0],
-              scale: [1, 1.1, 1]
-            } : {}}
-            transition={{
-              duration: 2.5,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+          <motion.p 
+            variants={itemVariants}
+            className="text-gray-300 max-w-2xl mx-auto text-lg"
           >
-            <Sparkles className="w-8 h-8 text-[#4ADE80]/60" />
-          </motion.div>
+            Découvrez mon parcours, mes formations et mes certifications professionnelles.
+          </motion.p>
           
-          <motion.div
-            className="absolute -top-4 -left-16"
-            animate={!isReducedMotion ? {
-              rotate: [0, 360],
-              scale: [1, 1.2, 1]
-            } : {}}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5
-            }}
-          >
-            <Code className="w-6 h-6 text-[#22D3EE]/50" />
-          </motion.div>
-          
-          <motion.div
-            className="absolute -top-4 -right-16"
-            animate={!isReducedMotion ? {
-              y: [-3, -12, -3],
-              rotate: [0, -8, 0]
-            } : {}}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.2
-            }}
-          >
-            <Heart className="w-6 h-6 text-pink-400/50" />
-          </motion.div>
-          
-          {/* 🎨 Titre principal avec gradient animé PROFESSIONNEL */}
-          <h2 className="relative text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
-            <motion.span 
-              className="bg-gradient-to-r from-[#4ADE80] to-[#22D3EE] bg-clip-text text-transparent"
-              animate={!isReducedMotion ? {
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-              } : {}}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-              style={{
-                backgroundSize: '200% 200%'
-              }}
-            >
-              À propos de
-            </motion.span>{' '}
-            <span className="text-white">Moi</span>
-          </h2>
-          
-          {/* 🎨 Ligne décorative PROFESSIONNELLE */}
           <motion.div 
-            className="relative h-2 w-32 mx-auto rounded-full overflow-hidden"
-            initial={{ width: 0 }}
-            animate={isHeadingInView ? { width: 128 } : { width: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#4ADE80] to-[#22D3EE] rounded-full" />
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent rounded-full"
-              animate={!isReducedMotion ? {
-                x: ['-100%', '200%']
-              } : {}}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatDelay: 1,
-                ease: "easeInOut"
-              }}
-            />
-          </motion.div>
+            variants={itemVariants}
+            className="h-1 w-24 bg-gradient-to-r from-[#4ADE80] to-[#22D3EE] mx-auto rounded-full mt-6"
+          />
         </motion.div>
-        
-        {/* Image mobile avec performance optimisée */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isHeadingInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-12 md:hidden"
-        >
-          <AboutImage />
-        </motion.div>
-        
-        {/* 🎨 Content grid optimisé */}
-        <div 
-          ref={contentRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-        >
-          {/* Image desktop avec effets simplifiés */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isContentInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-            className="order-2 lg:order-1 hidden md:block"
-            whileHover={!isReducedMotion ? {
-              scale: 1.02,
-              transition: { duration: 0.3 }
-            } : {}}
-          >
-            <AboutImage />
-          </motion.div>
+
+        {/* 🎯 CONTENU PRINCIPAL */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           
-          {/* Content avec animations performantes */}
+          {/* 🎯 IMAGE ET PRÉSENTATION */}
           <motion.div
-            variants={containerVariants}
+            variants={itemVariants}
             initial="hidden"
-            animate={isContentInView ? "visible" : "hidden"}
-            className="order-1 lg:order-2 space-y-8"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="relative"
           >
-            {/* Bio section optimisée */}
-            <motion.div variants={itemVariants} className="space-y-6">
-              {/* Bio text avec typewriter effect optimisé */}
-              <motion.div 
-                className="relative"
-                animate={!isReducedMotion ? {
-                  boxShadow: [
-                    '0 0 0 rgba(74, 222, 128, 0)',
-                    '0 0 20px rgba(74, 222, 128, 0.08)',
-                    '0 0 0 rgba(74, 222, 128, 0)'
-                  ]
-                } : {}}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-              </motion.div>
-            </motion.div>
-            
-            {/* Tabs avec animations optimisées */}
-            <motion.div variants={itemVariants}>
-              <AboutTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+            {/* Image de profil */}
+            <div className="relative w-80 h-80 mx-auto lg:w-96 lg:h-96 rounded-2xl overflow-hidden">
+              <img
+                src={profileImage}
+                alt="Astou Fall KANE"
+                className="w-full h-full object-cover"
+              />
               
-              <motion.div 
-                className="mt-8"
-                key={activeTab}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: "spring",
-                  damping: 20,
-                  stiffness: 100,
-                  duration: 0.5
-                }}
+              {/* Overlay décoratif */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              
+              {/* Badge */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 bg-[#4ADE80] rounded-full animate-pulse" />
+                    <span className="text-white font-medium">Disponible pour nouveaux projets</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 🎯 PRÉSENTATION PERSONNELLE SIMPLIFIÉE */}
+            <Card className="mt-8">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-[#4ADE80]/10 rounded-lg">
+                  <User className="w-6 h-6 text-[#4ADE80]" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Développeuse Fullstack</h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    Passionnée par la création d'expériences numériques innovantes, 
+                    je combine créativité et expertise technique pour donner vie à vos projets 
+                    avec des technologies modernes comme React, Flutter et Node.js.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+
+          {/* 🎯 FORMATIONS ET CERTIFICATIONS AVEC VRAIES DONNÉES */}
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            {/* 🎯 TABS CÔTE À CÔTE - LES 2 TITRES VISIBLES */}
+            <div className="flex space-x-1 bg-white/5 backdrop-blur-sm rounded-lg p-1 border border-white/10">
+              <button
+                onClick={() => setActiveTab('education')}
+                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md text-sm font-medium transition-all duration-200 ${
+                  activeTab === 'education'
+                    ? 'bg-[#4ADE80]/20 text-[#4ADE80] border border-[#4ADE80]/30'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                }`}
               >
-                {activeTab === 'education' && <AboutEducation />}
-                {activeTab === 'certifications' && <AboutCertifications />}
-              </motion.div>
-            </motion.div>
+                <GraduationCap className="w-4 h-4" />
+                Formations
+              </button>
+              <button
+                onClick={() => setActiveTab('certifications')}
+                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md text-sm font-medium transition-all duration-200 ${
+                  activeTab === 'certifications'
+                    ? 'bg-[#4ADE80]/20 text-[#4ADE80] border border-[#4ADE80]/30'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                <Award className="w-4 h-4" />
+                Certifications
+              </button>
+            </div>
+
+            {/* 🎯 CONTENU DES TABS AVEC VRAIES DONNÉES ET PAGINATION */}
+            <div className="space-y-6">
+              {activeTab === 'education' ? (
+                <motion.div
+                  key="education"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <GraduationCap className="w-6 h-6 text-[#4ADE80]" />
+                    Formations
+                  </h3>
+                  
+                  {/* 🎯 COMPOSANT ABOUTEDUCATION AVEC PAGINATION */}
+                  <AboutEducation />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="certifications"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <Award className="w-6 h-6 text-[#4ADE80]" />
+                    Certifications
+                  </h3>
+                  
+                  {/* 🎯 COMPOSANT ABOUTCERTIFICATIONS AVEC PAGINATION */}
+                  <AboutCertifications />
+                </motion.div>
+              )}
+            </div>
           </motion.div>
         </div>
       </div>
-      
-      {/* Effets décoratifs simplifiés mais efficaces */}
-      {!isReducedMotion && (
-        <>
-          <div className="absolute bottom-10 right-10 w-24 h-24 pointer-events-none">
-            <motion.div
-              className="w-full h-full rounded-full bg-gradient-radial from-[#4ADE80]/15 to-transparent blur-xl"
-              animate={{
-                scale: [1, 1.3, 1],
-                opacity: [0.3, 0.6, 0.3]
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          </div>
-          
-          <div className="absolute top-20 left-10 w-32 h-32 pointer-events-none">
-            <motion.div
-              className="w-full h-full rounded-full bg-gradient-radial from-[#22D3EE]/10 to-transparent blur-2xl"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.2, 0.5, 0.2]
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2
-              }}
-            />
-          </div>
-          
-          {/* Particules réduites mais visibles */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1.5 h-1.5 bg-[#4ADE80] rounded-full opacity-30"
-                style={{
-                  left: Math.random() * 100 + '%',
-                  top: Math.random() * 100 + '%',
-                }}
-                animate={{
-                  y: [0, -40, 0],
-                  opacity: [0.3, 0.7, 0.3]
-                }}
-                transition={{
-                  duration: 4 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 2,
-                  ease: "easeInOut"
-                }}
-              />
-            ))}
-          </div>
-        </>
-      )}
     </section>
   );
 });

@@ -1,4 +1,4 @@
-// 3️⃣ components/layout/AppLayout.tsx - VERSION SIMPLIFIÉE
+// components/layout/AppLayout.tsx - AVEC FOOTER INTÉGRÉ
 import { useEffect, useState, lazy, Suspense, memo } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useScrollHandler } from '../../hooks/useScrollHandler';
@@ -7,6 +7,7 @@ import { useScrollHandler } from '../../hooks/useScrollHandler';
 const Constellation = lazy(() => import('../effects/Constellation'));
 const CustomCursor = lazy(() => import('../effects/CustomCursor'));
 const Navigation = lazy(() => import('./Navigation'));
+const Footer = lazy(() => import('./Footer')); // 🎯 NOUVEAU FOOTER
 const Hero = lazy(() => import('../sections/Hero'));
 const About = lazy(() => import('../sections/About'));
 const Skills = lazy(() => import('../sections/Skills'));
@@ -30,31 +31,38 @@ const HomePage = memo(() => {
   useScrollHandler(); // Le hook s'occupe de tout !
 
   return (
-    <main className="relative z-10">
-      <Suspense fallback={<FallbackLoader />}>
-        <Hero />
-      </Suspense>
+    <>
+      <main className="relative z-10">
+        <Suspense fallback={<FallbackLoader />}>
+          <Hero />
+        </Suspense>
+        
+        <Suspense fallback={<FallbackLoader />}>
+          <About />
+        </Suspense>
+        
+        <Suspense fallback={<FallbackLoader />}>
+          <Skills />
+        </Suspense>
+        
+        <Suspense fallback={<FallbackLoader />}>
+          <Projects />
+        </Suspense>
+        
+        <Suspense fallback={<FallbackLoader />}>
+          <Testimonials />
+        </Suspense>
+        
+        <Suspense fallback={<FallbackLoader />}>
+          <Contact />
+        </Suspense>
+      </main>
       
-      <Suspense fallback={<FallbackLoader />}>
-        <About />
+      {/* 🎯 FOOTER POUR LA PAGE D'ACCUEIL */}
+      <Suspense fallback={<div className="h-20 bg-black" />}>
+        <Footer />
       </Suspense>
-      
-      <Suspense fallback={<FallbackLoader />}>
-        <Skills />
-      </Suspense>
-      
-      <Suspense fallback={<FallbackLoader />}>
-        <Projects />
-      </Suspense>
-      
-      <Suspense fallback={<FallbackLoader />}>
-        <Testimonials />
-      </Suspense>
-      
-      <Suspense fallback={<FallbackLoader />}>
-        <Contact />
-      </Suspense>
-    </main>
+    </>
   );
 });
 
@@ -79,9 +87,12 @@ const AppLayout = () => {
     };
   }, []);
 
-  // 🎯 SIMPLIFICATION : Logique plus claire pour la navigation
+  // 🎯 LOGIQUE POUR AFFICHER LE FOOTER
   const shouldShowNavigation = !location.pathname.startsWith('/projects/') && 
                               location.pathname !== '/projects';
+  
+  // 🎯 Le footer s'affiche sur toutes les pages SAUF les détails de projet
+  const shouldShowFooter = !location.pathname.startsWith('/projects/');
   
   return (
     <div className="relative min-h-screen bg-black">
@@ -117,9 +128,17 @@ const AppLayout = () => {
         <Route 
           path="/projects" 
           element={
-            <Suspense fallback={<FallbackLoader />}>
-              <ProjectsPage />
-            </Suspense>
+            <>
+              <Suspense fallback={<FallbackLoader />}>
+                <ProjectsPage />
+              </Suspense>
+              {/* 🎯 FOOTER POUR LA PAGE PROJETS */}
+              {shouldShowFooter && (
+                <Suspense fallback={<div className="h-20 bg-black" />}>
+                  <Footer />
+                </Suspense>
+              )}
+            </>
           } 
         />
       </Routes>

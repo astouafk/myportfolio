@@ -17,14 +17,14 @@ export interface Testimonial {
   
   // Données d'exemple
   export const testimonialsData: Testimonial[] = [
-    {
-      id: 'test1',
-      personName: 'Birane Baila WANE',
-      personTitle: 'Architecte Logiciel',
-      company: 'Groupe SONATEL',
-      personImage: wane,
-      text: "J\'’ai eu le plaisir d’accompagner Astou tout au long de sa formation en développement web et mobile, et je peux affirmer avec certitude qu’elle fait preuve d’un engagement remarquable et d’un véritable esprit d’initiative. Astou maîtrise aussi bien les fondamentaux du développement frontend (HTML, CSS, JavaScript, Angular) que les technologies backend comme Node.js et PHP. Elle se distingue par sa rigueur, sa curiosité et sa capacité à progresser rapidement, même face à des défis complexes. Sa passion pour le code est évidente, et elle sait travailler aussi bien en autonomie qu’en équipe. Je suis convaincu qu’elle a un bel avenir dans le domaine du développement, et je la recommande sans hésitation"
-    },
+    // {
+    //   id: 'test1',
+    //   personName: 'Birane Baila WANE',
+    //   personTitle: 'Architecte Logiciel',
+    //   company: 'Groupe SONATEL',
+    //   personImage: wane,
+    //   text: "J\'’ai eu le plaisir d’accompagner Astou tout au long de sa formation en développement web et mobile, et je peux affirmer avec certitude qu’elle fait preuve d’un engagement remarquable et d’un véritable esprit d’initiative. Astou maîtrise aussi bien les fondamentaux du développement frontend (HTML, CSS, JavaScript, Angular) que les technologies backend comme Node.js et PHP. Elle se distingue par sa rigueur, sa curiosité et sa capacité à progresser rapidement, même face à des défis complexes. Sa passion pour le code est évidente, et elle sait travailler aussi bien en autonomie qu’en équipe. Je suis convaincu qu’elle a un bel avenir dans le domaine du développement, et je la recommande sans hésitation"
+    // },
     {
       id: 'test2',
       personName: 'Ousmane NDIAYE',
@@ -49,12 +49,12 @@ export interface Testimonial {
       personImage: sidibe,
       text: "Pendant notre collaboration sur un projet de lecture de livres audios, Astou a assuré toute la partie frontend avec sérieux et efficacité. Elle comprend vite les enjeux techniques, communique clairement et transforme les besoins en interfaces fonctionnelles et intuitives. Un vrai plaisir de travailler avec elle."
     },
-    {
-      id: 'test5',
-      personName: 'Yankhoba MANE',
-      personTitle: 'Chef de service',
-      company: 'OSS Center, Groupe SONATEL',
-      personImage: mane,
-      text: "Notre collaboration avec Astou a été excellente de bout en bout. Elle a su comprendre notre vision et l'a transformée en un plateforme mobile dynamique et moderne qui a dépassé nos attentes. Sa communication claire et régulière a facilité le processus et nous a permis de sentir son implication à chaque étape."
-    }
+    // {
+    //   id: 'test5',
+    //   personName: 'Yankhoba MANE',
+    //   personTitle: 'Chef de service',
+    //   company: 'OSS Center, Groupe SONATEL',
+    //   personImage: mane,
+    //   text: "Notre collaboration avec Astou a été excellente de bout en bout. Elle a su comprendre notre vision et l'a transformée en un plateforme mobile dynamique et moderne qui a dépassé nos attentes. Sa communication claire et régulière a facilité le processus et nous a permis de sentir son implication à chaque étape."
+    // }
   ];

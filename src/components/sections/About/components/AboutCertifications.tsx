@@ -9,7 +9,7 @@ const certificationsData = [
     issuer: 'Sonatel Academy',
     date: 'Mai 2025',
     url: 'https://sonatelacademy.com/',
-    level: 'Expert',
+    // level: 'Expert',
     color: '#FFD700'
   },
   {
@@ -17,7 +17,7 @@ const certificationsData = [
     issuer: 'Coursera',
     date: 'December 2024',
     url: 'https://www.coursera.org/account/accomplishments/verify/S4REWFDBAHAY',
-    level: 'Advanced',
+    // level: 'Advanced',
     color: '#4ADE80'
   },
   {
@@ -25,7 +25,6 @@ const certificationsData = [
     issuer: 'Coursera',
     date: 'Janvier 2025',
     url: 'https://www.coursera.org/account/accomplishments/verify/XZHYI4XJM9XO',
-    level: 'Intermediate',
     color: '#22D3EE'
   },
   {
@@ -33,7 +32,7 @@ const certificationsData = [
     issuer: 'Google',
     date: 'Aout 2023',
     url: 'https://skillshop.exceedlms.com/student/award/U6ReKFZ29ym8rwfNJF9A7jdb',
-    level: 'Beginner',
+    // level: 'Beginner',
     color: '#F59E0B'
   },
   {
@@ -41,7 +40,7 @@ const certificationsData = [
     issuer: 'Linkedin Learning',
     date: 'Février 2025',
     url: 'https://www.linkedin.com/learning/certificates/3e137c9e57bf1d10cc0459765555bcf10b85b998c76885265b567cab52637ddc',
-    level: 'Intermediate',
+    // level: 'Intermediate',
     color: '#8B5CF6'
   },
   {
@@ -49,7 +48,7 @@ const certificationsData = [
     issuer: 'Linkedin Learning',
     date: 'Février 2025',
     url: 'https://www.linkedin.com/learning/certificates/6dac59afdcee3ec1047299c312acb7c9f5dc2752fd8b4457cdc76f8450793608',
-    level: 'Advanced',
+    // level: 'Advanced',
     color: '#EF4444'
   }
 ];
@@ -114,16 +113,16 @@ export const AboutCertifications = memo(() => {
     }
   };
 
-  const getLevelIcon = (level: string) => {
-    switch (level) {
-      case 'Expert':
-        return <Trophy className="w-5 h-5" />;
-      case 'Advanced':
-        return <Medal className="w-5 h-5" />;
-      default:
-        return <Award className="w-5 h-5" />;
-    }
-  };
+  // const getLevelIcon = (level: string) => {
+  //   switch (level) {
+  //     case 'Expert':
+  //       return <Trophy className="w-5 h-5" />;
+  //     case 'Advanced':
+  //       return <Medal className="w-5 h-5" />;
+  //     default:
+  //       return <Award className="w-5 h-5" />;
+  //   }
+  // };
 
   return (
     <div className="space-y-8">
@@ -178,7 +177,7 @@ export const AboutCertifications = memo(() => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                {cert.level}
+                {/* {cert.level} */}
               </motion.div>
 
               <div className="flex items-start gap-4 relative z-10">
@@ -196,9 +195,9 @@ export const AboutCertifications = memo(() => {
                     ease: "easeInOut"
                   }}
                 >
-                  <div style={{ color: cert.color }}>
+                  {/* <div style={{ color: cert.color }}>
                     {getLevelIcon(cert.level)}
-                  </div>
+                  </div> */}
                 </motion.div>
                 
                 <div className="flex-1 space-y-3">

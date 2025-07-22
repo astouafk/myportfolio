@@ -153,7 +153,7 @@ const AboutImage = memo(() => {
           alt="Developer Workspace"
           className="rounded-lg w-full h-auto object-contain relative z-10"
           style={{ 
-            minHeight: "320px",
+            minHeight: "365px",
             maxHeight: "550px"
           }}
           loading="lazy" // ⚡ Lazy loading
