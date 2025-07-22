@@ -808,17 +808,6 @@ const ProjectDetailPage = memo(() => {
             )}
           </motion.section>
         )}
-        
-        {/* Appel à l'action */}
-        <motion.div 
-          variants={itemVariants}
-          className="text-center py-8 sm:py-12"
-        >
-          <h3 className="text-xl sm:text-2xl font-bold mb-4">Vous aimez ce projet ?</h3>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            N'hésitez pas à me contacter pour discuter de vos idées ou pour collaborer sur des projets similaires. Rdv section Contact
-          </p>
-        </motion.div>
       </div>
     </motion.div>
   );

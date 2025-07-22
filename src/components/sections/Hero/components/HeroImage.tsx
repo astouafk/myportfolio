@@ -1,8 +1,13 @@
-// // src/components/sections/Hero/components/HeroImage.tsx - VERSION PRO PERFORMANTE
+// // src/components/sections/Hero/components/HeroImage.tsx - VERSION OPTIMISÉE PERFORMANCE
 // import { useState, useRef, useEffect, useCallback, memo } from 'react'
 // import { gsap } from 'gsap'
-// import profileImage from '../../../../assets/moi6.jpg'
 // import { lazy, Suspense } from 'react'
+
+// // 🎯 IMAGES OPTIMISÉES - Remplace par tes nouveaux fichiers
+// import profileImageWebP from '../../../../assets/moi6.jpg' 
+// import profileImageJPG from '../../../../assets/moi6.jpg'   
+// // Garde l'ancien en backup si besoin
+// // import profileImageOriginal from '../../../../assets/moi6.png'
 
 // const PhotoEffects = lazy(() => import('../../PhotoEffects'))
 
@@ -15,6 +20,8 @@
 //   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 //   const [isMobile, setIsMobile] = useState(false)
 //   const [isReducedMotion, setIsReducedMotion] = useState(false)
+//   const [imageLoaded, setImageLoaded] = useState(false)
+//   const [imageError, setImageError] = useState(false)
   
 //   const imageContainerRef = useRef<HTMLDivElement | null>(null)
 //   const circleRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -22,11 +29,10 @@
 //   const particlesRef = useRef<(HTMLDivElement | null)[]>([])
 //   const animationsRef = useRef<gsap.core.Timeline[]>([])
   
-//   // ⚡ VALEURS PRO : Équilibre performance/beauté
-//   const BUBBLE_COUNT = isMobile ? 8 : 15 // Réduit mais visible
-//   const PARTICLE_COUNT = isMobile ? 12 : 25 // Réduit mais magique
-//   const FLOAT_AMPLITUDE = isMobile ? 20 : 40 // Mouvement visible
-//   const FLOAT_SPEED = isMobile ? 2 : 1.5 // Plus fluide
+//   const BUBBLE_COUNT = isMobile ? 8 : 15
+//   const PARTICLE_COUNT = isMobile ? 12 : 25
+//   const FLOAT_AMPLITUDE = isMobile ? 20 : 40
+//   const FLOAT_SPEED = isMobile ? 2 : 1.5
 
 //   // Détection optimisée
 //   useEffect(() => {
@@ -58,7 +64,31 @@
 //     }
 //   }, [])
 
-//   // ⚡ ANIMATIONS PRO PERFORMANTES : RequestAnimationFrame optimisé
+//   // 🎯 PRELOAD CRITIQUE - Charge l'image le plus tôt possible
+//   useEffect(() => {
+//     // Preload de l'image WebP
+//     const linkWebP = document.createElement('link')
+//     linkWebP.rel = 'preload'
+//     linkWebP.as = 'image'
+//     linkWebP.href = profileImageWebP
+//     linkWebP.type = 'image/webp'
+//     document.head.appendChild(linkWebP)
+    
+//     // Preload de l'image JPG (fallback)
+//     const linkJPG = document.createElement('link')
+//     linkJPG.rel = 'preload'
+//     linkJPG.as = 'image' 
+//     linkJPG.href = profileImageJPG
+//     linkJPG.type = 'image/jpeg'
+//     document.head.appendChild(linkJPG)
+    
+//     return () => {
+//       document.head.removeChild(linkWebP)
+//       document.head.removeChild(linkJPG)
+//     }
+//   }, [])
+
+//   // Animations existantes (identiques, juste nettoyées)
 //   useEffect(() => {
 //     if (isReducedMotion) return
     
@@ -67,7 +97,7 @@
 //     })
 //     animationsRef.current = []
     
-//     // ✅ Animation des cercles - optimisée avec will-change
+//     // Animation des cercles
 //     const circleAnimations = [
 //       { duration: isMobile ? 25 : 20, direction: 1 },
 //       { duration: isMobile ? 20 : 15, direction: -1 },
@@ -77,8 +107,6 @@
 //     circleRefs.current.forEach((circle, index) => {
 //       if (circle && circleAnimations[index]) {
 //         const animation = circleAnimations[index]
-        
-//         // ⚡ OPTIMISATION : will-change pour GPU
 //         circle.style.willChange = 'transform'
         
 //         const timeline = gsap.timeline()
@@ -102,22 +130,21 @@
 //       }
 //     })
 
-//     // ✅ Animation des bulles - quantité réduite mais présente
+//     // Animations bulles et particules (identiques)
 //     const bubbleTimeline = gsap.timeline()
     
 //     bubblesRef.current.forEach((bubble, index) => {
 //       if (bubble) {
-//         // ⚡ OPTIMISATION : will-change
 //         bubble.style.willChange = 'transform'
         
-//         const delay = index * 0.1 // ⚡ Délai réduit
-//         const radius = 15 + Math.random() * 25 // ⚡ Rayon réduit
+//         const delay = index * 0.1
+//         const radius = 15 + Math.random() * 25
 //         const angle = Math.random() * Math.PI * 2
         
 //         bubbleTimeline.to(bubble, {
 //           y: `-=${FLOAT_AMPLITUDE + Math.random() * 15}`,
 //           x: `+=${Math.sin(angle) * radius}`,
-//           rotation: Math.random() * 180, // ⚡ Rotation réduite
+//           rotation: Math.random() * 180,
 //           duration: FLOAT_SPEED + Math.random() * 1.5,
 //           repeat: -1,
 //           yoyo: true,
@@ -126,8 +153,8 @@
 //         }, 0)
 
 //         bubbleTimeline.to(bubble, {
-//           opacity: 0.6, // ⚡ Opacité réduite
-//           scale: 1.5, // ⚡ Scale réduit
+//           opacity: 0.6,
+//           scale: 1.5,
 //           duration: 1.5 + Math.random() * 1,
 //           repeat: -1,
 //           yoyo: true,
@@ -139,20 +166,19 @@
     
 //     animationsRef.current.push(bubbleTimeline)
 
-//     // ✅ Animations particules - simplifiées mais présentes
+//     // Animations particules
 //     const particlesTimeline = gsap.timeline()
     
 //     particlesRef.current.forEach((particle, index) => {
 //       if (particle) {
-//         // ⚡ OPTIMISATION : will-change
 //         particle.style.willChange = 'transform'
         
 //         const angle = (index / PARTICLE_COUNT) * Math.PI * 2
-//         const radius = 100 + Math.random() * 30 // ⚡ Rayon réduit
-//         const speed = 8 + Math.random() * 4 // ⚡ Plus rapide
+//         const radius = 100 + Math.random() * 30
+//         const speed = 8 + Math.random() * 4
         
 //         particlesTimeline.to(particle, {
-//           rotation: "+=180", // ⚡ Rotation réduite
+//           rotation: "+=180",
 //           duration: speed,
 //           repeat: -1,
 //           ease: "none",
@@ -169,7 +195,7 @@
     
 //     animationsRef.current.push(particlesTimeline)
 
-//     // ✅ Animations des effets d'aura - conservées
+//     // Animations aura
 //     const auraTimeline = gsap.timeline()
     
 //     auraTimeline.to('.aura', {
@@ -183,7 +209,7 @@
 
 //     auraTimeline.to('.energy-halo', {
 //       rotation: 360,
-//       duration: 25, // ⚡ Plus rapide
+//       duration: 25,
 //       repeat: -1,
 //       ease: "none"
 //     }, 0)
@@ -195,7 +221,6 @@
 //         if (timeline) timeline.kill()
 //       })
       
-//       // ⚡ Cleanup will-change
 //       circleRefs.current.forEach(circle => {
 //         if (circle) circle.style.willChange = 'auto'
 //       })
@@ -208,7 +233,7 @@
 //     }
 //   }, [isMobile, isReducedMotion, FLOAT_AMPLITUDE, FLOAT_SPEED, BUBBLE_COUNT, PARTICLE_COUNT])
 
-//   // ⚡ GESTION SOURIS OPTIMISÉE avec throttling
+//   // Gestion souris (identique)
 //   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
 //     if (imageContainerRef.current && !isMobile && !isReducedMotion) {
 //       const rect = imageContainerRef.current.getBoundingClientRect()
@@ -216,12 +241,11 @@
 //       const y = (e.clientY - rect.top) / rect.height
 //       setMousePosition({ x, y })
 
-//       // ⚡ THROTTLING : Mise à jour moins fréquente
-//       if (Date.now() % 3 === 0) { // Toutes les 3 frames
+//       if (Date.now() % 3 === 0) {
 //         requestAnimationFrame(() => {
 //           circleRefs.current.forEach((circle, index) => {
 //             if (circle) {
-//               const depth = (index + 1) * 8 // ⚡ Profondeur réduite
+//               const depth = (index + 1) * 8
 //               gsap.to(circle, {
 //                 x: (x - 0.5) * depth,
 //                 y: (y - 0.5) * depth,
@@ -235,7 +259,7 @@
 //     }
 //   }, [isMobile, isReducedMotion])
 
-//   // ✅ Gestion du hover conservée mais optimisée
+//   // Gestion hover (identique)
 //   const handleImageHover = useCallback((hovering: boolean) => {
 //     setIsHoveringImage(hovering)
     
@@ -243,18 +267,17 @@
 //       gsap.to(imageContainerRef.current, {
 //         scale: hovering ? 1.05 : 1,
 //         duration: 0.6,
-//         ease: "elastic.out(1, 0.3)" // ⚡ Elastic réduit
+//         ease: "elastic.out(1, 0.3)"
 //       })
 
-//       // ✅ Animations hover conservées mais optimisées
 //       particlesRef.current.forEach((particle, index) => {
 //         if (particle) {
 //           gsap.to(particle, {
-//             scale: hovering ? 1.8 : 1, // ⚡ Scale réduit
+//             scale: hovering ? 1.8 : 1,
 //             opacity: hovering ? 0.7 : 0.4,
 //             duration: 0.4,
 //             ease: "power2.out",
-//             delay: index * 0.005 // ⚡ Délai réduit
+//             delay: index * 0.005
 //           })
 //         }
 //       })
@@ -262,7 +285,7 @@
 //       bubblesRef.current.forEach((bubble, index) => {
 //         if (bubble) {
 //           const angle = (index / BUBBLE_COUNT) * Math.PI * 2
-//           const radius = hovering ? 80 : 0 // ⚡ Rayon réduit
+//           const radius = hovering ? 80 : 0
           
 //           gsap.to(bubble, {
 //             x: hovering ? Math.cos(angle) * radius : 0,
@@ -278,6 +301,17 @@
 //     }
 //   }, [isMobile, isReducedMotion, BUBBLE_COUNT])
 
+//   // 🎯 GESTION DES ÉTATS DE CHARGEMENT
+//   const handleImageLoad = () => {
+//     setImageLoaded(true)
+//     setImageError(false)
+//   }
+
+//   const handleImageError = () => {
+//     setImageError(true)
+//     setImageLoaded(false)
+//   }
+
 //   return (
 //     <div
 //       ref={imageContainerRef}
@@ -290,7 +324,7 @@
 //         <PhotoEffects />
 //       </Suspense>
 
-//       {/* ✅ Cercles conservés - 3 cercles */}
+//       {/* Cercles (identiques) */}
 //       {[30, 15, 45].map((offset, index) => (
 //         <div
 //           key={index}
@@ -305,7 +339,7 @@
 //         />
 //       ))}
 
-//       {/* ✅ Particules conservées mais réduites */}
+//       {/* Particules (identiques) */}
 //       {!isReducedMotion && Array.from({ length: PARTICLE_COUNT }).map((_, i) => (
 //         <div
 //           key={`particle-${i}`}
@@ -315,13 +349,13 @@
 //             left: '50%',
 //             top: '50%',
 //             backgroundColor: '#4ADE80',
-//             boxShadow: '0 0 6px #4ADE80', // ⚡ Ombre réduite
+//             boxShadow: '0 0 6px #4ADE80',
 //             opacity: 0.4,
 //           }}
 //         />
 //       ))}
 
-//       {/* ✅ Bulles conservées mais réduites */}
+//       {/* Bulles (identiques) */}
 //       {!isReducedMotion && Array.from({ length: BUBBLE_COUNT }).map((_, i) => (
 //         <div
 //           key={`bubble-${i}`}
@@ -331,29 +365,60 @@
 //             left: `${Math.random() * 100}%`,
 //             top: `${Math.random() * 100}%`,
 //             backgroundColor: '#4ADE80',
-//             boxShadow: '0 0 10px #4ADE80', // ⚡ Ombre réduite
+//             boxShadow: '0 0 10px #4ADE80',
 //             opacity: 0.4,
 //           }}
 //         />
 //       ))}
 
-//       {/* Image principale */}
+//       {/* 🎯 IMAGE OPTIMISÉE AVEC FALLBACKS */}
 //       <div className="absolute inset-[5%] rounded-full overflow-hidden bg-gray-800 z-10
 //         shadow-2xl shadow-[#4ADE80]/30">
-//         <img
-//           src={profileImage}
-//           alt="Profile"
-//           width={450}
-//           height={450}
-//           className="w-full h-full object-cover object-center transform scale-105
-//             transition-all duration-500 ease-out"
-//           style={{
-//             filter: `brightness(${isHoveringImage ? 1.3 : 1.1})
-//               contrast(${isHoveringImage ? 1.15 : 1.05})
-//               saturate(${isHoveringImage ? 1.1 : 1})`,
-//           }}
-//         />
+        
+//         {/* 🎯 SKELETON LOADER pendant le chargement */}
+//         {!imageLoaded && !imageError && (
+//           <div className="absolute inset-0 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 animate-pulse">
+//             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
+//               animate-[shimmer_2s_infinite] rounded-full" />
+//           </div>
+//         )}
 
+//         {/* 🎯 PICTURE ELEMENT OPTIMISÉ */}
+//         <picture>
+//           {/* WebP pour navigateurs modernes */}
+//           <source 
+//             srcSet={profileImageWebP} 
+//             type="image/webp"
+//           />
+//           {/* JPG pour fallback */}
+//           <img
+//             src={profileImageJPG}
+//             alt="Astou Fall KANE - Développeuse Fullstack"
+//             width={450}
+//             height={450}
+//             className={`w-full h-full object-cover object-center transform scale-105
+//               transition-all duration-500 ease-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+//             style={{
+//               filter: `brightness(${isHoveringImage ? 1.3 : 1.1})
+//                 contrast(${isHoveringImage ? 1.15 : 1.05})
+//                 saturate(${isHoveringImage ? 1.1 : 1})`,
+//             }}
+//             onLoad={handleImageLoad}
+//             onError={handleImageError}
+//             loading="eager" // ⚡ CRITIQUE : Charge immédiatement (hero)
+//             decoding="async" // ⚡ OPTIMISATION : Décodage async
+//           />
+//         </picture>
+
+//         {/* 🎯 IMAGE D'ERREUR si échec */}
+//         {imageError && (
+//           <div className="absolute inset-0 bg-gradient-to-br from-[#4ADE80]/20 to-[#22D3EE]/20 
+//             flex items-center justify-center text-white font-bold text-2xl">
+//             AFK
+//           </div>
+//         )}
+
+//         {/* Grain et effets (identiques) */}
 //         <div
 //           className="absolute inset-0 mix-blend-overlay backdrop-blur-[1px]
 //             animate-grain opacity-20"
@@ -363,7 +428,7 @@
 //         />
 //       </div>
 
-//       {/* ✅ Auras conservées */}
+//       {/* Auras (identiques) */}
 //       <div className="aura absolute inset-[-15%] rounded-full opacity-40
 //         bg-gradient-radial from-[#4ADE80]/40 via-[#4ADE80]/20 to-transparent
 //         blur-2xl -z-10" />
@@ -380,28 +445,24 @@
 
 // export default HeroImage
 
+// 🎯 IMAGES OPTIMISÉES
+// import profileImageWebP from '../../../../assets/moi6.jpg'
+// import profileImageJPG from '../../../../assets/moi6.jpg'
 
 
-
-
-
-
-
-// src/components/sections/Hero/components/HeroImage.tsx - VERSION OPTIMISÉE PERFORMANCE
+/// src/components/sections/Hero/components/HeroImage.tsx - PHOTOEFFECTS CORRIGÉ
 import { useState, useRef, useEffect, useCallback, memo } from 'react'
 import { gsap } from 'gsap'
 import { lazy, Suspense } from 'react'
 
-// 🎯 IMAGES OPTIMISÉES - Remplace par tes nouveaux fichiers
-import profileImageWebP from '../../../../assets/moi6.jpg' 
-import profileImageJPG from '../../../../assets/moi6.jpg'   
-// Garde l'ancien en backup si besoin
-// import profileImageOriginal from '../../../../assets/moi6.png'
+// 🎯 IMAGES OPTIMISÉES
+import profileImageWebP from '../../../../assets/moi6.jpg'
+import profileImageJPG from '../../../../assets/moi6.jpg'
 
 const PhotoEffects = lazy(() => import('../../PhotoEffects'))
 
 const PhotoEffectsFallback = () => (
-  <div className="absolute inset-0 rounded-full bg-gradient-radial from-[#4ADE80]/20 to-transparent animate-pulse"></div>
+  <div className="absolute inset-[-150px] rounded-full bg-gradient-radial from-[#4ADE80]/20 to-transparent animate-pulse"></div>
 )
 
 export const HeroImage = memo(() => {
@@ -453,9 +514,8 @@ export const HeroImage = memo(() => {
     }
   }, [])
 
-  // 🎯 PRELOAD CRITIQUE - Charge l'image le plus tôt possible
+  // 🎯 PRELOAD CRITIQUE
   useEffect(() => {
-    // Preload de l'image WebP
     const linkWebP = document.createElement('link')
     linkWebP.rel = 'preload'
     linkWebP.as = 'image'
@@ -463,7 +523,6 @@ export const HeroImage = memo(() => {
     linkWebP.type = 'image/webp'
     document.head.appendChild(linkWebP)
     
-    // Preload de l'image JPG (fallback)
     const linkJPG = document.createElement('link')
     linkJPG.rel = 'preload'
     linkJPG.as = 'image' 
@@ -477,7 +536,7 @@ export const HeroImage = memo(() => {
     }
   }, [])
 
-  // Animations existantes (identiques, juste nettoyées)
+  // Animations existantes (maintenues pour les cercles décoratifs)
   useEffect(() => {
     if (isReducedMotion) return
     
@@ -519,7 +578,7 @@ export const HeroImage = memo(() => {
       }
     })
 
-    // Animations bulles et particules (identiques)
+    // Animations bulles
     const bubbleTimeline = gsap.timeline()
     
     bubblesRef.current.forEach((bubble, index) => {
@@ -622,7 +681,7 @@ export const HeroImage = memo(() => {
     }
   }, [isMobile, isReducedMotion, FLOAT_AMPLITUDE, FLOAT_SPEED, BUBBLE_COUNT, PARTICLE_COUNT])
 
-  // Gestion souris (identique)
+  // Gestion souris
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (imageContainerRef.current && !isMobile && !isReducedMotion) {
       const rect = imageContainerRef.current.getBoundingClientRect()
@@ -648,7 +707,7 @@ export const HeroImage = memo(() => {
     }
   }, [isMobile, isReducedMotion])
 
-  // Gestion hover (identique)
+  // Gestion hover
   const handleImageHover = useCallback((hovering: boolean) => {
     setIsHoveringImage(hovering)
     
@@ -690,7 +749,7 @@ export const HeroImage = memo(() => {
     }
   }, [isMobile, isReducedMotion, BUBBLE_COUNT])
 
-  // 🎯 GESTION DES ÉTATS DE CHARGEMENT
+  // Gestion des états de chargement
   const handleImageLoad = () => {
     setImageLoaded(true)
     setImageError(false)
@@ -709,31 +768,37 @@ export const HeroImage = memo(() => {
       onMouseLeave={() => handleImageHover(false)}
       onMouseMove={handleMouseMove}
     >
-      <Suspense fallback={<PhotoEffectsFallback />}>
-        <PhotoEffects />
-      </Suspense>
+      {/* 🎯 PHOTOEFFECTS CORRECTEMENT POSITIONNÉ */}
+      <div className="absolute inset-[-150px] z-0">
+        <Suspense fallback={<PhotoEffectsFallback />}>
+          <PhotoEffects />
+        </Suspense>
+      </div>
 
-      {/* Cercles (identiques) */}
+      {/* 🎯 CERCLES DÉCORATIFS AU BON Z-INDEX */}
       {[30, 15, 45].map((offset, index) => (
         <div
           key={index}
           ref={el => circleRefs.current[index] = el}
-          className={`absolute sm:inset-[-${offset}px] inset-[-${Math.floor(offset * 0.7)}px] rounded-full border-2 
+          className={`absolute z-5 rounded-full border-2 
             ${index % 2 === 0 ? 'border-dashed' : 'border-solid'}
             border-[#4ADE80]/30 
             before:content-[''] before:absolute before:inset-0 
             before:rounded-full before:bg-gradient-to-r 
             before:from-[#4ADE80]/20 before:via-[#4ADE80]/5 before:to-transparent
             ${!isReducedMotion ? 'before:animate-spin-slow' : ''}`}
+          style={{
+            inset: `-${offset}px`,
+          }}
         />
       ))}
 
-      {/* Particules (identiques) */}
+      {/* 🎯 PARTICULES AU BON Z-INDEX */}
       {!isReducedMotion && Array.from({ length: PARTICLE_COUNT }).map((_, i) => (
         <div
           key={`particle-${i}`}
           ref={el => particlesRef.current[i] = el}
-          className="absolute w-1 h-1 rounded-full blur-[1px]"
+          className="absolute w-1 h-1 rounded-full blur-[1px] z-5"
           style={{
             left: '50%',
             top: '50%',
@@ -744,12 +809,12 @@ export const HeroImage = memo(() => {
         />
       ))}
 
-      {/* Bulles (identiques) */}
+      {/* 🎯 BULLES AU BON Z-INDEX */}
       {!isReducedMotion && Array.from({ length: BUBBLE_COUNT }).map((_, i) => (
         <div
           key={`bubble-${i}`}
           ref={el => bubblesRef.current[i] = el}
-          className="absolute w-2 h-2 rounded-full blur-[2px]"
+          className="absolute w-2 h-2 rounded-full blur-[2px] z-5"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -760,11 +825,11 @@ export const HeroImage = memo(() => {
         />
       ))}
 
-      {/* 🎯 IMAGE OPTIMISÉE AVEC FALLBACKS */}
+      {/* 🎯 IMAGE AU Z-INDEX PRINCIPAL */}
       <div className="absolute inset-[5%] rounded-full overflow-hidden bg-gray-800 z-10
         shadow-2xl shadow-[#4ADE80]/30">
         
-        {/* 🎯 SKELETON LOADER pendant le chargement */}
+        {/* Skeleton loader */}
         {!imageLoaded && !imageError && (
           <div className="absolute inset-0 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 animate-pulse">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
@@ -772,14 +837,12 @@ export const HeroImage = memo(() => {
           </div>
         )}
 
-        {/* 🎯 PICTURE ELEMENT OPTIMISÉ */}
+        {/* Picture element optimisé */}
         <picture>
-          {/* WebP pour navigateurs modernes */}
           <source 
             srcSet={profileImageWebP} 
             type="image/webp"
           />
-          {/* JPG pour fallback */}
           <img
             src={profileImageJPG}
             alt="Astou Fall KANE - Développeuse Fullstack"
@@ -794,12 +857,12 @@ export const HeroImage = memo(() => {
             }}
             onLoad={handleImageLoad}
             onError={handleImageError}
-            loading="eager" // ⚡ CRITIQUE : Charge immédiatement (hero)
-            decoding="async" // ⚡ OPTIMISATION : Décodage async
+            loading="eager"
+            decoding="async"
           />
         </picture>
 
-        {/* 🎯 IMAGE D'ERREUR si échec */}
+        {/* Image d'erreur */}
         {imageError && (
           <div className="absolute inset-0 bg-gradient-to-br from-[#4ADE80]/20 to-[#22D3EE]/20 
             flex items-center justify-center text-white font-bold text-2xl">
@@ -807,7 +870,7 @@ export const HeroImage = memo(() => {
           </div>
         )}
 
-        {/* Grain et effets (identiques) */}
+        {/* Grain et effets */}
         <div
           className="absolute inset-0 mix-blend-overlay backdrop-blur-[1px]
             animate-grain opacity-20"
@@ -817,7 +880,7 @@ export const HeroImage = memo(() => {
         />
       </div>
 
-      {/* Auras (identiques) */}
+      {/* 🎯 AURAS EN ARRIÈRE-PLAN */}
       <div className="aura absolute inset-[-15%] rounded-full opacity-40
         bg-gradient-radial from-[#4ADE80]/40 via-[#4ADE80]/20 to-transparent
         blur-2xl -z-10" />
