@@ -249,6 +249,16 @@ import degloul4 from '../../../../assets/screenshots/degloul/degloul4.png';
 
 //facounting
 import facounting1 from '../../../../assets/screenshots/facounting/facounting1.jpeg';
+import facounting2 from '../../../../assets/screenshots/facounting/facounting2.png';
+
+//paygo
+import paygobanner from '../../../../assets/screenshots/paygo/paygo-banner.png';
+
+//faggu
+import faggubanner from '../../../../assets/screenshots/faggu/faggu-banner.png';
+
+//kaayeat
+import kaayeatbanner from '../../../../assets/screenshots/kaayeat/kaayeat-banner.png';
 
 // Types pour les captures d'écran
 export interface Screenshot {
@@ -280,7 +290,7 @@ export const portfolioDetail: ProjectDetail = {
   id: 'portfolio',
   title: 'Portfolio Personnel',
   type: 'Personnel',
-  description: 'Mon portfolio dynamique réalisé avec React, Three.js et Framer Motion pour présenter mes compétences et projets avec des animations 3D.',
+  description: 'L\'assurance à portée de main',
   longDescription: `
     Ce portfolio moderne a été conçu et développé entièrement par mes soins pour présenter mon travail et mes compétences de développeur web. 
     
@@ -405,16 +415,15 @@ export const faCountingDetail: ProjectDetail = {
   id: 'mobapp',
   type: 'Professionnel',
   title: 'Application Fa-Counting',
-  description: 'Application mobile d\'inventaire pour le recensement des matériaux d\'entreprise en Côte d\'Ivoire',
+  description: 'Application mobile d\'inventaire pour le recensement des matériaux d\'entreprise.',
   longDescription: `
-    Fa-Counting est une application mobile innovante que j'ai développée pour digitaliser et optimiser la gestion d'inventaire des entreprises en Côte d'Ivoire. Face aux défis logistiques et de traçabilité que rencontrent de nombreuses PME africaines, cette solution propose une approche moderne et intuitive pour le recensement des matériaux et équipements.
+    Fa-Counting est une application mobile innovante que j'ai développée pour digitaliser et optimiser la gestion d'inventaire d'une entreprise ivoirienne. Face aux défis logistiques et de traçabilité que rencontrent de nombreuses PME africaines, cette solution propose une approche moderne et intuitive pour le recensement des matériaux et équipements.
 
-    L'application permet une saisie rapide et précise des données d'inventaire via des fonctionnalités de scan de codes-barres, géolocalisation, et prise de photos. Elle s'adapte parfaitement aux contraintes locales : connectivité intermittente, diversité des appareils, et besoins spécifiques du marché ivoirien.
+    L'application permet une saisie rapide et précise des données d'inventaire via des fonctionnalités de scan de codes-barres et prise de photos. Elle s'adapte parfaitement aux contraintes locales : connectivité intermittente, diversité des appareils, et besoins spécifiques du marché.
 
-    Développée avec Flutter pour garantir une performance optimale sur Android, l'app intègre Firebase pour la synchronisation cloud et offre des rapports détaillés en temps réel. C'est un outil pensé par et pour l'écosystème entrepreneurial africain, alliant simplicité d'usage et robustesse technique.
   `,
   date: 'Juin 2025',
-  imageUrl: '/assets/projects/mobile-app.jpg',
+  imageUrl: facounting2,
   tags: [
     { name: 'Flutter', color: '#02569B' },
     { name: 'Dart', color: '#0175C2' },
@@ -425,7 +434,6 @@ export const faCountingDetail: ProjectDetail = {
   technologies: [
     { name: 'Flutter', logo: flutter, color: '#02569B' },
     { name: 'Dart', logo: dartLogo, color: '#0175C2' },
-    { name: 'Firebase', logo: firebase, color: '#FFCA28' }
   ],
   screenshots: [
     { id: 'fa1', imageUrl: facounting1, caption: 'Dashboard principal avec statistiques' },
@@ -465,14 +473,14 @@ export const paygoDetail: ProjectDetail = {
   title: 'Application Paygo',
   description: 'Paygo est une solution tout-en-un qui permet aux entreprises d\'accepter des paiements marchands via Wave, Orange Money, etc.',
   longDescription: `
-    Paygo représente une solution fintech complète que j'ai contribué à développer pour révolutionner les paiements digitaux en Afrique de l'Ouest. Cette plateforme unifie les principaux opérateurs de paiement mobile (Wave, Orange Money, MTN Mobile Money, Moov Money) en une seule interface, simplifiant drastiquement l'acceptation de paiements pour les commerçants.
+  Paygo est une solution fintech conçue pour simplifier les paiements digitaux en Afrique de l’Ouest, en intégrant les principaux opérateurs de paiement mobile (Wave, Orange Money, etc) dans une plateforme unifiée.
 
-    L'enjeu était de taille : créer une solution qui s'adapte à l'écosystème complexe des paiements mobiles africains, où chaque pays et chaque opérateur a ses spécificités. Paygo propose une API unifiée, un dashboard marchand intuitif, et des outils d'analytics avancés pour le suivi des transactions.
+  J’ai participé au développement de la partie mobile de l’application, en mettant un point d’honneur à l’adoption de bonnes pratiques pour garantir une expérience fluide, intuitive et adaptée aux besoins des utilisateurs. J’ai également contribué à la mise en place de fonctionnalités facilitant l’accès à l’information, comme l’import et l’export de rapports.
 
-    Développée avec une architecture microservices moderne, la plateforme gère des milliers de transactions quotidiennes avec une fiabilité de 99.9%. Elle intègre des fonctionnalités de réconciliation automatique, de gestion des disputes, et de reporting en temps réel, essentielles pour les entreprises qui cherchent à digitaliser leurs paiements en Afrique.
-  `,
+  L’objectif principal était d’offrir un outil mobile performant, capable de s’adapter à différents contextes d’usage, tout en assurant une cohérence fonctionnelle avec l’écosystème global de la plateforme.
+`,
   date: 'Avril 2025',
-  imageUrl: '/assets/projects/dashboard.jpg',
+  imageUrl:paygobanner,
   tags: [
     { name: 'React', color: '#61DAFB' },
     { name: 'D3.js', color: '#F9A03C' },
@@ -533,7 +541,7 @@ export const fagguDetail: ProjectDetail = {
     Développée avec une architecture moderne (React/Node.js), la solution intègre des fonctionnalités avancées comme l'évaluation automatique des risques, la tarification dynamique, et un système de workflow pour le traitement des sinistres. Elle s'adapte aux spécificités réglementaires locales tout en offrant une expérience utilisateur de niveau international.
   `,
   date: 'Juillet 2025',
-  imageUrl: '/assets/projects/chatapp.jpg',
+  imageUrl: faggubanner,
   tags: [
     { name: 'Socket.io', color: '#010101' },
     { name: 'React', color: '#61DAFB' },
@@ -582,68 +590,66 @@ export const fagguDetail: ProjectDetail = {
 };
 
 // Projet Afkash
-export const afkashDetail: ProjectDetail = {
-  id: 'Afkash',
+export const kaayEatDetail: ProjectDetail = {
+  id: 'KaayEat',
   type: 'Personnel',
-  title: 'Plateforme simulative de transfert d\'argent inter-opérateur',
-  description: 'Plateforme qui simule le transfert d\'argent entre différents opérateurs de téléphonie mobile en Afrique.',
+  title: 'KaayEat',
+  description: 'Projet de design thinking explorant l\'identité visuelle et l\'expérience utilisateur d\'un restaurant fictif.',
   longDescription: `
-    Afkash est un projet personnel ambitieux que je développe actuellement pour créer une solution d'interopérabilité entre les services de mobile money en Afrique. Cette plateforme simule et teste les transferts d'argent entre différents opérateurs (Orange Money, Wave, MTN Mobile Money, Moov Money) dans une optique de recherche et développement.
+    KaayEat est un projet de design thinking personnel qui explore la création d'une identité de marque complète pour un restaurant fictif. Ce projet conceptuel se concentre sur la réflexion stratégique autour de l'expérience client, du positionnement de marque et de l'écosystème visuel d'un établissement de restauration moderne.
 
-    L'objectif est double : comprendre les mécanismes techniques complexes de l'interopérabilité financière, et proposer des solutions innovantes pour fluidifier les échanges monétaires transfrontaliers en Afrique. Le projet explore les défis techniques, réglementaires et business liés à l'unification des systèmes de paiement mobile.
+    L'objectif est de développer une approche holistique du design d'expérience pour la restauration, en explorant les interactions entre identité visuelle, expérience utilisateur et stratégie de marque. Le projet examine comment créer une cohérence entre l'identité du restaurant, ses valeurs, son public cible et son positionnement sur le marché.
 
-    Développée avec Next.js et une stack IA (TensorFlow, FastAPI), la plateforme intègre des modèles de machine learning pour optimiser les routes de transfert, prédire les taux de change, et analyser les patterns de transaction. C'est un laboratoire d'innovation fintech qui préfigure l'avenir des paiements digitaux en Afrique.
+    Cette démarche de design thinking comprend la recherche utilisateur, la définition de personas, l'architecture de l'expérience client, et la conceptualisation de l'identité de marque. C'est un laboratoire créatif qui explore les tendances actuelles de la restauration et propose des solutions innovantes pour l'expérience culinaire moderne.
   `,
-  date: 'En cours',
-  imageUrl: '/assets/projects/ai-learning.jpg',
+  date: 'Terminé',
+  imageUrl: kaayeatbanner,
+  videoUrl: '/assets/videos/kaayeat.mp4',
   tags: [
-    { name: 'Next.js', color: '#000000' },
-    { name: 'Python', color: '#3776AB' },
-    { name: 'TensorFlow', color: '#FF6F00' },
-    { name: 'FastAPI', color: '#009688' }
+    { name: 'Design Thinking', color: '#FF6B6B' },
+    { name: 'UX Research', color: '#4ECDC4' },
+    { name: 'Branding', color: '#45B7D1' },
+    { name: 'Conceptuel', color: '#96CEB4' }
   ],
-  inProgress: true,
+  inProgress: false,
   category: 'web',
   technologies: [
-    { name: 'Next.js', logo: reactLogo, color: '#000000' },
-    { name: 'TypeScript', logo: typescriptLogo, color: '#3178C6' },
-    { name: 'Python', logo: reactLogo, color: '#3776AB' },
-    { name: 'TensorFlow', logo: reactLogo, color: '#FF6F00' },
-    { name: 'FastAPI', logo: reactLogo, color: '#009688' },
-    { name: 'PostgreSQL', logo: reactLogo, color: '#336791' }
+    { name: 'Figma', logo: reactLogo, color: '#F24E1E' },
+    { name: 'Miro', logo: reactLogo, color: '#FFD02F' },
+    { name: 'Adobe Creative', logo: reactLogo, color: '#FF0000' },
+    { name: 'Canva', logo: reactLogo, color: '#00C4CC' }
   ],
   screenshots: [
-    { id: 'afk1', imageUrl: '/assets/screenshots/afkash/simulator.png', caption: 'Interface de simulation de transferts' },
-    { id: 'afk2', imageUrl: '/assets/screenshots/afkash/analytics.png', caption: 'Analytics IA des patterns de transfert' },
-    { id: 'afk3', imageUrl: '/assets/screenshots/afkash/routing.png', caption: 'Optimisation des routes de transfert' },
-    { id: 'afk4', imageUrl: '/assets/screenshots/afkash/compliance.png', caption: 'Dashboard de conformité réglementaire' }
+    { id: 'kay1', imageUrl: '/assets/screenshots/kaayeat/brandboard.png', caption: 'Planche d\'identité visuelle' },
+    { id: 'kay2', imageUrl: '/assets/screenshots/kaayeat/personas.png', caption: 'Définition des personas clients' },
+    { id: 'kay3', imageUrl: '/assets/screenshots/kaayeat/journey.png', caption: 'Customer journey mapping' },
+    { id: 'kay4', imageUrl: '/assets/screenshots/kaayeat/concepts.png', caption: 'Concepts visuels explorés' }
   ],
   challenges: [
-    'Modélisation précise des APIs des différents opérateurs mobiles',
-    'Simulation réaliste des contraintes réglementaires par pays',
-    'Développement d\'algorithmes d\'optimisation des routes de transfert',
-    'Prédiction des taux de change et frais de transaction',
-    'Gestion de la latence et des timeouts dans un environnement multi-opérateur'
+    'Définition d\'une identité de marque distinctive dans un marché saturé',
+    'Création de personas réalistes sans données terrain',
+    'Équilibre entre authenticité culturelle et modernité',
+    'Conceptualisation d\'une expérience cohérente sans prototype',
+    'Différenciation par rapport aux chaînes de restauration existantes'
   ],
   solutions: [
-    'Architecture de microservices avec simulateurs d\'APIs fidèles',
-    'Base de données de règles réglementaires mise à jour dynamiquement',
-    'Algorithmes génétiques pour l\'optimisation des routes',
-    'Modèles LSTM pour la prédiction des taux et volumes',
-    'Système de circuit breaker et retry avec backoff exponentiel'
+    'Recherche approfondie sur les tendances de la restauration locale',
+    'Méthodologie de design thinking structurée et itérative',
+    'Création d\'un univers visuel inspiré de la culture sénégalaise moderne',
+    'Développement d\'une charte graphique complète et modulaire',
+    'Focus sur l\'expérience émotionnelle plutôt que fonctionnelle'
   ],
   keyFeatures: [
-    'Simulation complète de l\'écosystème mobile money africain',
-    'IA prédictive pour optimisation des transferts',
-    'Dashboard analytics avec visualisations avancées',
-    'Modélisation des contraintes réglementaires par pays',
-    'API de test pour développeurs fintech',
-    'Monitoring en temps réel des performances',
-    'Simulation de stress test à grande échelle',
-    'Rapports de conformité automatisés'
+    'Identité visuelle complète (logo, couleurs, typographie)',
+    'Définition de personas et parcours clients',
+    'Concept d\'expérience restaurant holistique',
+    'Charte graphique et guidelines de marque',
+    'Exploration de différentes déclinaisons visuelles',
+    'Positionnement stratégique de la marque',
+    'Vision conceptuelle de l\'espace physique',
+    'Documentation complète du processus créatif'
   ]
 };
-
 // Créer un objet qui contient tous les détails des projets
 const projectsDetailData: Record<string, ProjectDetail> = {
   'portfolio': portfolioDetail,
@@ -651,7 +657,7 @@ const projectsDetailData: Record<string, ProjectDetail> = {
   'mobapp': faCountingDetail,
   'paygo': paygoDetail,
   'faggu Assurance': fagguDetail,
-  'Afkash': afkashDetail
+  'KaayEat': kaayEatDetail
 };
 
 // Fonction mise à jour pour obtenir les détails d'un projet par ID

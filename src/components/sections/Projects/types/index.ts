@@ -129,6 +129,12 @@
 // 1️⃣ src/components/sections/Projects/types/index.ts - TYPES ÉTENDUS
 import banner from '../../../../assets/projects/portfolio/banner.png';
 import degloule from '../../../../assets/projects/degloul/degloul.png';
+import facounting2 from '../../../../assets/screenshots/facounting/facounting2.png';
+import paygobanner from '../../../../assets/screenshots/paygo/paygo-banner.png';
+import faggubanner from '../../../../assets/screenshots/faggu/faggu-banner.png';
+import kaayeatbanner from '../../../../assets/screenshots/kaayeat/kaayeat-banner.png';
+
+
 
 export interface ProjectTag {
   name: string;
@@ -191,11 +197,11 @@ export const projectsData: Project[] = [
   },
   {
     id: 'mobapp',
-    type: 'Personnel', // ✅ Bien défini
+    type: 'Professionnel', // ✅ Bien défini
     title: 'Application Fa-Counting',
     description: 'Application mobile d\'inventaire pour le recesencement des matériaux d\'entreprise en Cote d\'ivoire',
     date: 'Juin 2025',
-    imageUrl: '/assets/projects/mobile-app.jpg',
+    imageUrl: facounting2,
     tags: [
       { name: 'Flutter', color: '#02569B' },
       { name: 'Dart', color: '#0175C2' },
@@ -210,7 +216,7 @@ export const projectsData: Project[] = [
     title: 'Application Paygo',
     description: 'Paygo est une solution tout-en-un qui permet aux entreprises, d\'accepter des paiements marchands via Wave, Orange Money, etc.',
     date: 'Avril 2025',
-    imageUrl: '/assets/projects/dashboard.jpg',
+    imageUrl: paygobanner,
     tags: [
       { name: 'React', color: '#61DAFB' },
       { name: 'D3.js', color: '#F9A03C' },
@@ -223,9 +229,9 @@ export const projectsData: Project[] = [
     id: 'faggu Assurance',
     type: 'Professionnel', // ✅ Bien défini
     title: 'Plateforme Faggu Assurance',
-    description: 'Plateforme de messagerie instantanée avec fonctionnalités de chat en groupe, messages privés et partage de médias.',
+    description: 'Plateforme d’assurance destinée à la protection des biens et des personnes au Sénégal, avec des offres pour les particuliers et les professionnels.',
     date: 'Juillet 2025',
-    imageUrl: '/assets/projects/chatapp.jpg',
+    imageUrl: faggubanner,
     tags: [
       { name: 'Socket.io', color: '#010101' },
       { name: 'React', color: '#61DAFB' },
@@ -236,12 +242,12 @@ export const projectsData: Project[] = [
     category: 'web'
   },
   {
-    id: 'Afkash',
+    id: 'KaayEat',
     type: 'Personnel', // ✅ Bien défini
-    title: 'Plateforme simulative de transfert d\'argent inter-opérateur',
-    description: 'Plateforme qui simule le transfert d\'argent entre différents opérateurs de téléphonie mobile en Afrique.',
-    date: 'En cours',
-    imageUrl: '/assets/projects/ai-learning.jpg',
+    title: 'KaayEat',
+    description: 'Projet de design thinking explorant l\'identité visuelle et l\'expérience utilisateur d\'un restaurant fictif, sans maquette.',
+    date: 'Juillet 2025',
+    imageUrl: kaayeatbanner,
     tags: [
       { name: 'Next.js', color: '#000000' },
       { name: 'Python', color: '#3776AB' },
