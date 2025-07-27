@@ -17,9 +17,9 @@ const Navigation = () => {
   const { navigateToSection } = useNavigation();
   
   const menuItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
+    { id: 'home', label: 'Accueil' },
+    { id: 'about', label: 'A  Propos' },
+    { id: 'skills', label: 'Compétences' },
     { id: 'projects', label: 'Projets' },
     { id: 'testimonials', label: 'Témoignages' },
     { id: 'contact', label: 'Contact' }
