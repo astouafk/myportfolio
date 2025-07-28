@@ -136,7 +136,7 @@ export const HeroTitle = memo(() => {
       
       <div ref={nameRef} className="space-y-2">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white">
-          <p className="text-sm sm:text-base md:text-xl text-white mt-10">JE SUIS</p>
+          {/* <p className="text-sm sm:text-base md:text-xl text-white mt-10">JE SUIS</p> */}
           <span className="text-[#4ADE80]">Astou Fall KANE</span>
         </h1>
       </div>
