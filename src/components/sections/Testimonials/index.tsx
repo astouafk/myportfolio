@@ -505,7 +505,7 @@ const Testimonials = memo(() => {
     <section
       id="testimonials"
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-black flex items-center py-20"
+      className="relative min-h-screen overflow-hidden bg-black flex items-center py-20 mt-44"
     >
       <Suspense fallback={<BackgroundFallback />}>
         <TestimonialsBackground />
