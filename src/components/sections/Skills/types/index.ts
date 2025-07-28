@@ -46,11 +46,7 @@ export const skillsData: Record<SkillsCategory, Skill[]> = {
     { name: 'Git / GitHub / GitLab', level: 85, color: '#F05032' },
     { name: 'Agile / Scrum', level: 75, color: '#4EA7FC' },
     { name: 'UI/UX Design', level: 70, color: '#FF7F50' },
-    { name: 'Figma', level: 70, color: '#F24E1E' },
-    { name: 'Canva', level: 80, color: '#00C4CC' },
     { name: 'Jira/Trello', level: 75, color: '#0052CC' },
-    { name: 'Docker', level: 65, color: '#2496ED' },
-    { name: 'Tests', level: 70, color: '#9B51E0' },
     { name: 'Communication', level: 90, color: '#4ADE80' },
     { name: 'Travail d\'équipe', level: 90, color: '#3B82F6' }
   ]
