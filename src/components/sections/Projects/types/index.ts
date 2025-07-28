@@ -223,22 +223,22 @@ export const projectsData: Project[] = [
     githubUrl: 'https://github.com/astouafk/analytics-dashboard',
     category: 'web'
   },
-  {
-    id: 'faggu Assurance',
-    type: 'Professionnel', // ✅ Bien défini
-    title: 'Plateforme Faggu Assurance',
-    description: 'Plateforme d’assurance destinée à la protection des biens et des personnes au Sénégal, avec des offres pour les particuliers et les professionnels.',
-    date: 'Juillet 2025',
-    imageUrl: faggubanner,
-    tags: [
-      { name: 'Socket.io', color: '#010101' },
-      { name: 'React', color: '#61DAFB' },
-      { name: 'Node.js', color: '#339933' },
-      { name: 'MongoDB', color: '#47A248' }
-    ],
-    demoUrl: 'https://chat-app-demo.com',
-    category: 'web'
-  },
+  // {
+  //   id: 'faggu Assurance',
+  //   type: 'Professionnel', // ✅ Bien défini
+  //   title: 'Plateforme Faggu Assurance',
+  //   description: 'Plateforme d’assurance destinée à la protection des biens et des personnes au Sénégal, avec des offres pour les particuliers et les professionnels.',
+  //   date: 'Juillet 2025',
+  //   imageUrl: faggubanner,
+  //   tags: [
+  //     { name: 'Socket.io', color: '#010101' },
+  //     { name: 'React', color: '#61DAFB' },
+  //     { name: 'Node.js', color: '#339933' },
+  //     { name: 'MongoDB', color: '#47A248' }
+  //   ],
+  //   demoUrl: 'https://chat-app-demo.com',
+  //   category: 'web'
+  // },
   {
     id: 'KaayEat',
     type: 'Personnel', // ✅ Bien défini

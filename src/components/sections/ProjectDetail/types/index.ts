@@ -539,66 +539,66 @@ export const paygoDetail: ProjectDetail = {
 };
 
 // Projet Faggu Assurance
-export const fagguDetail: ProjectDetail = {
-  id: 'faggu Assurance',
-  type: 'Professionnel',
-  title: 'Plateforme Faggu Assurance',
-  description: 'Plateforme digitale d\'assurance avec gestion de polices, sinistres et paiements en ligne.',
-  longDescription: `
-    Faggu Assurance est une plateforme complète de digitalisation du secteur des assurances que j'ai développée pour moderniser l'expérience client dans l'assurance en Afrique. Cette solution transforme les processus traditionnels en offrant une interface web intuitive pour la souscription, la gestion de polices, et le traitement des sinistres.
+// export const fagguDetail: ProjectDetail = {
+//   id: 'faggu Assurance',
+//   type: 'Professionnel',
+//   title: 'Plateforme Faggu Assurance',
+//   description: 'Plateforme digitale d\'assurance avec gestion de polices, sinistres et paiements en ligne.',
+//   longDescription: `
+//     Faggu Assurance est une plateforme complète de digitalisation du secteur des assurances que j'ai développée pour moderniser l'expérience client dans l'assurance en Afrique. Cette solution transforme les processus traditionnels en offrant une interface web intuitive pour la souscription, la gestion de polices, et le traitement des sinistres.
 
-    Le projet répond à un besoin critique du marché africain : rendre l'assurance plus accessible et transparente. La plateforme permet aux assurés de souscrire en ligne, suivre leurs polices en temps réel, déclarer des sinistres avec photos et géolocalisation, et effectuer leurs paiements via mobile money.
+//     Le projet répond à un besoin critique du marché africain : rendre l'assurance plus accessible et transparente. La plateforme permet aux assurés de souscrire en ligne, suivre leurs polices en temps réel, déclarer des sinistres avec photos et géolocalisation, et effectuer leurs paiements via mobile money.
 
-    Développée avec une architecture moderne (React/Node.js), la solution intègre des fonctionnalités avancées comme l'évaluation automatique des risques, la tarification dynamique, et un système de workflow pour le traitement des sinistres. Elle s'adapte aux spécificités réglementaires locales tout en offrant une expérience utilisateur de niveau international.
-  `,
-  date: 'Juillet 2025',
-  imageUrl: faggubanner,
-  tags: [
-    { name: 'Socket.io', color: '#010101' },
-    { name: 'React', color: '#61DAFB' },
-    { name: 'Node.js', color: '#339933' },
-    { name: 'MongoDB', color: '#47A248' }
-  ],
-  demoUrl: 'https://faggu-assurance-demo.com',
-  category: 'web',
-  technologies: [
-    { name: 'React', logo: reactLogo, color: '#61DAFB' },
-    { name: 'TypeScript', logo: typescriptLogo, color: '#3178C6' },
-    { name: 'Node.js', logo: reactLogo, color: '#339933' },
-    { name: 'MongoDB', logo: reactLogo, color: '#47A248' },
-    { name: 'Socket.io', logo: reactLogo, color: '#010101' }
-  ],
-  screenshots: [
-    { id: 'fag1', imageUrl: '/assets/screenshots/faggu/dashboard.png', caption: 'Dashboard assuré avec polices actives' },
-    { id: 'fag2', imageUrl: '/assets/screenshots/faggu/souscription.png', caption: 'Processus de souscription en ligne' },
-    { id: 'fag3', imageUrl: '/assets/screenshots/faggu/sinistres.png', caption: 'Déclaration et suivi des sinistres' },
-    { id: 'fag4', imageUrl: '/assets/screenshots/faggu/paiements.png', caption: 'Interface de paiement multi-méthodes' }
-  ],
-  challenges: [
-    'Intégration avec les systèmes legacy des compagnies d\'assurance',
-    'Digitalisation des processus de souscription complexes',
-    'Évaluation automatique des risques selon les profils locaux',
-    'Gestion des paiements récurrents via mobile money',
-    'Conformité avec les réglementations d\'assurance CIMA'
-  ],
-  solutions: [
-    'APIs d\'intégration robustes avec mapping de données legacy',
-    'Formulaires dynamiques adaptatifs selon le type d\'assurance',
-    'Moteur de règles métier pour l\'évaluation des risques',
-    'Intégration native avec les APIs des opérateurs de paiement',
-    'Architecture de conformité avec audit trails complets'
-  ],
-  keyFeatures: [
-    'Souscription en ligne multi-produits (auto, santé, habitation)',
-    'Gestion complète du cycle de vie des polices',
-    'Déclaration de sinistres avec upload de documents',
-    'Paiements automatiques via mobile money',
-    'Notifications SMS/email en temps réel',
-    'Chat support intégré avec les agents',
-    'Tableau de bord assuré personnalisé',
-    'Interface agent pour gestion clientèle'
-  ]
-};
+//     Développée avec une architecture moderne (React/Node.js), la solution intègre des fonctionnalités avancées comme l'évaluation automatique des risques, la tarification dynamique, et un système de workflow pour le traitement des sinistres. Elle s'adapte aux spécificités réglementaires locales tout en offrant une expérience utilisateur de niveau international.
+//   `,
+//   date: 'Juillet 2025',
+//   imageUrl: faggubanner,
+//   tags: [
+//     { name: 'Socket.io', color: '#010101' },
+//     { name: 'React', color: '#61DAFB' },
+//     { name: 'Node.js', color: '#339933' },
+//     { name: 'MongoDB', color: '#47A248' }
+//   ],
+//   demoUrl: 'https://faggu-assurance-demo.com',
+//   category: 'web',
+//   technologies: [
+//     { name: 'React', logo: reactLogo, color: '#61DAFB' },
+//     { name: 'TypeScript', logo: typescriptLogo, color: '#3178C6' },
+//     { name: 'Node.js', logo: reactLogo, color: '#339933' },
+//     { name: 'MongoDB', logo: reactLogo, color: '#47A248' },
+//     { name: 'Socket.io', logo: reactLogo, color: '#010101' }
+//   ],
+//   screenshots: [
+//     { id: 'fag1', imageUrl: '/assets/screenshots/faggu/dashboard.png', caption: 'Dashboard assuré avec polices actives' },
+//     { id: 'fag2', imageUrl: '/assets/screenshots/faggu/souscription.png', caption: 'Processus de souscription en ligne' },
+//     { id: 'fag3', imageUrl: '/assets/screenshots/faggu/sinistres.png', caption: 'Déclaration et suivi des sinistres' },
+//     { id: 'fag4', imageUrl: '/assets/screenshots/faggu/paiements.png', caption: 'Interface de paiement multi-méthodes' }
+//   ],
+//   challenges: [
+//     'Intégration avec les systèmes legacy des compagnies d\'assurance',
+//     'Digitalisation des processus de souscription complexes',
+//     'Évaluation automatique des risques selon les profils locaux',
+//     'Gestion des paiements récurrents via mobile money',
+//     'Conformité avec les réglementations d\'assurance CIMA'
+//   ],
+//   solutions: [
+//     'APIs d\'intégration robustes avec mapping de données legacy',
+//     'Formulaires dynamiques adaptatifs selon le type d\'assurance',
+//     'Moteur de règles métier pour l\'évaluation des risques',
+//     'Intégration native avec les APIs des opérateurs de paiement',
+//     'Architecture de conformité avec audit trails complets'
+//   ],
+//   keyFeatures: [
+//     'Souscription en ligne multi-produits (auto, santé, habitation)',
+//     'Gestion complète du cycle de vie des polices',
+//     'Déclaration de sinistres avec upload de documents',
+//     'Paiements automatiques via mobile money',
+//     'Notifications SMS/email en temps réel',
+//     'Chat support intégré avec les agents',
+//     'Tableau de bord assuré personnalisé',
+//     'Interface agent pour gestion clientèle'
+//   ]
+// };
 
 // Projet Afkash
 export const kaayEatDetail: ProjectDetail = {
@@ -664,7 +664,7 @@ const projectsDetailData: Record<string, ProjectDetail> = {
   'ecommerce': degloul,
   'mobapp': faCountingDetail,
   'paygo': paygoDetail,
-  'faggu Assurance': fagguDetail,
+  // 'faggu Assurance': fagguDetail,
   'KaayEat': kaayEatDetail
 };
 
