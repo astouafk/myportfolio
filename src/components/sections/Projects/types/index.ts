@@ -128,7 +128,7 @@
 
 // 1️⃣ src/components/sections/Projects/types/index.ts - TYPES ÉTENDUS
 import banner from '../../../../assets/projects/portfolio/banner.png';
-import degloule from '../../../../assets/projects/degloul/degloul.png';
+import degloule from '../../../../assets/projects/degloul/degloul.webp';
 import facounting2 from '../../../../assets/screenshots/facounting/facounting2.png';
 import paygobanner from '../../../../assets/screenshots/paygo/paygo-banner.png';
 import faggubanner from '../../../../assets/screenshots/faggu/faggu-banner.png';
@@ -172,7 +172,7 @@ export const projectsData: Project[] = [
     tags: [
       { name: 'React', color: '#61DAFB' },
       { name: 'TypeScript', color: '#3178C6' },
-      { name: 'Three.js', color: '#000000' },
+      { name: 'Three.js', color: '#61DAFB' },
       { name: 'Tailwind CSS', color: '#06B6D4' }
     ],
     githubUrl: 'https://github.com/astouafk/portfolio',
@@ -190,7 +190,6 @@ export const projectsData: Project[] = [
       { name: 'Dart', color: '#61DAFB' },
       { name: 'Flutter', color: '#339933' },
       { name: 'MongoDB', color: '#47A248' },
-      { name: 'Java', color: '#000000' }
     ],
     githubUrl: 'https://github.com/astouafk/ecommerce',
     category: 'mobile'
@@ -205,7 +204,6 @@ export const projectsData: Project[] = [
     tags: [
       { name: 'Flutter', color: '#02569B' },
       { name: 'Dart', color: '#0175C2' },
-      { name: 'Firebase', color: '#FFCA28' }
     ],
     githubUrl: 'https://github.com/astouafk/fitness-app',
     category: 'mobile'
@@ -249,7 +247,7 @@ export const projectsData: Project[] = [
     date: 'Juillet 2025',
     imageUrl: kaayeatbanner,
     tags: [
-      { name: 'Next.js', color: '#000000' },
+      { name: 'React', color: '#009688' },
       { name: 'Python', color: '#3776AB' },
       { name: 'TensorFlow', color: '#FF6F00' },
       { name: 'FastAPI', color: '#009688' }

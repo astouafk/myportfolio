@@ -343,7 +343,7 @@ const ProjectCard = memo(({ project, viewMode, onClick }: ProjectCardProps) => {
         {/* Footer avec liens */}
         <div className="flex items-center justify-between mt-auto">
           <div className="flex gap-3">
-            {project.githubUrl && (
+            {/* {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
@@ -354,7 +354,7 @@ const ProjectCard = memo(({ project, viewMode, onClick }: ProjectCardProps) => {
               >
                 <Github className="w-5 h-5" />
               </a>
-            )}
+            )} */}
             
             {project.demoUrl && (
               <a

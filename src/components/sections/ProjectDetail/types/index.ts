@@ -220,7 +220,7 @@
 // src/components/sections/ProjectDetail/types/index.ts
 import { Project, ProjectTag, projectsData } from '../../Projects/types';
 import banner from '../../../../assets/projects/portfolio/banner.png';
-import degloule from '../../../../assets/projects/degloul/degloul.png';
+import degloule from '../../../../assets/projects/degloul/degloul.webp';
 import typescriptLogo from '../../../../assets/tech/typescript.svg';
 import threejsLogo from '../../../../assets/tech/threejs.svg';
 import tailwindLogo from '../../../../assets/tech/tailwind.svg';
@@ -232,6 +232,7 @@ import portDemo from '../../../../assets/projects/portfolio/LaDemoDegloul.mp4';
 import flutter from '../../../../assets/tech/flutter.png';
 import reactLogo from '../../../../assets/tech/react.png';
 import firebase from '../../../../assets/tech/firebase.png';
+import mongo from '../../../../assets/tech/mongo.webp';
 
 //portfolio
 import hero from '../../../../assets/screenshots/portfolio/hero.png';
@@ -246,19 +247,34 @@ import degloul1 from '../../../../assets/screenshots/degloul/degloul1.png';
 import degloul2 from '../../../../assets/screenshots/degloul/degloul2.png';
 import degloul3 from '../../../../assets/screenshots/degloul/degloul3.png';
 import degloul4 from '../../../../assets/screenshots/degloul/degloul4.png';
+import degloul5 from '../../../../assets/screenshots/degloul/degloul5.png';
+import degloul6 from '../../../../assets/screenshots/degloul/degloul6.png';
+import degloul7 from '../../../../assets/screenshots/degloul/degloul7.png';
 
 //facounting
 import facounting1 from '../../../../assets/screenshots/facounting/facounting1.jpeg';
 import facounting2 from '../../../../assets/screenshots/facounting/facounting2.png';
+import facounting3 from '../../../../assets/screenshots/facounting/facounting3.png';
+import facounting4 from '../../../../assets/screenshots/facounting/facounting4.png';
 
 //paygo
 import paygobanner from '../../../../assets/screenshots/paygo/paygo-banner.png';
+import paygo1 from '../../../../assets/screenshots/paygo/paygo1.png';
+import paygo2 from '../../../../assets/screenshots/paygo/paygo2.png';
+import paygo3 from '../../../../assets/screenshots/paygo/paygo3.png';
+import paygo4 from '../../../../assets/screenshots/paygo/paygo4.png';
 
 //faggu
 import faggubanner from '../../../../assets/screenshots/faggu/faggu-banner.png';
 
 //kaayeat
 import kaayeatbanner from '../../../../assets/screenshots/kaayeat/kaayeat-banner.png';
+import kouakou from '../../../../assets/screenshots/kaayeat/kouakou.webm';
+import kaayeat1 from '../../../../assets/screenshots/kaayeat/kaayeat1.png';
+import kaayeat2 from '../../../../assets/screenshots/kaayeat/kaayeat2.png';
+import kaayeat3 from '../../../../assets/screenshots/kaayeat/kaayeat3.png';
+import kaayeat4 from '../../../../assets/screenshots/kaayeat/kaayeat4.png';
+import kaayeat5 from '../../../../assets/screenshots/kaayeat/kaayeat5.png';
 
 // Types pour les captures d'écran
 export interface Screenshot {
@@ -305,7 +321,7 @@ export const portfolioDetail: ProjectDetail = {
   tags: [
     { name: 'React', color: '#61DAFB' },
     { name: 'TypeScript', color: '#3178C6' },
-    { name: 'Three.js', color: '#000000' },
+    { name: 'Three.js', color: '#0175C2' },
     { name: 'Tailwind CSS', color: '#06B6D4' }
   ],
   githubUrl: 'https://github.com/astouafk/portfolio',
@@ -354,59 +370,51 @@ export const degloul: ProjectDetail = {
   type: 'Professionnel',
   description: 'Application mobile de livres audios, écoute et lecture synchronisée.',
   longDescription: `
-    Degloul est une plateforme innovante de streaming audio que j'ai contribué à développer pour répondre aux nouveaux usages culturels, en particulier en Afrique où l'oralité tient une place essentielle. Ce projet met en avant l'accès inclusif à la connaissance à travers une large gamme de contenus audios : livres audios, podcasts thématiques, revues de presse et contenus éducatifs. L'objectif est clair : permettre à chacun d'apprendre autrement, même en déplacement, sans contrainte de lecture traditionnelle.
- 
-    Côté technique, la solution combine une architecture moderne avec une interface intuitive, pensée pour le mobile-first. L'équipe a intégré des technologies web robustes pour garantir une expérience fluide, sécurisée et accessible. Une attention particulière a été portée à la valorisation des contenus locaux et à la collaboration avec narrateurs, auteurs, et créateurs de contenus africains.
- 
-    Degloul est bien plus qu'une simple bibliothèque audio : c'est une passerelle vers un savoir vivant, moderne et enraciné dans notre culture.
-  `,
+  Degloul est une plateforme innovante de streaming audio que j'ai contribué à développer pour répondre aux nouveaux usages culturels, en particulier en Afrique où l'oralité tient une place essentielle. Ce projet, porté par la startup Degloul, met en avant l'accès inclusif à la connaissance à travers une large gamme de contenus audios : livres audios, podcasts thématiques, revues de presse et contenus éducatifs. L'objectif est clair : permettre à chacun d'apprendre autrement, même en déplacement, sans contrainte de lecture traditionnelle.
+
+  Côté technique, la solution combine une architecture moderne avec une interface intuitive, pensée pour le mobile-first. L'équipe a intégré des technologies web robustes pour garantir une expérience fluide, sécurisée et accessible. Une attention particulière a été portée à la valorisation des contenus locaux et à la collaboration avec narrateurs, auteurs, et créateurs de contenus africains.
+
+  Degloul est bien plus qu'une simple bibliothèque audio : c'est une passerelle vers un savoir vivant, moderne et enraciné dans notre culture.
+`,
   date: 'Janvier 2025',
   imageUrl: degloule,
   tags: [
     { name: 'Flutter', color: '#02569B' },
     { name: 'Dart', color: '#0175C2' },
-    { name: 'Firebase', color: '#FFCA28' },
-    { name: 'Node.js', color: '#339933' }
+    { name: 'MongoDB', color: '#FFCA28' },
   ],
   githubUrl: 'https://github.com/astouafk/degloul',
   demoUrl: 'https://degloul-demo.com',
-  videoUrl: portDemo,
+  // videoUrl: portDemo,
   featured: true,
   category: 'mobile',
   technologies: [
     { name: 'Flutter', logo: reactLogo, color: '#02569B' },
     { name: 'Dart', logo: dartLogo, color: '#0175C2' },
-    { name: 'Firebase', logo: reactLogo, color: '#FFCA28' },
-    { name: 'Node.js', logo: reactLogo, color: '#339933' },
+    { name: 'MongoDb', logo: mongo, color: '#FFCA28' },
   ],
   screenshots: [
-    { id: 'scr1', imageUrl: degloul1, caption: 'DEGLOUL' },
-    { id: 'scr2', imageUrl: degloul2, caption: 'OBKECTIF' },
-    { id: 'scr3', imageUrl: degloul3, caption: 'VISUEL' },
-    { id: 'scr4', imageUrl: degloul4, caption: 'VISUEL BIS' },
+    { id: 'scr2', imageUrl: degloul2, caption: 'OBJECTIF' },
+    { id: 'scr3', imageUrl: degloul5, caption: 'VISUEL Audio' },
+    { id: 'scr4', imageUrl: degloul7, caption: 'VISUEL Texte' },
+    { id: 'scr5', imageUrl: degloul6, caption: 'VISUEL Texte' }
   ],
   challenges: [
     'Gestion du streaming audio haute qualité avec connexions variables',
     'Synchronisation lecture/écoute pour une expérience hybride',
     'Monétisation équitable pour les créateurs de contenu locaux',
     'Optimisation pour les appareils Android bas de gamme',
-    'Négociation des droits d\'auteur avec les éditeurs africains'
   ],
   solutions: [
     'Implémentation d\'un système de cache intelligent et streaming adaptatif',
     'Développement d\'un algorithme de synchronisation texte-audio en temps réel',
-    'Création d\'un modèle de revenus partagés transparent',
     'Optimisation des performances avec compression audio avancée',
-    'Partenariats stratégiques avec maisons d\'édition locales'
   ],
   keyFeatures: [
-    'Streaming audio haute qualité avec mode hors-ligne',
+    'Streaming audio haute qualité',
     'Synchronisation lecture/écoute en temps réel',
     'Catalogue riche : littérature, religion, sciences, actualité',
-    'Interface multilingue (français, wolof, anglais)',
-    'Système de recommandations personnalisées',
     'Communauté d\'écoute et partage d\'expériences',
-    'Support des créateurs locaux et rémunération équitable'
   ]
 };
 
@@ -417,11 +425,13 @@ export const faCountingDetail: ProjectDetail = {
   title: 'Application Fa-Counting',
   description: 'Application mobile d\'inventaire pour le recensement des matériaux d\'entreprise.',
   longDescription: `
-    Fa-Counting est une application mobile innovante que j'ai développée pour digitaliser et optimiser la gestion d'inventaire d'une entreprise ivoirienne. Face aux défis logistiques et de traçabilité que rencontrent de nombreuses PME africaines, cette solution propose une approche moderne et intuitive pour le recensement des matériaux et équipements.
+  Fa-Counting est une application mobile innovante développée par la startup Asma-Software, à laquelle j'ai contribué en tant que développeur mobile. Elle vise à digitaliser et optimiser la gestion d'inventaire d'une entreprise ivoirienne. Face aux défis logistiques et de traçabilité que rencontrent de nombreuses PME africaines, cette solution propose une approche moderne et intuitive pour le recensement des matériaux et équipements.
 
-    L'application permet une saisie rapide et précise des données d'inventaire via des fonctionnalités de scan de codes-barres et prise de photos. Elle s'adapte parfaitement aux contraintes locales : connectivité intermittente, diversité des appareils, et besoins spécifiques du marché.
+  J'ai travaillé sur la conception et le développement de l'application mobile, en assurant une interface fluide et adaptée aux utilisateurs sur le terrain. L'application communique avec une API Java structurée en microservices, garantissant performance, évolutivité et sécurité des échanges entre le mobile et le système central.
 
-  `,
+  L'application permet une saisie rapide et précise des données d'inventaire via des fonctionnalités de scan de codes-barres et de prise de photos. Elle s'adapte parfaitement aux contraintes locales : connectivité intermittente, diversité des appareils, et besoins spécifiques du marché.
+`,
+
   date: 'Juin 2025',
   imageUrl: facounting2,
   tags: [
@@ -436,33 +446,27 @@ export const faCountingDetail: ProjectDetail = {
     { name: 'Dart', logo: dartLogo, color: '#0175C2' },
   ],
   screenshots: [
-    { id: 'fa1', imageUrl: facounting1, caption: 'Dashboard principal avec statistiques' },
-    { id: 'fa2', imageUrl: '/assets/screenshots/facounting/scan.png', caption: 'Interface de scan de codes-barres' },
-    { id: 'fa3', imageUrl: '/assets/screenshots/facounting/inventory.png', caption: 'Liste d\'inventaire avec filtres' },
-    { id: 'fa4', imageUrl: '/assets/screenshots/facounting/reports.png', caption: 'Génération de rapports détaillés' }
+    { id: 'fa1', imageUrl: facounting1, caption: 'Onboarding' },
+    { id: 'fa3', imageUrl: facounting3, caption: 'Connexion' },
+    { id: 'fa4', imageUrl: facounting4, caption: 'Validation Licence' },
+    // { id: 'fa4', imageUrl: '/assets/screenshots/facounting/reports.png', caption: 'Génération de rapports détaillés' }
   ],
   challenges: [
-    'Fonctionnement optimal en mode hors-ligne avec synchronisation différée',
-    'Adaptation aux contraintes réseau en Côte d\'Ivoire',
     'Interface intuitive pour utilisateurs peu familiers avec le digital',
     'Gestion de grandes quantités de données d\'inventaire',
     'Optimisation pour appareils Android d\'entrée de gamme'
   ],
   solutions: [
-    'Base de données locale SQLite avec synchronisation cloud intelligente',
+    'Base de données relationnelle pour structurer les données d\'inventaire',
     'Interface progressive adaptée aux niveaux de connectivité',
-    'Design UX simplifié avec guides visuels et tutoriels intégrés',
+    'Design UX simplifié',
     'Pagination et cache optimisés pour les performances',
-    'Tests extensifs sur appareils bas de gamme du marché local'
   ],
   keyFeatures: [
-    'Scan de codes-barres et QR codes natif',
-    'Mode hors-ligne complet avec synchronisation automatique',
-    'Géolocalisation pour traçabilité géographique',
-    'Prise de photos et annotations visuelles',
-    'Rapports Excel exportables',
-    'Interface multilingue (français, anglais)',
-    'Tableau de bord avec analytics en temps réel'
+    'Scan de codes-barres et QR codes pour les immobilisations',
+    'Possibilité de remplir le formulaire pour les codes barres défectueux',
+    'Prise de photos pour matérialiser l\'état des immobilisations',
+    'Historiques des immobilisations scannées',
   ]
 };
 
@@ -473,57 +477,64 @@ export const paygoDetail: ProjectDetail = {
   title: 'Application Paygo',
   description: 'Paygo est une solution tout-en-un qui permet aux entreprises d\'accepter des paiements marchands via Wave, Orange Money, etc.',
   longDescription: `
-  Paygo est une solution fintech conçue pour simplifier les paiements digitaux en Afrique de l’Ouest, en intégrant les principaux opérateurs de paiement mobile (Wave, Orange Money, etc) dans une plateforme unifiée.
+  Paygo est une solution fintech développée par la société MobiDev, conçue pour simplifier les paiements digitaux en Afrique de l’Ouest en unifiant les services des principaux opérateurs de paiement mobile (Wave, Orange Money, etc.) au sein d’une seule plateforme.
 
-  J’ai participé au développement de la partie mobile de l’application, en mettant un point d’honneur à l’adoption de bonnes pratiques pour garantir une expérience fluide, intuitive et adaptée aux besoins des utilisateurs. J’ai également contribué à la mise en place de fonctionnalités facilitant l’accès à l’information, comme l’import et l’export de rapports.
+  J’ai contribué au développement de la partie mobile de l’application, en mettant l’accent sur l’expérience utilisateur, les bonnes pratiques de développement, et des fonctionnalités clés telles que l’import/export de rapports. L’objectif était de proposer un outil fluide, accessible et parfaitement adapté aux réalités du terrain.
 
-  L’objectif principal était d’offrir un outil mobile performant, capable de s’adapter à différents contextes d’usage, tout en assurant une cohérence fonctionnelle avec l’écosystème global de la plateforme.
+  La solution Paygo se distingue par plusieurs avantages majeurs :
+
+  • **Solution Tout-en-Un**  
+  Gérer les paiements, décaissements et la comptabilité à partir d’une seule application.
+
+  • **Mise en relation pour financement**  
+  Grâce aux rapports de transactions, Paygo facilite la mise en relation avec les banques et institutions financières pour accéder à des financements.
+
+  • **Gain de Temps**  
+  Automatisation des transactions et des processus comptables pour se concentrer sur le développement de l’entreprise.
+
+  • **Sécurité Maximale**  
+  Données protégées par chiffrement, sécurité de pointe et authentification multi-facteur.
+
+  Ce projet m’a permis de contribuer à une plateforme à fort impact, avec une vision claire : accélérer la transformation numérique du secteur financier africain à travers des outils mobiles efficaces et sécurisés.
 `,
+
   date: 'Avril 2025',
   imageUrl:paygobanner,
   tags: [
-    { name: 'React', color: '#61DAFB' },
-    { name: 'D3.js', color: '#F9A03C' },
-    { name: 'API REST', color: '#0096AA' }
+    { name: 'Flutter', color: '#61DAFB' },
+    { name: 'Dart', color: '#F9A03C' },
+    { name: 'MongoDB', color: '#0096AA' }
   ],
   githubUrl: 'https://github.com/astouafk/analytics-dashboard',
   category: 'web',
   technologies: [
-    { name: 'React', logo: reactLogo, color: '#61DAFB' },
-    { name: 'TypeScript', logo: typescriptLogo, color: '#3178C6' },
-    { name: 'D3.js', logo: reactLogo, color: '#F9A03C' },
-    { name: 'API REST', logo: reactLogo, color: '#0096AA' },
-    { name: 'Node.js', logo: reactLogo, color: '#339933' }
+    { name: 'Flutter', logo: flutter, color: '#61DAFB' },
+    { name: 'Dart', logo: dartLogo, color: '#3178C6' },
+    { name: 'MongoDB', logo: mongo, color: '#F9A03C' }
   ],
   screenshots: [
-    { id: 'pay1', imageUrl: '/assets/screenshots/paygo/dashboard.png', caption: 'Dashboard marchand avec analytics' },
-    { id: 'pay2', imageUrl: '/assets/screenshots/paygo/transactions.png', caption: 'Historique des transactions en temps réel' },
-    { id: 'pay3', imageUrl: '/assets/screenshots/paygo/integration.png', caption: 'Interface d\'intégration API' },
-    { id: 'pay4', imageUrl: '/assets/screenshots/paygo/reports.png', caption: 'Rapports financiers détaillés' }
+    { id: 'pay1', imageUrl: paygo4, caption: 'Dashboard marchand avec analytics' },
+    { id: 'pay2', imageUrl: paygo2, caption: 'Historique des transactions en temps réel' },
+    { id: 'pay3', imageUrl: paygo1, caption: 'Interface d\'intégration API' },
+    { id: 'pay4', imageUrl: paygo3, caption: 'Rapports financiers détaillés' }
   ],
   challenges: [
     'Intégration avec multiple APIs de paiement aux formats différents',
-    'Gestion de la latence et des timeouts réseau en Afrique',
+    'Gestion de la latence et des timeouts',
     'Réconciliation automatique des transactions multi-opérateurs',
     'Conformité réglementaire avec les autorités monétaires locales',
-    'Sécurisation des données financières sensibles'
+    'Sécurisation des données sensibles'
   ],
   solutions: [
     'Architecture d\'adaptateurs pour standardiser les APIs des opérateurs',
     'Système de retry intelligent avec fallback automatique',
-    'Algorithmes de matching avancés pour la réconciliation',
-    'Implémentation des standards PCI DSS et réglementations UEMOA',
-    'Chiffrement end-to-end et tokenisation des données sensibles'
+    'Respect des standards et normes BCEAO',
   ],
   keyFeatures: [
     'Intégration unifiée avec tous les opérateurs de paiement mobile',
-    'Dashboard temps réel avec analytics avancés',
-    'API REST complète pour intégration e-commerce',
     'Réconciliation automatique des transactions',
-    'Gestion des disputes et remboursements',
-    'Rapports financiers personnalisables',
-    'Support multi-devises (FCFA, USD, EUR)',
-    'SDK mobile pour intégration rapide'
+    'Rapports financiers personnalisables format excel pdf',
+    'Système d\'internationalisation intégré pour les langues anglaise et française',
   ]
 };
 
@@ -604,7 +615,7 @@ export const kaayEatDetail: ProjectDetail = {
   `,
   date: 'Terminé',
   imageUrl: kaayeatbanner,
-  videoUrl: '/assets/videos/kaayeat.mp4',
+  videoUrl: kouakou,
   tags: [
     { name: 'Design Thinking', color: '#FF6B6B' },
     { name: 'UX Research', color: '#4ECDC4' },
@@ -614,20 +625,20 @@ export const kaayEatDetail: ProjectDetail = {
   inProgress: false,
   category: 'web',
   technologies: [
-    { name: 'Figma', logo: reactLogo, color: '#F24E1E' },
-    { name: 'Miro', logo: reactLogo, color: '#FFD02F' },
-    { name: 'Adobe Creative', logo: reactLogo, color: '#FF0000' },
-    { name: 'Canva', logo: reactLogo, color: '#00C4CC' }
+    { name: 'React', logo: reactLogo, color: '#F24E1E' },
+    { name: 'Three', logo: threejsLogo, color: '#FFD02F' },
+    { name: 'Framer-motion', logo: framerLogo, color: '#FF0000' },
   ],
   screenshots: [
-    { id: 'kay1', imageUrl: '/assets/screenshots/kaayeat/brandboard.png', caption: 'Planche d\'identité visuelle' },
-    { id: 'kay2', imageUrl: '/assets/screenshots/kaayeat/personas.png', caption: 'Définition des personas clients' },
-    { id: 'kay3', imageUrl: '/assets/screenshots/kaayeat/journey.png', caption: 'Customer journey mapping' },
-    { id: 'kay4', imageUrl: '/assets/screenshots/kaayeat/concepts.png', caption: 'Concepts visuels explorés' }
+    { id: 'kay1', imageUrl: kaayeat1, caption: 'Hero' },
+    { id: 'kay2', imageUrl: kaayeat2, caption: 'Menu en cartes' },
+    { id: 'kay3', imageUrl: kaayeat3, caption: 'A propos' },
+    { id: 'kay4', imageUrl: kaayeat4, caption: 'Specialites' },
+    { id: 'kay4', imageUrl: kaayeat5, caption: 'Contact/Chef' }
+
   ],
   challenges: [
     'Définition d\'une identité de marque distinctive dans un marché saturé',
-    'Création de personas réalistes sans données terrain',
     'Équilibre entre authenticité culturelle et modernité',
     'Conceptualisation d\'une expérience cohérente sans prototype',
     'Différenciation par rapport aux chaînes de restauration existantes'
@@ -635,19 +646,16 @@ export const kaayEatDetail: ProjectDetail = {
   solutions: [
     'Recherche approfondie sur les tendances de la restauration locale',
     'Méthodologie de design thinking structurée et itérative',
-    'Création d\'un univers visuel inspiré de la culture sénégalaise moderne',
+    'Création d\'un univers visuel inspiré de la diversité des cultures culinaires',
     'Développement d\'une charte graphique complète et modulaire',
     'Focus sur l\'expérience émotionnelle plutôt que fonctionnelle'
   ],
   keyFeatures: [
     'Identité visuelle complète (logo, couleurs, typographie)',
-    'Définition de personas et parcours clients',
     'Concept d\'expérience restaurant holistique',
-    'Charte graphique et guidelines de marque',
     'Exploration de différentes déclinaisons visuelles',
     'Positionnement stratégique de la marque',
     'Vision conceptuelle de l\'espace physique',
-    'Documentation complète du processus créatif'
   ]
 };
 // Créer un objet qui contient tous les détails des projets

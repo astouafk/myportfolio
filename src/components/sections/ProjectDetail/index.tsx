@@ -642,7 +642,7 @@ const ProjectDetailPage = memo(() => {
             
             {/* Liens d'action */}
             <div className="flex flex-wrap gap-3">
-              {project.githubUrl && (
+              {/* {project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
@@ -653,9 +653,9 @@ const ProjectDetailPage = memo(() => {
                   <Github className="w-4 h-4" />
                   Code source
                 </a>
-              )}
+              )} */}
               
-              {project.demoUrl && (
+              {/* {project.demoUrl && (
                 <a
                   href={project.demoUrl}
                   target="_blank"
@@ -666,7 +666,7 @@ const ProjectDetailPage = memo(() => {
                   <ExternalLink className="w-4 h-4" />
                   Démo en ligne
                 </a>
-              )}
+              )} */}
             </div>
           </div>
         </motion.div>
