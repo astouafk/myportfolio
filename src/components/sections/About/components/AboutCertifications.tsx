@@ -126,6 +126,66 @@ export const AboutCertifications = memo(() => {
 
   return (
     <div className="space-y-8">
+        {/* 🎨 Pagination PROFESSIONNELLE */}
+        {totalPages > 1 && (
+        <motion.div 
+          className="flex items-center justify-center gap-6"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
+          <motion.button
+            onClick={prevPage}
+            className="w-12 h-12 rounded-full flex items-center justify-center
+              bg-gradient-to-r from-[#4ADE80] to-[#22D3EE] text-black font-bold
+              shadow-lg shadow-[#4ADE80]/20 border-2 border-white/10"
+            whileHover={{ 
+              scale: 1.05,
+              rotate: -3,
+              boxShadow: "0 0 25px rgba(74, 222, 128, 0.5)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </motion.button>
+          
+          <motion.div 
+            className="px-4 py-2 bg-black/30 backdrop-blur-sm border border-[#4ADE80]/30 
+                       rounded-full text-sm text-[#4ADE80] font-medium"
+            animate={!isReducedMotion ? {
+              boxShadow: [
+                '0 0 0 rgba(74, 222, 128, 0)',
+                '0 0 15px rgba(74, 222, 128, 0.2)',
+                '0 0 0 rgba(74, 222, 128, 0)'
+              ]
+            } : {}}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+             {currentPage + 1} / {totalPages}
+          </motion.div>
+          
+          <motion.button
+            onClick={nextPage}
+            className="w-12 h-12 rounded-full flex items-center justify-center
+              bg-gradient-to-r from-[#22D3EE] to-[#4ADE80] text-black font-bold
+              shadow-lg shadow-[#22D3EE]/20 border-2 border-white/10"
+            whileHover={{ 
+              scale: 1.05,
+              rotate: 3,
+              boxShadow: "0 0 25px rgba(34, 211, 238, 0.5)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            <ArrowRight className="w-5 h-5" />
+          </motion.button>
+        </motion.div>
+      )}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage}
@@ -303,66 +363,6 @@ export const AboutCertifications = memo(() => {
         </motion.div>
       </AnimatePresence>
       
-      {/* 🎨 Pagination PROFESSIONNELLE */}
-      {totalPages > 1 && (
-        <motion.div 
-          className="flex items-center justify-center gap-6"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          <motion.button
-            onClick={prevPage}
-            className="w-12 h-12 rounded-full flex items-center justify-center
-              bg-gradient-to-r from-[#4ADE80] to-[#22D3EE] text-black font-bold
-              shadow-lg shadow-[#4ADE80]/20 border-2 border-white/10"
-            whileHover={{ 
-              scale: 1.05,
-              rotate: -3,
-              boxShadow: "0 0 25px rgba(74, 222, 128, 0.5)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </motion.button>
-          
-          <motion.div 
-            className="px-4 py-2 bg-black/30 backdrop-blur-sm border border-[#4ADE80]/30 
-                       rounded-full text-sm text-[#4ADE80] font-medium"
-            animate={!isReducedMotion ? {
-              boxShadow: [
-                '0 0 0 rgba(74, 222, 128, 0)',
-                '0 0 15px rgba(74, 222, 128, 0.2)',
-                '0 0 0 rgba(74, 222, 128, 0)'
-              ]
-            } : {}}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            Page {currentPage + 1} / {totalPages}
-          </motion.div>
-          
-          <motion.button
-            onClick={nextPage}
-            className="w-12 h-12 rounded-full flex items-center justify-center
-              bg-gradient-to-r from-[#22D3EE] to-[#4ADE80] text-black font-bold
-              shadow-lg shadow-[#22D3EE]/20 border-2 border-white/10"
-            whileHover={{ 
-              scale: 1.05,
-              rotate: 3,
-              boxShadow: "0 0 25px rgba(34, 211, 238, 0.5)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ArrowRight className="w-5 h-5" />
-          </motion.button>
-        </motion.div>
-      )}
     </div>
   );
 });
