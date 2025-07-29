@@ -348,12 +348,12 @@ const Footer = memo(() => {
       value: 'astou.afk.dev@gmail.com',
       href: 'mailto:astou.afk.dev@gmail.com'
     },
-    {
-      icon: <Phone className="w-4 h-4" />,
-      label: 'Téléphone',
-      value: '+221 77 XXX XX XX',
-      href: 'tel:+221XXXXXXXX'
-    },
+    // {
+    //   icon: <Phone className="w-4 h-4" />,
+    //   label: 'Téléphone',
+    //   value: '+221 77 XXX XX XX',
+    //   href: 'tel:+221XXXXXXXX'
+    // },
     {
       icon: <MapPin className="w-4 h-4" />,
       label: 'Localisation',

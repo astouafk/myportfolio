@@ -513,10 +513,10 @@ export const paygoDetail: ProjectDetail = {
     { name: 'MongoDB', logo: mongo, color: '#F9A03C' }
   ],
   screenshots: [
-    { id: 'pay1', imageUrl: paygo4, caption: 'Dashboard marchand avec analytics' },
-    { id: 'pay2', imageUrl: paygo2, caption: 'Historique des transactions en temps réel' },
-    { id: 'pay3', imageUrl: paygo1, caption: 'Interface d\'intégration API' },
-    { id: 'pay4', imageUrl: paygo3, caption: 'Rapports financiers détaillés' }
+    { id: 'pay1', imageUrl: paygo4, caption: 'site' },
+    { id: 'pay2', imageUrl: paygo2, caption: 'page de connexion' },
+    { id: 'pay3', imageUrl: paygo1, caption: 'page d\'inscription' },
+    { id: 'pay4', imageUrl: paygo3, caption: 'accueil' }
   ],
   challenges: [
     'Intégration avec multiple APIs de paiement aux formats différents',
