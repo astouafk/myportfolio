@@ -12,12 +12,6 @@ const ContactInfo = memo(() => {
       value: 'asfallkane@gmail.com',
       href: 'mailto:astou.kane@example.com'
     },
-    // {
-    //   icon: <Phone className="w-5 h-5 text-[#4ADE80]" />,
-    //   label: 'Téléphone',
-    //   value: '+221 77 359 34 71',
-    //   href: 'tel:+33600000000'
-    // },
     {
       icon: <MapPin className="w-5 h-5 text-[#4ADE80]" />,
       label: 'Localisation',

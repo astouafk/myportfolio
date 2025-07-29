@@ -15,7 +15,7 @@ const Projects = memo(() => {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const { navigateToSection } = useNavigation(); // 🎯 Hook centralisé
+  const { navigateToSection } = useNavigation(); 
   
   const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
   const isContentInView = useInView(contentRef, { once: true, amount: 0.1 });
@@ -24,7 +24,7 @@ const Projects = memo(() => {
   const featuredProjects = projectsData.slice(0, 4);
   const hasMoreProjects = projectsData.length > 4;
   
-  // 🎯 SIMPLIFICATION : Navigation centralisée vers la page projets
+  // SIMPLIFICATION : Navigation centralisée vers la page projets
   const handleViewAllProjects = () => {
     navigateToSection('projects', { page: 'projects' });
   };

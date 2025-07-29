@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useInView } from 'framer-motion';
 
-// 🎨 Composant pour les particules flottantes PROFESSIONNELLES
+// Composant pour les particules flottantes PROFESSIONNELLES
 const FloatingParticles = memo(() => {
   const pointsRef = useRef<THREE.Points>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -29,7 +29,7 @@ const FloatingParticles = memo(() => {
     };
   }, []);
   
-  // ⚡ OPTIMISATION PRO : Nombre ajusté pour être visible mais performant
+  // OPTIMISATION PRO : Nombre ajusté pour être visible mais performant
   const count = isReducedMotion ? 0 : (isMobile ? 60 : 120); // Equilibre visuel/performance
   
   // Génération optimisée des positions
@@ -39,7 +39,7 @@ const FloatingParticles = memo(() => {
     const positionsArray = new Float32Array(count * 3);
     
     for (let i = 0; i < count; i++) {
-      // 🎨 Distribution plus artistique
+      // Distribution plus artistique
       positionsArray[i * 3] = (Math.random() - 0.5) * 16;
       positionsArray[i * 3 + 1] = (Math.random() - 0.5) * 16;
       positionsArray[i * 3 + 2] = (Math.random() - 0.5) * 4;
@@ -54,16 +54,16 @@ const FloatingParticles = memo(() => {
     
     const now = state.clock.getElapsedTime();
     
-    // 🎨 Throttling adaptatif : Plus fluide sur desktop, plus économe sur mobile
+    // Throttling adaptatif : Plus fluide sur desktop, plus économe sur mobile
     const throttleInterval = isMobile ? 0.033 : 0.016; // 30fps mobile, 60fps desktop
     if (now - lastUpdateTime.current < throttleInterval) return;
     lastUpdateTime.current = now;
     
-    // 🎨 Rotation professionnelle et fluide
+    // Rotation professionnelle et fluide
     pointsRef.current.rotation.y += delta * 0.015;
     pointsRef.current.rotation.x += delta * 0.008;
     
-    // 🎨 Effet d'ondulation subtil et professionnel
+    // Effet d'ondulation subtil et professionnel
     const position = pointsRef.current.geometry.attributes.position;
     const time = state.clock.getElapsedTime();
     
@@ -73,7 +73,7 @@ const FloatingParticles = memo(() => {
     const endIndex = startIndex + Math.floor(updateFraction * count * 3);
     
     for (let i = startIndex; i < endIndex; i += 3) {
-      // 🎨 Ondulation plus douce et professionnelle
+      // Ondulation plus douce et professionnelle
       position.array[i + 1] += Math.sin(time * 0.5 + position.array[i] * 0.3) * 0.008;
     }
     
@@ -93,19 +93,19 @@ const FloatingParticles = memo(() => {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={isMobile ? 0.025 : 0.035} // 🎨 Taille optimale pour la visibilité
+        size={isMobile ? 0.025 : 0.035} 
         color="#4ADE80"
         transparent
-        opacity={0.7} // 🎨 Plus visible mais élégant
-        sizeAttenuation={!isMobile} // Performance sur mobile
+        opacity={0.7} 
+        sizeAttenuation={!isMobile} 
         depthWrite={false}
-        blending={THREE.AdditiveBlending} // 🎨 Effet professionnel
+        blending={THREE.AdditiveBlending} 
       />
     </points>
   );
 });
 
-// 🎨 Composant de motif hexagonal PROFESSIONNEL
+// Composant de motif hexagonal PROFESSIONNEL
 const HexagonPattern = memo(() => {
   return (
     <div className="absolute inset-0 overflow-hidden z-0 opacity-12"> {/* ⚡ Légèrement plus visible */}
@@ -118,7 +118,7 @@ const HexagonPattern = memo(() => {
             top: `${(i + 1) * 8}%`,
             left: 0,
             right: 0,
-            opacity: 0.3 - i * 0.015 // 🎨 Dégradé plus subtil
+            opacity: 0.3 - i * 0.015 
           }}
         />
       ))}
@@ -132,7 +132,7 @@ const HexagonPattern = memo(() => {
             left: `${(i + 1) * 6.25}%`,
             top: 0,
             bottom: 0,
-            opacity: 0.3 - i * 0.008 // 🎨 Dégradé plus subtil
+            opacity: 0.3 - i * 0.008 
           }}
         />
       ))}

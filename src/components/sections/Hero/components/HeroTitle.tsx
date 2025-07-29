@@ -64,7 +64,7 @@ export const HeroTitle = memo(() => {
     }
     
     if (isReducedMotion) {
-      // 🔥 Mode sans animation : apparition instantanée
+      // Mode sans animation : apparition instantanée
       if (nameRef.current) {
         gsap.set(nameRef.current, { opacity: 1, y: 0 });
       }
@@ -100,7 +100,7 @@ export const HeroTitle = memo(() => {
         typedInstanceRef.current.destroy();
       }
       
-      // 🔥 Configuration simplifiée et plus rapide
+      // Configuration simplifiée et plus rapide
       typedInstanceRef.current = new Typed(typedElementRef.current, {
         strings: [
           "Frontend Developer",
@@ -112,7 +112,7 @@ export const HeroTitle = memo(() => {
         backSpeed: isReducedMotion ? 0 : (isMobile ? 40 : 30),
         backDelay: isReducedMotion ? 500 : 1000, // ⚡ Délai réduit
         loop: true,
-        showCursor: !isReducedMotion, // 🔥 Pas de curseur si animations réduites
+        showCursor: !isReducedMotion, // Pas de curseur si animations réduites
         cursorChar: '|',
         smartBackspace: true,
         startDelay: isReducedMotion ? 0 : 800 // ⚡ Démarrage plus rapide
@@ -132,7 +132,6 @@ export const HeroTitle = memo(() => {
 
   return (
     <div className="space-y-4 sm:space-y-6 md:space-y-8 relative mb-10">
-      {/* ❌ SUPPRIMÉ : Badge "Available for freelance" (distraction) */}
       
       <div ref={nameRef} className="space-y-2">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white">

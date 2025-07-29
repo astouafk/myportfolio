@@ -71,17 +71,6 @@ const Contact = memo(() => {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="text-center mt-16 md:mt-24"
         >
-       
-          {/* <a 
-            href="https://calendly.com/votrecompte" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-[#4ADE80]/10 border border-[#4ADE80]/50 
-              text-[#4ADE80] rounded-full hover:bg-[#4ADE80]/20 transition-colors 
-              inline-block font-medium"
-          >
-            Planifier un appel visio?
-          </a> */}
         </motion.div>
       </div>
       

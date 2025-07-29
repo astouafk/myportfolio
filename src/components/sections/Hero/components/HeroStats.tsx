@@ -72,7 +72,7 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
     }
     
     if (isReducedMotion) {
-      // 🔥 Mode sans animation : apparition instantanée
+      // Mode sans animation : apparition instantanée
       gsap.set(".stat-item", { opacity: 1, y: 0 });
       gsap.set(".social-item", { opacity: 1, scale: 1 });
     } else {
@@ -95,9 +95,9 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
         { 
           opacity: 1, 
           scale: 1, 
-          stagger: 0.05, // ⚡ Stagger réduit
-          duration: 0.4, // ⚡ Plus rapide
-          ease: "back.out(1.2)" // ⚡ Ease moins aggressive
+          stagger: 0.05, 
+          duration: 0.4, 
+          ease: "back.out(1.2)" 
         },
         "-=0.2"
       );
@@ -153,7 +153,6 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
             className="stat-item text-center p-2 sm:p-3 md:p-4 bg-white/5 rounded-lg md:rounded-xl
               backdrop-blur-sm border border-white/10 hover:border-[#4ADE80]/30 
               transition-all duration-300"
-            // ❌ SUPPRIMÉ : hover:transform hover:scale-105 (trop d'animations)
           >
             <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#4ADE80]">{stat.value}</div>
             <div className="text-xs sm:text-sm text-gray-400">{stat.label}</div>
@@ -172,7 +171,6 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
             w-full sm:w-auto"
           disabled={isDownloading}
           aria-label="Télécharger mon CV"
-          // ❌ SUPPRIMÉ : hover:scale-105 (animation excessive)
         >
           <Download className="w-4 h-4 sm:w-5 sm:h-5" />
           <span>Download CV</span>
@@ -190,7 +188,6 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
                 text-[#4ADE80] hover:bg-[#4ADE80]/10 hover:border-[#4ADE80]/30
                 transition-all duration-300 group"
               aria-label={`Visitez mon profil ${name}`}
-              // ❌ SUPPRIMÉ : hover:scale-110 (animation excessive)
             >
               <Icon className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:scale-110 transition-transform" />
             </a>

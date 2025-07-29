@@ -113,17 +113,6 @@ export const AboutCertifications = memo(() => {
     }
   };
 
-  // const getLevelIcon = (level: string) => {
-  //   switch (level) {
-  //     case 'Expert':
-  //       return <Trophy className="w-5 h-5" />;
-  //     case 'Advanced':
-  //       return <Medal className="w-5 h-5" />;
-  //     default:
-  //       return <Award className="w-5 h-5" />;
-  //   }
-  // };
-
   return (
     <div className="space-y-8">
         {/* 🎨 Pagination PROFESSIONNELLE */}
