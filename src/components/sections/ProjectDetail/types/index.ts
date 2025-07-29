@@ -425,7 +425,7 @@ export const faCountingDetail: ProjectDetail = {
   title: 'Application Fa-Counting',
   description: 'Application mobile d\'inventaire pour le recensement des matériaux d\'entreprise.',
   longDescription: `
-  Fa-Counting est une application mobile innovante développée par la startup Asma-Software, à laquelle j'ai contribué en tant que développeur mobile. Elle vise à digitaliser et optimiser la gestion d'inventaire d'une entreprise ivoirienne. Face aux défis logistiques et de traçabilité que rencontrent de nombreuses PME africaines, cette solution propose une approche moderne et intuitive pour le recensement des matériaux et équipements.
+  Fa-Counting est une application mobile innovante développée par la team Asma-Software, à laquelle j'ai contribué en tant que développeur mobile. Elle vise à digitaliser et optimiser la gestion d'inventaire d'une entreprise ivoirienne. Face aux défis logistiques et de traçabilité que rencontrent de nombreuses PME africaines, cette solution propose une approche moderne et intuitive pour le recensement des matériaux et équipements.
 
   J'ai travaillé sur la conception et le développement de l'application mobile, en assurant une interface fluide et adaptée aux utilisateurs sur le terrain. L'application communique avec une API Java structurée en microservices, garantissant performance, évolutivité et sécurité des échanges entre le mobile et le système central.
 
