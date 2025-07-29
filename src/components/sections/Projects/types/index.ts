@@ -180,7 +180,7 @@ export const projectsData: Project[] = [
     category: 'web'
   },
   {
-    id: 'ecommerce',
+    id: 'degloul',
     title: 'Plateforme Degloul',
     type: 'Professionnel', // ✅ Bien défini
     description: 'Application mobile qui promouvoit la littérature sous format audio, avec une synchronisation texte',
@@ -195,7 +195,7 @@ export const projectsData: Project[] = [
     category: 'mobile'
   },
   {
-    id: 'mobapp',
+    id: 'favounting',
     type: 'Professionnel', // ✅ Bien défini
     title: 'Application Fa-Counting',
     description: 'Application mobile d\'inventaire pour le recesencement des matériaux d\'entreprise en Cote d\'ivoire',
@@ -240,7 +240,7 @@ export const projectsData: Project[] = [
   //   category: 'web'
   // },
   {
-    id: 'KaayEat',
+    id: 'kaayeat',
     type: 'Personnel', // ✅ Bien défini
     title: 'KaayEat',
     description: 'Projet de design thinking explorant l\'identité visuelle et l\'expérience utilisateur d\'un restaurant fictif, sans maquette.',

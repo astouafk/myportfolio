@@ -661,11 +661,11 @@ export const kaayEatDetail: ProjectDetail = {
 // Créer un objet qui contient tous les détails des projets
 const projectsDetailData: Record<string, ProjectDetail> = {
   'portfolio': portfolioDetail,
-  'ecommerce': degloul,
-  'mobapp': faCountingDetail,
+  'degloul': degloul,
+  'facounting': faCountingDetail,
   'paygo': paygoDetail,
   // 'faggu Assurance': fagguDetail,
-  'KaayEat': kaayEatDetail
+  'kaayeat': kaayEatDetail
 };
 
 // Fonction mise à jour pour obtenir les détails d'un projet par ID
