@@ -365,7 +365,7 @@ export const portfolioDetail: ProjectDetail = {
 
 // Projet Degloul
 export const degloul: ProjectDetail = {
-  id: 'ecommerce',
+  id: 'degloul',
   title: 'Plateforme Degloul',
   type: 'Professionnel',
   description: 'Application mobile de livres audios, écoute et lecture synchronisée.',
@@ -420,7 +420,7 @@ export const degloul: ProjectDetail = {
 
 // Projet Fa-Counting
 export const faCountingDetail: ProjectDetail = {
-  id: 'mobapp',
+  id: 'facounting',
   type: 'Professionnel',
   title: 'Application Fa-Counting',
   description: 'Application mobile d\'inventaire pour le recensement des matériaux d\'entreprise.',
@@ -602,7 +602,7 @@ export const paygoDetail: ProjectDetail = {
 
 // Projet Afkash
 export const kaayEatDetail: ProjectDetail = {
-  id: 'KaayEat',
+  id: 'kaayeat',
   type: 'Personnel',
   title: 'KaayEat',
   description: 'Projet de design thinking explorant l\'identité visuelle et l\'expérience utilisateur d\'un restaurant fictif.',
