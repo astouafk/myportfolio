@@ -395,9 +395,9 @@ export const degloul: ProjectDetail = {
   ],
   screenshots: [
     { id: 'scr2', imageUrl: degloul2, caption: 'OBJECTIF' },
-    { id: 'scr3', imageUrl: degloul5, caption: 'VISUEL Audio' },
-    { id: 'scr4', imageUrl: degloul7, caption: 'VISUEL Texte' },
-    { id: 'scr5', imageUrl: degloul6, caption: 'VISUEL Texte' }
+    { id: 'scr3', imageUrl: degloul5, caption: 'loading' },
+    { id: 'scr4', imageUrl: degloul7, caption: 'favoris et playlist' },
+    { id: 'scr5', imageUrl: degloul6, caption: 'Récemment lus' }
   ],
   challenges: [
     'Gestion du streaming audio haute qualité avec connexions variables',
