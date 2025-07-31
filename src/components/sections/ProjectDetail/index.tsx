@@ -199,7 +199,7 @@ const ProjectDetailPage = memo(() => {
                 text-[#4ADE80] rounded-lg hover:bg-[#4ADE80]/20 transition-colors"
               onClick={handleBackToTimeline}
             >
-              Retour à la timeline
+              Retour à l'accueil
             </button>
           </div>
         </motion.div>

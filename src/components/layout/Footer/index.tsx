@@ -65,30 +65,30 @@ const Footer = memo(() => {
 
   // Réseaux sociaux
   const socialLinks = [
-    {
-      name: 'GitHub',
-      icon: <Github className="w-5 h-5" />,
-      href: 'https://github.com/astouafk',
-      color: 'hover:text-gray-300'
-    },
+    // {
+    //   name: 'GitHub',
+    //   icon: <Github className="w-5 h-5" />,
+    //   href: 'https://github.com/astouafk',
+    //   color: 'hover:text-gray-300'
+    // },
     {
       name: 'LinkedIn',
       icon: <Linkedin className="w-5 h-5" />,
       href: 'https://linkedin.com/in/astou-afk',
       color: 'hover:text-blue-400'
     },
-    {
-      name: 'Twitter',
-      icon: <Twitter className="w-5 h-5" />,
-      href: 'https://twitter.com/astou_afk',
-      color: 'hover:text-blue-400'
-    },
-    {
-      name: 'Instagram',
-      icon: <Instagram className="w-5 h-5" />,
-      href: 'https://instagram.com/astou_afk',
-      color: 'hover:text-pink-400'
-    }
+    // {
+    //   name: 'Twitter',
+    //   icon: <Twitter className="w-5 h-5" />,
+    //   href: 'https://twitter.com/astou_afk',
+    //   color: 'hover:text-blue-400'
+    // },
+    // {
+    //   name: 'Instagram',
+    //   icon: <Instagram className="w-5 h-5" />,
+    //   href: 'https://instagram.com/astou_afk',
+    //   color: 'hover:text-pink-400'
+    // }
   ];
 
   const footerVariants = {
@@ -323,8 +323,8 @@ const Footer = memo(() => {
             >
               {/* Copyright */}
               <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span>© 2025 Astou Fall KANE. Conçu avec</span>
-                <motion.div
+                <span>© 2025 Astou Fall KANE</span>
+                {/* <motion.div
                   animate={{ 
                     scale: [1, 1.2, 1],
                     color: ['#ef4444', '#f97316', '#ef4444']
@@ -337,7 +337,7 @@ const Footer = memo(() => {
                 >
                   <Heart className="w-4 h-4 fill-current" />
                 </motion.div>
-                <span>et React</span>
+                <span>et React</span> */}
               </div>
 
               {/* Technologies utilisées */}
