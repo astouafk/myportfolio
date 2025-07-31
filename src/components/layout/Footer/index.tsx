@@ -171,11 +171,11 @@ const Footer = memo(() => {
             {/* Contact principal mobile */}
             <motion.div variants={itemVariants} className="text-center space-y-3">
               <a
-                href="mailto:astou.afk.dev@gmail.com"
+                href="mailto:asfallkane@gmail.com"
                 className="flex items-center justify-center gap-2 text-[#4ADE80] hover:text-[#4ADE80]/80 transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                <span className="text-sm">astou.afk.dev@gmail.com</span>
+                <span className="text-sm">asfallkane@gmail.com</span>
               </a>
               
               <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
