@@ -22,21 +22,21 @@ const ContactInfo = memo(() => {
   
   // Réseaux sociaux
   const socialLinks = [
-    {
-      name: 'GitHub',
-      icon: <Github className="w-5 h-5" />,
-      url: 'https://github.com/astouafk'
-    },
+    // {
+    //   name: 'GitHub',
+    //   icon: <Github className="w-5 h-5" />,
+    //   url: 'https://github.com/astouafk'
+    // },
     {
       name: 'LinkedIn',
       icon: <Linkedin className="w-5 h-5" />,
       url: 'https://www.linkedin.com/in/astou-fall-kane-127721260'
     },
-    {
-      name: 'Instagram',
-      icon: <Instagram className="w-5 h-5" />,
-      url: 'https://instagram.com/astouafk'
-    }
+    // {
+    //   name: 'Instagram',
+    //   icon: <Instagram className="w-5 h-5" />,
+    //   url: 'https://instagram.com/astouafk'
+    // }
   ];
   
   // Animations
