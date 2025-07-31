@@ -67,7 +67,7 @@ export const projectsData: Project[] = [
     category: 'mobile'
   },
   {
-    id: 'favounting',
+    id: 'facounting',
     type: 'Professionnel', 
     title: 'Application Fa-Counting',
     description: 'Application mobile d\'inventaire pour le recesencement des matériaux d\'entreprise en Cote d\'ivoire',
