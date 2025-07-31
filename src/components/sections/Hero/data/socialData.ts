@@ -3,11 +3,11 @@ import { Github, Linkedin } from 'lucide-react';
 import type { SocialLink } from '../types';
 
 export const socialLinks: SocialLink[] = [
-  { 
-    name: 'github', 
-    icon: Github, 
-    url: 'https://github.com/astouafk' 
-  },
+  // { 
+  //   name: 'github', 
+  //   icon: Github, 
+  //   url: 'https://github.com/astouafk' 
+  // },
   { 
     name: 'linkedin', 
     icon: Linkedin, 
