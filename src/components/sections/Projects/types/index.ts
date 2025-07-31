@@ -93,7 +93,7 @@ export const projectsData: Project[] = [
       { name: 'API REST', color: '#0096AA' }
     ],
     githubUrl: 'https://github.com/astouafk/analytics-dashboard',
-    category: 'web'
+    category: 'mobile'
   },
   {
     id: 'kaayeat',
