@@ -46,8 +46,8 @@ const Footer = memo(() => {
     {
       icon: <Mail className="w-4 h-4" />,
       label: 'Email',
-      value: 'astou.afk.dev@gmail.com',
-      href: 'mailto:astou.afk.dev@gmail.com'
+      value: 'asfallkane@gmail.com',
+      href: 'mailto:asfallkane@gmail.com'
     },
     // {
     //   icon: <Phone className="w-4 h-4" />,
@@ -207,8 +207,7 @@ const Footer = memo(() => {
             <motion.div variants={itemVariants} className="flex items-center justify-between">
               <div className="flex items-center gap-1 text-xs text-gray-500">
                 <span>© 2025</span>
-                <Heart className="w-3 h-3 fill-current text-red-500" />
-                <span>Astou</span>
+                <span>Astou Fall KANE </span>
               </div>
               
               <motion.button
