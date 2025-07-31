@@ -308,7 +308,7 @@
 
 
 // src/components/sections/Contact/components/ContactForm.tsx
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Send, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
