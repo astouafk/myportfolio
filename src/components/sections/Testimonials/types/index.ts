@@ -2,7 +2,7 @@
 import ousmane from '../../../../assets/testimonials/Ousmane.jpeg';
 import guisse from '../../../../assets/testimonials/Guisse.jpeg';
 import sidibe from '../../../../assets/testimonials/Sidibe.jpeg';
-import saliou from '../../../../assets/testimonials/Saliou.png';
+import saliou from '../../../../assets/testimonials/saliou.png';
 
 // Type pour un témoignage simplifié
 export interface Testimonial {
