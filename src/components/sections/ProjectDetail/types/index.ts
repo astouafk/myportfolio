@@ -258,25 +258,26 @@ export const paygoDetail: ProjectDetail = {
   title: 'Application Paygo',
   description: 'Paygo est une solution tout-en-un qui permet aux entreprises d\'accepter des paiements marchands via Wave, Orange Money, etc.',
   longDescription: `
-  Paygo est une solution fintech développée par la société MobiDev, conçue pour simplifier les paiements digitaux en Afrique de l’Ouest en unifiant les services des principaux opérateurs de paiement mobile (Wave, Orange Money, etc.) au sein d’une seule plateforme.
+   En tant que **Manager IT** du projet Paygo, je conçois et supervise les **architectures techniques** servant de base aux travaux des équipes de développement.  
+  Paygo est une **solution fintech innovante**, développée par **MobiDev**, qui vise à simplifier et centraliser les paiements digitaux en Afrique de l’Ouest.  
+  La plateforme unifie les services des principaux opérateurs de paiement mobile (Wave, Orange Money, etc.) pour offrir une expérience fluide et sécurisée aux entreprises.
 
-  J’ai contribué au développement de la partie mobile de l’application, en mettant l’accent sur l’expérience utilisateur, les bonnes pratiques de développement, et des fonctionnalités clés. L’objectif était de proposer un outil fluide, accessible et parfaitement adapté aux réalités du terrain.
+  Mon rôle inclut :
+  - **Définition et validation des architectures** backend, mobile et cloud pour garantir robustesse, scalabilité et performance.  
+  - **Encadrement technique** des développeurs pour assurer le respect des bonnes pratiques et des standards.  
+  - **Pilotage des choix technologiques** afin de garantir la cohérence des solutions avec les besoins métier et l’évolution du projet.
 
-  La solution Paygo se distingue par plusieurs avantages majeurs :
+  Les principaux atouts de Paygo :
+  - **Solution Tout-en-Un**  
+    Gestion centralisée des paiements, décaissements et rapports financiers.
+  - **Ouverture au financement**  
+    Génération de rapports fiables facilitant la collaboration avec banques et institutions de microfinance.
+  - **Automatisation et gain de temps**  
+    Réduction des tâches manuelles pour un focus sur la croissance.
+  - **Sécurité avancée**  
+    Données chiffrées, infrastructure résiliente et authentification multi-facteur.
 
-  • **Solution Tout-en-Un**  
-  Gérer les paiements, décaissements et la comptabilité à partir d’une seule application.
-
-  • **Mise en relation pour financement**  
-  Grâce aux rapports de transactions, Paygo facilite la mise en relation avec les banques et institutions financières pour accéder à des financements.
-
-  • **Gain de Temps**  
-  Automatisation des transactions et des processus comptables pour se concentrer sur le développement de l’entreprise.
-
-  • **Sécurité Maximale**  
-  Données protégées par chiffrement, sécurité de pointe et authentification multi-facteur.
-
-  Ce projet m’a permis de contribuer à une plateforme à fort impact, avec une vision claire : accélérer la transformation numérique du secteur financier africain à travers des outils mobiles efficaces et sécurisés.
+  En tant que manager IT, je contribue à positionner Paygo comme un acteur clé de la **digitalisation des paiements en Afrique**, tout en assurant la **pérennité technique** de la plateforme.
 `,
 
   date: 'Avril 2025',

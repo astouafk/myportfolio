@@ -103,10 +103,8 @@ export const HeroTitle = memo(() => {
       // Configuration simplifiée et plus rapide
       typedInstanceRef.current = new Typed(typedElementRef.current, {
         strings: [
-          "Frontend Developer",
-          "Backend Developer",
-          "Mobile Developer", 
-          "In short, Fullstack Developer. 😎💻🧠"
+          "Fullstack Developer",
+          "IT Manager"
         ],
         typeSpeed: isReducedMotion ? 0 : (isMobile ? 70 : 50), // ⚡ Plus rapide
         backSpeed: isReducedMotion ? 0 : (isMobile ? 40 : 30),
