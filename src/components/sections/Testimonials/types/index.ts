@@ -17,14 +17,14 @@ export interface Testimonial {
   // Données d'exemple
   export const testimonialsData: Testimonial[] = [
    
-    {
-      id: 'test1',
-      personName: 'Serigne Saliou Ndiaye',
-      personTitle: 'Directeur Général',
-      company: 'Mobi Sénégal Holding',
-      personImage: saliou,
-      text: "J’ai recruté Astou avec une période d’essai. Très rapidement, elle a su faire preuve de sérieux, d’implication et d’une forte détermination. Ces qualités ont naturellement conduit à sa promotion au poste de Tech Lead au sein de Mobi."
-    },    
+    // {
+    //   id: 'test1',
+    //   personName: 'Serigne Saliou Ndiaye',
+    //   personTitle: 'Directeur Général',
+    //   company: 'Mobi Sénégal Holding',
+    //   personImage: saliou,
+    //   text: "J’ai recruté Astou avec une période d’essai. Très rapidement, elle a su faire preuve de sérieux, d’implication et d’une forte détermination. Ces qualités ont naturellement conduit à sa promotion au poste de Tech Lead au sein de Mobi."
+    // },    
     {
       id: 'test2',
       personName: 'Ousmane NDIAYE',
