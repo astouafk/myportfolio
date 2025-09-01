@@ -368,7 +368,7 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
       
       {/* Boutons sociaux simplifiés */}
       <div ref={socialRef} className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-        <button
+        {/* <button
           id="download-btn"
           onClick={handleDownloadCV}
           className="social-item px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-[#4ADE80] text-black rounded-full font-semibold
@@ -380,7 +380,7 @@ export const HeroStats = memo(({ socialRef }: HeroStatsProps) => {
         >
           <Download className="w-4 h-4 sm:w-5 sm:h-5" />
           <span>Download CV</span>
-        </button>
+        </button> */}
         
         <div className="flex justify-center gap-3 sm:gap-4">
           {socialLinks.map(({ name, icon: Icon, url }) => (
